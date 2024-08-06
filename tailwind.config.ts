@@ -30,6 +30,30 @@ const config: Config = {
         tablet: '16px',
         desktop: '20px',
       },
+      colors: {
+        // Basic
+        white: '#FFFFFF',
+        black: '#000000',
+
+        // Grayscales
+        gray: {
+          90: '#E5E5E5',
+          80: '#CCCCCC',
+          70: '#B3B3B3',
+          60: '#999999',
+          50: '#808080',
+          40: '#666666',
+          30: '#4D4D4D',
+          20: '#333333',
+          10: '#1A1A1A',
+        },
+
+        // Primary
+        primary: {
+          '01': '#211A18',
+          '02': '#FEF5AD',
+        },
+      },
     },
   },
   plugins: [],
