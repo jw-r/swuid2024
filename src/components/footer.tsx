@@ -11,15 +11,19 @@ const Footer = () => {
         서울시 노원구 화랑로 621
       </Text>
       <Text typography="Caption_01" className="text-primary-02">
-        <a href="" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/swu_id/" target="_blank" rel="noopener noreferrer">
           Instagram
         </a>{' '}
         |{' '}
-        <a href="" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.behance.net/2024swindustr/projects"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Behence
         </a>{' '}
         |{' '}
-        <a href="" target="_blank" rel="noopener noreferrer">
+        <a href="https://notefolio.net/swuid2024" target="_blank" rel="noopener noreferrer">
           Notefolio
         </a>
       </Text>

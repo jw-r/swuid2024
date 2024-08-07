@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="custom-container sticky top-0 flex h-[56px] items-center justify-between border-b border-black bg-primary-01 desktop:h-[110px]">
+      <div className="custom-container sticky top-0 z-50 flex h-[56px] items-center justify-between border-b border-black bg-primary-01 desktop:h-[110px]">
         <Icon name="logo" className="size-[32px] desktop:size-[70px]" />
         <div>
           {isMenuOpen ? (

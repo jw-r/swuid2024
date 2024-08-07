@@ -18,8 +18,10 @@ export default function RootLayout({
     <html lang="ko" className={`${eulyoo1945.variable} ${pretendard.variable}`}>
       <body className={pretendard.className}>
         <Header />
-        <div className="mx-auto max-w-screen">{children}</div>
-        <Footer />
+        <div className="relative mx-auto max-w-screen">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   )
