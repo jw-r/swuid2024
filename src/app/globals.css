@@ -7,3 +7,9 @@
     @apply bg-primary-01 text-white;
   }
 }
+
+@layer utilities {
+  .custom-container {
+    @apply px-mobile tablet:px-tablet desktop:px-desktop;
+  }
+}

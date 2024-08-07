@@ -5,7 +5,7 @@ import Icon from './icon'
 import { useEffect, useState } from 'react'
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex h-[56px] items-center justify-between border-b border-black px-mobile tablet:px-tablet desktop:h-[110px] desktop:px-desktop">
+      <div className="custom-container sticky top-0 flex h-[56px] items-center justify-between border-b border-black bg-primary-01 desktop:h-[110px]">
         <Icon name="logo" className="size-[32px] desktop:size-[70px]" />
         <div>
           {isMenuOpen ? (
@@ -46,7 +46,7 @@ const Header = () => {
 
 const Menu = ({ onClose }: { onClose: () => void }) => {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-black/60 px-mobile text-white tablet:px-tablet desktop:px-desktop">
+    <div className="fixed inset-0 z-50 flex flex-col bg-black/70 px-mobile text-white tablet:px-tablet desktop:px-desktop">
       <div className="flex h-[56px] items-center border-b border-transparent desktop:h-[110px]">
         <div className="flex w-full justify-between">
           <Icon name="logo" className="size-[32px] desktop:size-[70px]" />
