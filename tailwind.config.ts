@@ -12,10 +12,10 @@ const config: Config = {
         eulyoo1945: ['EULYOO1945', 'serif'],
         pretendard: ['Pretendard', 'sans-serif'],
       },
+
       screens: {
-        mobile: { max: '519px' },
-        tablet: { min: '520px', max: '829px' },
-        desktop: { min: '830px' },
+        md: '520px',
+        lg: '830px',
       },
       maxWidth: {
         screen: '1920px',
@@ -29,11 +29,6 @@ const config: Config = {
         mobile: '16px',
         tablet: '64px',
         desktop: '136px',
-      },
-      gap: {
-        mobile: '16px',
-        tablet: '16px',
-        desktop: '20px',
       },
       colors: {
         // Basic

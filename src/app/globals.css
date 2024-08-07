@@ -8,8 +8,235 @@
   }
 }
 
+/* Light: 300
+Regular: 400
+Semibold: 600
+Bold: 700 */
+
 @layer utilities {
   .custom-container {
-    @apply px-mobile tablet:px-tablet desktop:px-desktop;
+    @apply px-mobile md:px-tablet lg:px-desktop;
+  }
+
+  .text-web-e-headline-01 {
+    font-family: theme('fontFamily.eulyoo1945');
+    font-size: 56px;
+    line-height: normal;
+    letter-spacing: normal;
+    font-weight: 600;
+  }
+  .text-web-e-subtitle-01 {
+    font-family: theme('fontFamily.eulyoo1945');
+    font-size: 28px;
+    line-height: normal;
+    letter-spacing: normal;
+    font-weight: 600;
+  }
+
+  .text-web-headline-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+  .text-web-headline-02 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 28px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .text-web-subtitle-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  .text-web-subtitle-02 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    font-weight: 300;
+  }
+  .text-web-subtitle-03 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  .text-web-body-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 28px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  .text-web-body-02 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+  .text-web-body-03 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 22px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
+  .text-web-body-04 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 15px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+
+  .text-web-body-space-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 28px;
+    line-height: 180%;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  .text-web-body-space-02 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 24px;
+    line-height: 180%;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+  .text-web-body-space-03 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 22px;
+    line-height: 180%;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
+  .text-web-body-space-04 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 20px;
+    line-height: 180%;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
+
+  .text-web-caption-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
+
+  .text-e-headline-01 {
+    font-family: theme('fontFamily.eulyoo1945');
+    font-size: 28px;
+    line-height: normal;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  .text-e-subtitle-01 {
+    font-family: theme('fontFamily.eulyoo1945');
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  .text-headline-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 20px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  .text-headline-02 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  .text-subtitle-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  .text-subtitle-02 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  .text-subtitle-03 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+
+  .text-body-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+  .text-body-02 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
+  .text-body-03 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
+  .text-body-04 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+
+  .text-body-space-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 16px;
+    line-height: 180%;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+  .text-body-space-02 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 14px;
+    line-height: 180%;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+
+  .text-caption-01 {
+    font-family: theme('fontFamily.pretendard');
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: normal;
+    font-weight: 400;
   }
 }

@@ -1,13 +1,23 @@
-import Text from '@/components/ui/text'
 import Background from './components/background'
+import Committee from './components/sections/committee'
+import Congratulatory from './components/sections/congratulatory'
+import Interview from './components/sections/interview'
+import Intro from './components/sections/intro'
+import Top from './components/sections/top'
+import Tracks from './components/sections/tracks'
 
 export default function Home() {
   return (
-    <main className="flex h-[400vh] flex-col items-center">
+    <>
       <Background />
-      <div>폰트 테스트</div>
-      <Text typography="E_Headline_01">폰트 테스트</Text>
-      <Text typography="Headline_01">폰트 테스트</Text>
-    </main>
+      <main className="custom-container">
+        <Top />
+        <Intro />
+        <Tracks />
+        <Congratulatory />
+        <Interview />
+        <Committee />
+      </main>
+    </>
   )
 }

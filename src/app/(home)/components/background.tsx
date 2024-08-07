@@ -9,7 +9,7 @@ const Background = () => {
 
   if (isMobile) {
     return (
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-[-1]">
         <Image src="/assets/home/mobile_bg_05.webp" fill alt="" />
         <Image
           src="/assets/home/mobile-top-right.webp"
@@ -38,7 +38,7 @@ const Background = () => {
 
   if (isTablet) {
     return (
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-[-1]">
         <Image src="/assets/home/tablet_bg_05.webp" fill alt="" />
         <Image
           src="/assets/home/tablet-top.webp"
@@ -66,7 +66,7 @@ const Background = () => {
   }
 
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 z-[-1]">
       <Image src="/assets/home/bg_01.webp" fill alt="" />
       <Image
         src="/assets/home/desktop-top.webp"
@@ -94,6 +94,7 @@ const Background = () => {
 }
 
 export default Background
+
 // 배경 (모바일)
 // mobile_bg_05
 // mobile_bg_05 위에

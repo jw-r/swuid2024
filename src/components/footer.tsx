@@ -1,16 +1,13 @@
-import Link from 'next/link'
-import Text from './ui/text'
-
 const Footer = () => {
   return (
-    <footer className="py-[42px] text-center desktop:py-[105px]">
-      <Text typography="Caption_01">
+    <footer className="py-[42px] text-center lg:py-[105px]">
+      <p className="text-caption-01 lg:text-web-caption-01">
         Copyright© Industrial Design,Seoul Women’s University,
         <br />
-        All rights reserved 서울여자대학교 미래산업융합대학 <br className="desktop:hidden" />
+        All rights reserved 서울여자대학교 미래산업융합대학 <br className="lg:hidden" />
         서울시 노원구 화랑로 621
-      </Text>
-      <Text typography="Caption_01" className="text-primary-02">
+      </p>
+      <div className="text-caption-01 lg:text-web-caption-01 text-primary-02">
         <a href="https://www.instagram.com/swu_id/" target="_blank" rel="noopener noreferrer">
           Instagram
         </a>{' '}
@@ -26,7 +23,7 @@ const Footer = () => {
         <a href="https://notefolio.net/swuid2024" target="_blank" rel="noopener noreferrer">
           Notefolio
         </a>
-      </Text>
+      </div>
     </footer>
   )
 }
