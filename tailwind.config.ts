@@ -25,6 +25,11 @@ const config: Config = {
         tablet: '64px',
         desktop: '136px',
       },
+      padding: {
+        mobile: '16px',
+        tablet: '64px',
+        desktop: '136px',
+      },
       gap: {
         mobile: '16px',
         tablet: '16px',
