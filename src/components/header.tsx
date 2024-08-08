@@ -33,7 +33,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(true)}
             />
           )}
-          <div className="flex gap-[88px] font-pretendard text-[24px] *:py-[20px] max-lg:hidden">
+          <div className="flex gap-[88px] font-pretendard text-[24px] transition-all *:py-[20px] *:opacity-50 hover:*:opacity-100 max-lg:hidden">
             <Link href="/project">PROJECT</Link>
             <Link href="designer">DESIGNER</Link>
             <Link href="/guest-book">GUEST BOOK</Link>

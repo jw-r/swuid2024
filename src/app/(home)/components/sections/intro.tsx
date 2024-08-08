@@ -1,9 +1,9 @@
 import Icon from '@/components/icon'
+import Section from '../section'
 
 const Intro = () => {
   return (
-    <section className="mt-[108px] md:mt-[148px] lg:mt-[426px]">
-      <h2 className="text-headline-01 lg:text-web-headline-01 text-primary-02">졸업전시 소개</h2>
+    <Section title="졸업전시 소개" className="mt-[108px] md:mt-[148px] lg:mt-[426px]">
       <div className="text-e-headline-01 lg:text-web-e-headline-01 mt-[20px] flex items-center gap-[8px] text-primary-02 lg:mt-[36px] lg:gap-[18.4px]">
         <span>사각 :</span>
         <Icon name="사각-text" className="lg:h-[60px] lg:w-[106.6px]" />
@@ -30,7 +30,7 @@ const Intro = () => {
           <br className="lg:hidden" /> 이제 내디뎌 볼까 합니다.
         </p>
       </div>
-    </section>
+    </Section>
   )
 }
 

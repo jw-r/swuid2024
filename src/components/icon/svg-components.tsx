@@ -132,3 +132,22 @@ export function 사각Text({ ...props }) {
     </svg>
   )
 }
+
+export function ArrowRight({ ...props }) {
+  return (
+    <svg
+      width="17"
+      height="16"
+      viewBox="0 0 17 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M0.828369 8.27583H16.0616M16.0616 8.27583L9.19591 1.41016M16.0616 8.27583L9.19591 15.1415"
+        stroke="#FEF5AD"
+        strokeWidth="0.429104"
+      />
+    </svg>
+  )
+}
