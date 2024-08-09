@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    @apply box-border;
+  }
+
   body {
     @apply bg-primary-01 text-white;
   }

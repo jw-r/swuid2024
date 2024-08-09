@@ -1,8 +1,15 @@
 import Icon from '@/components/icon'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const Top = () => {
+  /* TODO: Fade In Animation */
+  // useGSAP(() => {
+  //   gsap.to('#사각', {})
+  // }, [])
+
   return (
-    <section className="mt-[24px] lg:mt-[40px]">
+    <section className="pt-[24px] lg:pt-[40px]">
       <div className="flex items-center gap-[6px] text-primary-02 md:gap-[16px]">
         <div className="font-eulyoo1945 text-[28px] tracking-[-0.01em] md:text-[40px] lg:text-[72px]">
           41th
@@ -18,6 +25,7 @@ const Top = () => {
         <div className="w-full lg:w-[541px]">
           <div className="mt-[303px] flex w-fit flex-col text-primary-02 md:ml-auto md:mt-[181px] md:items-end lg:ml-0 lg:mt-[164px] lg:items-start">
             <Icon
+              id="사각"
               name="사각"
               className="h-[53px] w-[85px] shrink-0 md:h-[68px] md:w-[109px] lg:h-[161px] lg:w-[258px]"
             />
