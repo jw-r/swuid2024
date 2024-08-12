@@ -39,7 +39,12 @@ const committees = [
   {
     department: '인테리어',
     leader: '이수현',
-    members: <span>고경희 김지현 박수연 박인애 오유진 이지은 이혜인 황예린</span>,
+    members: (
+      <span>
+        고경희 김지현 박수연 박인애
+        <br className="md:hidden" /> 오유진 이지은 이혜인 황예린
+      </span>
+    ),
   },
   {
     department: '포스터',
@@ -51,15 +56,28 @@ const committees = [
 const Committee = () => {
   return (
     <Section title="2024 졸업준비위원회" className="mt-[135px] md:mt-[150px] lg:mt-[240px]">
-      <div className="flex gap-[20px] lg:gap-[133px]">
+      <div className="mt-[22px] flex gap-[20px] lg:mt-[95px] lg:gap-[133px]">
         {charges.map(({ role, name }) => (
           <div key={role} className="flex gap-[12px] lg:gap-[21px]">
-            <span className="text-body-02 text-web-body-02">{role}</span>
-            <span className="text-subtitle-02 text-web-subtitle-03">{name}</span>
+            <span className="text-body-02 lg:text-web-subtitle-03">{role}</span>
+            <span className="text-subtitle-02 lg:text-web-body-02">{name}</span>
           </div>
         ))}
       </div>
-      <div className="my-[22px] h-px w-full bg-white/50 lg:pb-[67px] lg:pt-[63px]" />
+      <div className="my-[22px] h-px w-full bg-white/70 lg:mb-[67px] lg:mt-[63px]" />
+      <div className="grid grid-cols-1 gap-[24px] md:grid-cols-3">
+        {committees.map((committee) => (
+          <div key={committee.department} className="flex gap-[12px] lg:gap-[20px]">
+            <div className="text-subtitle-02 lg:text-web-subtitle-03 w-[48px] shrink-0 lg:w-[83px]">
+              {committee.department}
+            </div>
+            <div className="text-body-02 lg:text-web-body-02 flex flex-col">
+              <div>팀장 {committee.leader}</div>
+              <div>{committee.members}</div>
+            </div>
+          </div>
+        ))}
+      </div>
     </Section>
   )
 }
