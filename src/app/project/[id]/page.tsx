@@ -4,12 +4,8 @@ import Icon from '@/components/icon'
 import Background from './components/background'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useMediaQuery } from '@/hooks/use-media-query'
-import { cn } from '@/lib/utils'
 
 export default function ProjectDetailPage() {
-  const isDesktop = useMediaQuery('(min-width: 830px)')
-
   return (
     <>
       <Background />
@@ -62,12 +58,7 @@ export default function ProjectDetailPage() {
               <div className="relative aspect-[168/224] overflow-hidden border border-primary-02/70">
                 {/* TODO: Image */}
                 <div className="absolute size-full">
-                  <Image
-                    src="/dummy.png"
-                    alt=""
-                    fill
-                    className={cn(isDesktop && 'group-hover:blur-sm')}
-                  />
+                  <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
                   <div className="max-lg:hidden">
                     <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
                       <div className="pb-[20px] pl-[32px] pr-[29px] pt-[24px]">

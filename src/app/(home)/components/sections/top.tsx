@@ -1,3 +1,4 @@
+import ExhibitionHeader from '@/components/exhibition-header'
 import Icon from '@/components/icon'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -10,16 +11,7 @@ const Top = () => {
 
   return (
     <section className="pt-[24px] lg:pt-[40px]">
-      <div className="flex items-center gap-[6px] text-primary-02 md:gap-[16px]">
-        <div className="font-eulyoo1945 text-[28px] tracking-[-0.01em] md:text-[40px] lg:text-[72px]">
-          41th
-        </div>
-        <div className="lg:text-web-body-02 font-pretendard text-[12px] tracking-[-0.02em] md:text-[16px]">
-          Seoul Women’s University
-          <br />
-          Industrial Design Graduation Exhibition
-        </div>
-      </div>
+      <ExhibitionHeader />
 
       <div className="flex justify-start md:justify-end">
         <div className="w-full lg:w-[541px]">

@@ -5,7 +5,7 @@ import Background from './components/background'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useMediaQuery } from '@/hooks/use-media-query'
+import ExhibitionHeader from '@/components/exhibition-header'
 
 export type Sort = 'ux-design' | 'digital-fabrication' | 'bx-design'
 
@@ -18,7 +18,6 @@ const dfList = Array.from({ length: 26 })
 const bxList = Array.from({ length: 4 })
 
 export default function Project() {
-  const isDesktop = useMediaQuery('(min-width: 830px)')
   const [sort, setSort] = useState<Sort>('ux-design')
 
   const curList = sort === 'ux-design' ? uxList : sort === 'digital-fabrication' ? dfList : bxList
@@ -27,18 +26,7 @@ export default function Project() {
     <>
       <Background sort={sort} />
       <main className="custom-container mb-[120px] lg:mb-[240px]">
-        <div className="mt-[24px] lg:mt-[40px]">
-          <div className="flex items-center gap-[6px] text-primary-02 md:gap-[16px]">
-            <div className="font-eulyoo1945 text-[28px] tracking-[-0.01em] md:text-[40px] lg:text-[72px]">
-              41th
-            </div>
-            <div className="lg:text-web-body-02 font-pretendard text-[12px] tracking-[-0.02em] md:text-[16px]">
-              Seoul Women’s University
-              <br />
-              Industrial Design Graduation Exhibition
-            </div>
-          </div>
-        </div>
+        <ExhibitionHeader className="mt-[24px] lg:mt-[40px]" />
 
         <h2 className="text-web-subtitle-03 md:text-headline-02 lg:text-web-headline-01 mt-[48px] text-primary-02 md:mt-[80px] lg:mt-[96px]">
           Project
@@ -79,12 +67,7 @@ export default function Project() {
             /* TODO: 실제 id로 대체 */
             <Link key={idx} href="/project/3">
               <div className="group relative aspect-square flex-1 overflow-hidden border border-primary-02/70">
-                <Image
-                  src="/dummy.png"
-                  alt=""
-                  fill
-                  className={cn(isDesktop && 'group-hover:blur-sm')}
-                />
+                <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
 
                 <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
                   <div className="flex h-full flex-col justify-between p-[32px]">
