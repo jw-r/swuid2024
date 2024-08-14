@@ -47,10 +47,10 @@ const Header = () => {
             />
           )}
           <div className="flex gap-[88px] font-pretendard text-[24px] transition-all *:py-[20px] *:opacity-50 hover:*:opacity-100 max-lg:hidden">
-            <Link href="/project" className={cn(pathname === '/project' && '!opacity-100')}>
+            <Link href="/project" className={cn(pathname.includes('/project') && '!opacity-100')}>
               PROJECT
             </Link>
-            <Link href="/designer" className={cn(pathname === '/designer' && '!opacity-100')}>
+            <Link href="/designer" className={cn(pathname.includes('/designer') && '!opacity-100')}>
               DESIGNER
             </Link>
             <Link href="/guest-book" className={cn(pathname === '/guest-book' && '!opacity-100')}>

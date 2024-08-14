@@ -3,6 +3,9 @@
 import { useState } from 'react'
 import Background from './components/background'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useMediaQuery } from '@/hooks/use-media-query'
 
 export type Sort = 'ux-design' | 'digital-fabrication' | 'bx-design'
 
@@ -15,6 +18,7 @@ const dfList = Array.from({ length: 26 })
 const bxList = Array.from({ length: 4 })
 
 export default function Project() {
+  const isDesktop = useMediaQuery('(min-width: 830px)')
   const [sort, setSort] = useState<Sort>('ux-design')
 
   const curList = sort === 'ux-design' ? uxList : sort === 'digital-fabrication' ? dfList : bxList
@@ -40,7 +44,7 @@ export default function Project() {
           Project
         </h2>
 
-        <div className="mt-[24px] flex gap-[16px] max-md:flex-col md:mt-[32px] lg:mt-[48px]">
+        <div className="mt-[24px] flex gap-[16px] *:w-fit max-md:flex-col md:mt-[32px] lg:mt-[48px]">
           <button
             className={cn(
               'border border-primary-02 bg-primary-02/20 px-[36px] py-[13px] opacity-30 hover:opacity-100 transition-all duration-300 ease-out',
@@ -70,17 +74,39 @@ export default function Project() {
           </button>
         </div>
 
-        <ul className="mt-[24px] grid grid-cols-2 gap-x-[7px] gap-y-[48px] md:grid-cols-3 md:gap-x-[15px] lg:mt-[48px] lg:gap-[20px]">
+        <div className="mt-[24px] grid grid-cols-2 gap-x-[7px] gap-y-[48px] md:grid-cols-3 md:gap-x-[15px] lg:mt-[48px] lg:gap-[20px]">
           {curList.map((item, idx) => (
-            <li key={idx}>
-              <div className="aspect-square flex-1 border border-primary-02/70" />
+            /* TODO: 실제 id로 대체 */
+            <Link key={idx} href="/project/3">
+              <div className="group relative aspect-square flex-1 overflow-hidden border border-primary-02/70">
+                <Image
+                  src="/dummy.png"
+                  alt=""
+                  fill
+                  className={cn(isDesktop && 'group-hover:blur-sm')}
+                />
+
+                <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
+                  <div className="flex h-full flex-col justify-between p-[32px]">
+                    <div className="text-web-headline-01">
+                      {sort === 'ux-design' ? 'UX' : sort === 'digital-fabrication' ? 'DF' : 'BX'}
+                    </div>
+                    <div>
+                      <div className="text-web-subtitle-01">프로젝트 타이틀</div>
+                      <div className="text-web-subtitle-03 mt-[5px]">
+                        팀원1 팀원2 팀원3 팀원4 팀원5
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="mt-mobile lg:hidden">
                 <div className="text-subtitle-01">프로젝트 타이틀</div>
                 <div className="text-body-02 mt-[5px]">팀원1 팀원2 팀원3 팀원4</div>
               </div>
-            </li>
+            </Link>
           ))}
-        </ul>
+        </div>
       </main>
     </>
   )
