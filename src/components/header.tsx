@@ -3,8 +3,12 @@
 import Link from 'next/link'
 import Icon from './icon'
 import { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 const Header = () => {
+  const router = useRouter()
+  const pathname = usePathname() as '/' | '/project' | '/designer' | '/guest-book'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -18,11 +22,20 @@ const Header = () => {
       document.body.style.overflow = 'unset'
     }
   }, [isMenuOpen])
+  console.log(pathname === '/project')
 
   return (
     <>
       <div className="custom-container sticky top-0 z-50 flex h-[56px] items-center justify-between border-b border-black bg-primary-01 lg:h-[110px]">
-        <Icon name="logo" className="size-[32px] lg:size-[70px]" />
+        <Icon
+          name="logo"
+          className="size-[32px] cursor-pointer lg:size-[70px]"
+          onClick={() => {
+            if (pathname !== '/') {
+              router.push('/')
+            }
+          }}
+        />
         <div>
           {isMenuOpen ? (
             <Menu onClose={() => setIsMenuOpen(false)} />
@@ -34,9 +47,15 @@ const Header = () => {
             />
           )}
           <div className="flex gap-[88px] font-pretendard text-[24px] transition-all *:py-[20px] *:opacity-50 hover:*:opacity-100 max-lg:hidden">
-            <Link href="/project">PROJECT</Link>
-            <Link href="designer">DESIGNER</Link>
-            <Link href="/guest-book">GUEST BOOK</Link>
+            <Link href="/project" className={cn(pathname === '/project' && '!opacity-100')}>
+              PROJECT
+            </Link>
+            <Link href="/designer" className={cn(pathname === '/designer' && '!opacity-100')}>
+              DESIGNER
+            </Link>
+            <Link href="/guest-book" className={cn(pathname === '/guest-book' && '!opacity-100')}>
+              GUEST BOOK
+            </Link>
           </div>
         </div>
       </div>
