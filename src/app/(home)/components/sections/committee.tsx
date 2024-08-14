@@ -55,7 +55,10 @@ const committees = [
 
 const Committee = () => {
   return (
-    <Section title="2024 졸업준비위원회" className="mt-[135px] md:mt-[150px] lg:mt-[240px]">
+    <Section
+      title="2024 졸업준비위원회"
+      className="mb-[67.5px] mt-[135px] md:my-[150px] lg:my-[240px]"
+    >
       <div className="mt-[22px] flex gap-[20px] lg:mt-[95px] lg:gap-[133px]">
         {charges.map(({ role, name }) => (
           <div key={role} className="flex gap-[12px] lg:gap-[21px]">

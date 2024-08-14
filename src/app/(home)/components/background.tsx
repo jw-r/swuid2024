@@ -1,6 +1,6 @@
 'use client'
 
-import { useMediaQuery } from '@/app/hooks/use-media-query'
+import { useMediaQuery } from '@/hooks/use-media-query'
 import Image from 'next/image'
 
 const Background = () => {
