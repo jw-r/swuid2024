@@ -10,7 +10,15 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <Image src="/assets/detail/mobile_bg_01.png" fill alt="" />
+        <Image src="/assets/designer/mobile_bg_02.png" fill alt="" className="top-0" />
+        <Image src="/assets/designer/mobile_bg_03.png" fill alt="" className="bottom-0" />
+        <Image
+          src="/assets/designer/bgObj_02.png"
+          width={237.7}
+          height={310}
+          alt=""
+          className="absolute right-0 top-[163px]"
+        />
       </div>
     )
   }
@@ -18,14 +26,29 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <Image src="/assets/detail/tablet_bg_01.png" fill alt="" />
+        <Image src="/assets/designer/tablet_bg_02.png" fill alt="" className="top-0" />
+        <Image src="/assets/designer/tablet_bg_03.png" fill alt="" className="bottom-0" />
+        <Image
+          src="/assets/designer/bgObj_02.png"
+          width={389}
+          height={509}
+          alt=""
+          className="absolute right-0 top-[279px]"
+        />
       </div>
     )
   }
 
   return (
     <div className="absolute inset-0 z-[-1]">
-      <Image src="/assets/detail/bgObj_04.png" fill alt="" className="bottom-0" />
+      <Image src="/assets/designer/bg_03.png" fill alt="" className="bottom-0" />
+      <Image
+        src="/assets/designer/bgObj_03.png"
+        width={1186}
+        height={1618}
+        alt=""
+        className="absolute right-0 top-[350px]"
+      />
     </div>
   )
 }

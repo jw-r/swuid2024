@@ -4,6 +4,7 @@ import Icon from '@/components/icon'
 import Background from './components/background'
 import Link from 'next/link'
 import Image from 'next/image'
+import GuestBook from '@/components/guest-book'
 
 export default function ProjectDetailPage() {
   return (
@@ -80,6 +81,10 @@ export default function ProjectDetailPage() {
               </div>
             </Link>
           </div>
+        </div>
+
+        <div className="custom-container mb-[120px] lg:mb-[240px]">
+          <GuestBook initialMessages={[]} targetProjectId="a" />
         </div>
       </main>
     </>

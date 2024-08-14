@@ -1,10 +1,10 @@
 'use client'
 
 import ExhibitionHeader from '@/components/exhibition-header'
-import Background from './components/background'
 import Link from 'next/link'
 import Image from 'next/image'
 import Icon from '@/components/icon'
+import Background from './components/background'
 
 const arr = Array.from({ length: 41 })
 
@@ -13,7 +13,7 @@ export default function DesignerPage() {
     <>
       <Background />
       <main className="custom-container mb-[118px] md:mb-[170px] lg:mb-[245px]">
-        <ExhibitionHeader className="mt-[24px] lg:mt-[40px]" />
+        <ExhibitionHeader className="pt-[24px] lg:pt-[40px]" />
 
         <h2 className="text-headline-02 lg:text-web-headline-01 mt-[48px] text-primary-02 md:mt-[80px] lg:mt-[96px]">
           Designer

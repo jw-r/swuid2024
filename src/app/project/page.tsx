@@ -26,7 +26,7 @@ export default function Project() {
     <>
       <Background sort={sort} />
       <main className="custom-container mb-[120px] lg:mb-[240px]">
-        <ExhibitionHeader className="mt-[24px] lg:mt-[40px]" />
+        <ExhibitionHeader className="pt-[24px] lg:pt-[40px]" />
 
         <h2 className="text-web-subtitle-03 md:text-headline-02 lg:text-web-headline-01 mt-[48px] text-primary-02 md:mt-[80px] lg:mt-[96px]">
           Project
