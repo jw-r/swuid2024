@@ -3,10 +3,6 @@ import db from '@/lib/prisma/db'
 import { notFound } from 'next/navigation'
 
 async function insertDesignerData() {
-  if (process.env.NODE_ENV === 'production') {
-    notFound()
-  }
-
   for (let i = 0; i < designerData.length; i++) {
     const [
       order,
