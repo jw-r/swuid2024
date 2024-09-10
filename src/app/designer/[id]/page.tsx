@@ -2,53 +2,94 @@ import Image from 'next/image'
 import Background from './components/background'
 import Link from 'next/link'
 import GuestBook from '@/components/guest-book'
+import db from '@/lib/prisma/db'
+import { notFound } from 'next/navigation'
 
-export default function DesignerDetailPage() {
+export const generateMetadata = async ({ params }: Props) => {
+  const designer = await getDesigner(Number(params.id))
+  return { title: `SWU ID 2024 - ${designer.name}` }
+}
+
+export async function generateStaticParams() {
+  const designers = await db.designer.findMany({
+    select: { id: true },
+  })
+  return designers.map((designer) => ({
+    id: designer.id.toString(),
+  }))
+}
+
+async function getDesigner(id: number) {
+  const designer = await db.designer.findUnique({
+    where: {
+      id,
+      // include: { projects: true }
+    },
+  })
+  if (!designer) notFound()
+  return designer
+}
+
+interface Props {
+  params: {
+    id: string
+  }
+}
+
+export default async function DesignerDetailPage({ params: { id } }: Props) {
+  const designer = await getDesigner(Number(id))
+
   return (
     <>
       <Background />
       <main className="custom-container lg:pt-[174px]">
         <div className="lg:hidden">
           <h1 className="text-headline-02 text-web-subtitle-01 mt-[39px] text-primary-02 md:mt-[72px]">
-            강지은
+            {designer.name}
           </h1>
-          <div className="text-body-02 md:text-body-03 text-primary-02">Kang Jieun</div>
+          <div className="text-body-02 md:text-body-03 text-primary-02">{designer.englishName}</div>
         </div>
 
         <div className="flex gap-[42px] max-lg:justify-between max-md:flex-col md:items-end lg:gap-[118px]">
           <div className="relative h-[224px] w-[168px] shrink-0 overflow-hidden max-lg:mt-[15px] max-md:mt-[24px] md:h-[340px] md:w-[255px] lg:h-[600px] lg:w-[450px]">
-            <Image src="/person.png" alt="" fill />
+            <Image src={designer.avatar} alt={designer.name} fill className="object-cover" />
           </div>
 
           <div>
             <div className="flex flex-col lg:h-[313px] lg:justify-between">
               <div>
                 <div className="max-lg:hidden">
-                  <h1 className="text-web-subtitle-01 text-primary-02">강지은</h1>
-                  <div className="text-web-subtitle-03 mt-[8px] text-primary-02">Kang Jieun</div>
+                  <h1 className="text-web-subtitle-01 text-primary-02">{designer.name}</h1>
+                  <div className="text-web-subtitle-03 mt-[8px] text-primary-02">
+                    {designer.englishName}
+                  </div>
                 </div>
 
                 <div className="text-subtitle-03 lg:text-web-headline-02 mt-[20px] lg:mt-[40px]">
-                  UX · DF
+                  {designer.fields}
                 </div>
               </div>
               <div className="text-body-01 lg:text-web-body-03 mt-[10px] md:mt-mobile lg:max-w-[820px]">
-                가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사가나다라마바사
+                {designer.thought}
               </div>
             </div>
             <div className="text-body-02 lg:text-web-body-03 mt-[35px] md:mt-[33px] lg:mt-[100px] lg:pb-[27px]">
               <div className="flex">
                 <div className="w-[80px] lg:w-[132px]">E-mail</div>
-                <div>0000000@gmail.com</div>
+                <div>{designer.email}</div>
               </div>
-              <div className="flex">
-                <div className="w-[80px] lg:w-[132px]">Instagram</div>
-                <div>@0000000000</div>
-              </div>
-              <div className="flex">
-                <div className="w-[80px] lg:w-[132px]">Behance</div>
-                <div>@0000000000</div>
-              </div>
+              {designer.instagram && (
+                <div className="flex">
+                  <div className="w-[80px] lg:w-[132px]">Instagram</div>
+                  <div>{designer.instagram}</div>
+                </div>
+              )}
+              {designer.behance && (
+                <div className="flex">
+                  <div className="w-[80px] lg:w-[132px]">Behance</div>
+                  <div>{designer.behance}</div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -91,3 +132,5 @@ export default function DesignerDetailPage() {
     </>
   )
 }
+
+export const dynamic = 'force-static'
