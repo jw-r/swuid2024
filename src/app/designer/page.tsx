@@ -42,7 +42,9 @@ export default async function DesignerPage() {
                     <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
                       <div className="pb-[20px] pl-[32px] pr-[29px] pt-[24px]">
                         <div className="flex items-center justify-between">
-                          <span className="text-web-body-01">{designer.fields}</span>
+                          <span className="text-web-body-01">
+                            {designer.fields.split(',').join(' ')}
+                          </span>
                           <Icon name="arrow-right" className="size-[36px]" />
                         </div>
                       </div>
@@ -54,7 +56,7 @@ export default async function DesignerPage() {
                 </div>
               </div>
               <div className="mt-[12px] lg:hidden">
-                <div className="text-body-03">{designer.fields}</div>
+                <div className="text-body-03">{designer.fields.split(',').join(' ')}</div>
                 <div className="text-subtitle-03 mt-[4px]">{designer.name}</div>
               </div>
             </Link>

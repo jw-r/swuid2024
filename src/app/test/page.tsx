@@ -1,6 +1,5 @@
 import { avatarFileNames, designerData } from '@/constants/designer'
 import db from '@/lib/prisma/db'
-import { notFound } from 'next/navigation'
 
 async function insertDesignerData() {
   for (let i = 0; i < designerData.length; i++) {
