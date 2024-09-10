@@ -68,7 +68,7 @@ export const avatarFileNames = [
   '이서영.webp',
   '이소연.webp',
   '이수현.webp',
-  '이지은.webp',
+  '48이지은.webp',
   '47이지은.webp',
   '이혜인.webp',
   '장윤서.webp',
