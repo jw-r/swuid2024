@@ -1,12 +1,47 @@
-'use client'
-
 import Icon from '@/components/icon'
 import Background from './components/background'
 import Link from 'next/link'
 import Image from 'next/image'
 import GuestBook from '@/components/guest-book'
+import db from '@/lib/prisma/db'
+import { notFound } from 'next/navigation'
 
-export default function ProjectDetailPage() {
+export const generateMetadata = async ({ params }: Props) => {
+  const project = await getProject(Number(params.id))
+  return { title: `SWU ID 2024 - ${project.name}` }
+}
+
+export async function generateStaticParams() {
+  const projects = await db.project.findMany({
+    select: { id: true },
+  })
+  return projects.map((project) => ({
+    id: project.id.toString(),
+  }))
+}
+
+async function getProject(id: number) {
+  const project = await db.project.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      designers: true,
+    },
+  })
+  if (!project) notFound()
+  return project
+}
+
+interface Props {
+  params: {
+    id: string
+  }
+}
+
+export default async function ProjectDetailPage({ params: { id } }: Props) {
+  const project = await getProject(Number(id))
+
   return (
     <>
       <Background />
@@ -16,10 +51,16 @@ export default function ProjectDetailPage() {
         </div>
 
         <div className="custom-container mb-[96px] mt-[40px] lg:mb-[160px] lg:mt-[80px]">
-          <h2 className="text-headline-02 lg:text-web-headline-01 text-primary-02">Project Name</h2>
+          <h2 className="text-headline-02 lg:text-web-headline-01 text-primary-02">
+            {project.name}
+          </h2>
           <div className="mt-mobile flex gap-[8px] lg:mt-[24px] lg:gap-[16px]">
-            <span className="text-subtitle-01 lg:text-web-subtitle-03">팀이름</span>
-            <span className="text-body-01 lg:text-web-body-02">차은우 송중기 임지연 이도현</span>
+            <span className="text-subtitle-01 lg:text-web-subtitle-03">
+              {project.teamName || '팀이름'}
+            </span>
+            <span className="text-body-01 lg:text-web-body-02">
+              {project.designers.map((designer) => designer.name).join(' ')}
+            </span>
           </div>
           <p className="text-body-space-01 lg:text-web-body-space-02 mt-[40px]">
             채워지기 출판이나 폰트, 입숨을 로렘 입숨은 연출을 글로도 실제적인 타이포그래피, 표준
@@ -51,35 +92,42 @@ export default function ProjectDetailPage() {
 
         <div className="custom-container mb-[120px] lg:mb-[240px]">
           <h3 className="text-headline-01 lg:text-web-headline-01 mt-[120px] text-primary-02 lg:mt-[200px]">
-            팀 이름
+            {project.teamName || '팀이름'}
           </h3>
           <div className="mt-[20px] grid grid-cols-2 gap-[10px] md:grid-cols-4 lg:mt-[33px]">
-            {/* TODO: 실제 데이터로 대체 */}
-            <Link href="" className="group">
-              <div className="relative aspect-[168/224] overflow-hidden border border-primary-02/70">
-                {/* TODO: Image */}
-                <div className="absolute size-full">
-                  <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
-                  <div className="max-lg:hidden">
-                    <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
-                      <div className="pb-[20px] pl-[32px] pr-[29px] pt-[24px]">
-                        <div className="flex items-center justify-between">
-                          <span className="text-web-body-01">UX DF BX</span>
-                          <Icon name="arrow-right" className="size-[36px]" />
+            {project.designers.map((designer) => (
+              <Link key={designer.id} href={`/designer/${designer.id}`} className="group">
+                <div className="relative aspect-[168/224] overflow-hidden border border-primary-02/70">
+                  <div className="absolute size-full">
+                    <Image
+                      src={designer.avatar}
+                      alt=""
+                      fill
+                      className="object-cover lg:group-hover:blur-sm"
+                    />
+                    <div className="max-lg:hidden">
+                      <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
+                        <div className="pb-[20px] pl-[32px] pr-[29px] pt-[24px]">
+                          <div className="flex items-center justify-between">
+                            <span className="text-web-body-01">
+                              {designer.fields.split(',').join(' ')}
+                            </span>
+                            <Icon name="arrow-right" className="size-[36px]" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="text-web-body-01 absolute bottom-[20px] left-[32px] group-hover:text-primary-02">
-                      디자이너 이름
+                      <div className="text-web-body-01 absolute bottom-[20px] left-[32px] group-hover:text-primary-02">
+                        {designer.name}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="mt-[12px] lg:hidden">
-                <div className="text-body-03">UX DF BX</div>
-                <div className="text-subtitle-03 mt-[4px]">차은우</div>
-              </div>
-            </Link>
+                <div className="mt-[12px] lg:hidden">
+                  <div className="text-body-03">{designer.fields.split(',').join(' ')}</div>
+                  <div className="text-subtitle-03 mt-[4px]">{designer.name}</div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
 

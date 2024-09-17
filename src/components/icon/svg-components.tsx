@@ -9,7 +9,7 @@ export function Logo({ ...props }) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
-      <g clip-path="url(#clip0_955_1023)">
+      <g clipPath="url(#clip0_955_1023)">
         <rect x="-5" y="-5" width="80" height="80" fill="url(#pattern0_955_1023)" />
       </g>
       <defs>
@@ -79,7 +79,7 @@ export function 사각({ ...props }) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       {...props}
     >
-      <g clip-path="url(#clip0_667_25182)">
+      <g clipPath="url(#clip0_667_25182)">
         <rect
           x="-27.3867"
           y="-24.0503"

@@ -22,7 +22,6 @@ const Header = () => {
       document.body.style.overflow = 'unset'
     }
   }, [isMenuOpen])
-  console.log(pathname === '/project')
 
   return (
     <>

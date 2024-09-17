@@ -23,7 +23,21 @@ async function getDesigner(id: number) {
   const designer = await db.designer.findUnique({
     where: {
       id,
-      // include: { projects: true }
+    },
+    include: {
+      projects: {
+        select: {
+          id: true,
+          type: true,
+          name: true,
+          designers: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
+        },
+      },
     },
   })
   if (!designer) notFound()
@@ -99,27 +113,31 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
             참여 프로젝트
           </div>
           <div className="mt-[20px] flex gap-x-[7px] gap-y-[48px] max-md:grid max-md:grid-cols-2 md:mt-[30px] lg:mt-[48px]">
-            <Link href="/project/3">
-              <div className="group relative flex-1 overflow-hidden border border-primary-02/70 max-md:aspect-square md:size-[255px] lg:size-[450px]">
-                <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
+            {designer.projects.map((project) => (
+              <Link key={project.id} href={`/project/${project.id}`}>
+                <div className="group relative flex-1 overflow-hidden border border-primary-02/70 max-md:aspect-square md:size-[255px] lg:size-[450px]">
+                  <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
 
-                <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
-                  <div className="flex h-full flex-col justify-between p-[32px]">
-                    <div className="text-web-headline-01">DF</div>
-                    <div>
-                      <div className="text-web-subtitle-01">프로젝트 타이틀</div>
-                      <div className="text-web-subtitle-03 mt-[5px]">
-                        팀원1 팀원2 팀원3 팀원4 팀원5
+                  <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
+                    <div className="flex h-full flex-col justify-between p-[32px]">
+                      <div className="text-web-headline-01">{project.type}</div>
+                      <div>
+                        <div className="text-web-subtitle-01">{project.name}</div>
+                        <div className="text-web-subtitle-03 mt-[5px]">
+                          {project.designers.map((designer) => designer.name).join(' ')}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="mt-mobile lg:hidden">
-                <div className="text-subtitle-01">프로젝트 타이틀</div>
-                <div className="text-body-02 mt-[5px]">팀원1 팀원2 팀원3 팀원4</div>
-              </div>
-            </Link>
+                <div className="mt-mobile lg:hidden">
+                  <div className="text-subtitle-01">{project.name}</div>
+                  <div className="text-body-02 mt-[5px]">
+                    {project.designers.map((designer) => designer.name).join(' ')}
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
 
