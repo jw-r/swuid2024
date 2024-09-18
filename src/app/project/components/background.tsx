@@ -2,10 +2,9 @@
 
 import { useMediaQuery } from '@/hooks/use-media-query'
 import Image from 'next/image'
-import { Sort } from '../page'
 
 interface Props {
-  sort: Sort
+  sort: 'UX' | 'DF' | 'BX'
 }
 
 const Background = ({ sort }: Props) => {
@@ -13,9 +12,9 @@ const Background = ({ sort }: Props) => {
   const isTablet = useMediaQuery('(min-width: 520px) and (max-width: 829px)')
 
   const array =
-    sort === 'ux-design'
+    sort === 'UX'
       ? Array.from({ length: 2 })
-      : sort === 'bx-design'
+      : sort === 'BX'
         ? Array.from({ length: 4 })
         : Array.from({ length: 1 })
 
