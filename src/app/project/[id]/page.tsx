@@ -132,7 +132,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
         </div>
 
         <div className="custom-container mb-[120px] lg:mb-[240px]">
-          <GuestBook initialMessages={[]} targetProjectId="a" />
+          <GuestBook initialMessages={[]} projectId={Number(id)} />
         </div>
       </main>
     </>
