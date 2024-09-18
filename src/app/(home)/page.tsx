@@ -21,3 +21,5 @@ export default function Home() {
     </>
   )
 }
+
+export const dynamic = 'force-static'
