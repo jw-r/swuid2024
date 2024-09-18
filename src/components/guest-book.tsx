@@ -8,32 +8,80 @@ import { useState } from 'react'
 interface GuestBookProps {
   initialMessages: Message[]
   className?: HTMLElement['className']
-  targetProjectId?: string
-  targetUserId?: string
+  projectId?: number
+  designerId?: number
   origin?: boolean
 }
 
 export default function GuestBook({
   initialMessages,
   className,
-  targetUserId,
-  targetProjectId,
+  designerId,
+  projectId,
   origin,
 }: GuestBookProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages)
   const [newMessage, setNewMessage] = useState('')
-  const [name, setName] = useState('')
-  const router = useRouter()
+  const [senderName, setSenderName] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [receiverId, setReceiverId] = useState<number | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (name && newMessage) {
-      const newMsg = await addMessage(name, newMessage)
-      setMessages([newMsg, ...messages])
-      setNewMessage('')
-      setName('')
-      router.refresh()
+
+    if (senderName.trim().length === 0 || newMessage.trim().length === 0 || isSubmitting) {
+      return
     }
+
+    setIsSubmitting(true)
+
+    // 낙관적 업데이트를 위한 임시 메시지 생성
+    const tempMessage: Message = {
+      id: Date.now(), // 임시 ID
+      content: newMessage,
+      createdAt: new Date(),
+      sender: senderName,
+      designerId: designerId || null,
+      projectId: projectId || null,
+    }
+
+    // 즉시 UI 업데이트
+    setMessages((prev) => [tempMessage, ...prev])
+
+    try {
+      const createdMessage = await addMessage({
+        senderName,
+        message: newMessage,
+        designerId,
+        projectId,
+      })
+
+      // 서버에서 반환된 실제 메시지로 교체
+      setMessages((prev) => prev.map((msg) => (msg.id === tempMessage.id ? createdMessage : msg)))
+
+      initInfo()
+    } catch (e) {
+      console.error(e)
+      // 에러 발생 시 임시 메시지 제거
+      setMessages((prev) => prev.filter((msg) => msg.id !== tempMessage.id))
+      // 에러 메시지 표시 (UI에 추가 필요)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleChangeSender = (value: string) => {
+    if (value.length > 8) {
+      return
+    }
+
+    setSenderName(value)
+  }
+
+  const initInfo = () => {
+    setNewMessage('')
+    setSenderName('')
+    setReceiverId(null)
   }
 
   return (
@@ -47,23 +95,28 @@ export default function GuestBook({
               <div className="text-body-03 lg:text-web-body-02 mb-[12px] max-md:hidden">
                 보내는 사람
               </div>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="text-body-03 lg:text-web-body-02 w-full border border-primary-02/50 bg-transparent py-[12px] pl-mobile pr-[52px] outline-none focus:border-primary-02 lg:p-mobile lg:pr-[58px]"
-                placeholder="보내는 사람을 입력해 주세요."
-                maxLength={8}
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  value={senderName}
+                  onChange={(e) => handleChangeSender(e.target.value)}
+                  className="text-body-03 lg:text-web-body-02 w-full border border-primary-02/50 bg-primary-01 py-[12px] pl-mobile pr-[52px] outline-none focus:border-primary-02 lg:p-mobile lg:pr-[58px]"
+                  placeholder="보내는 사람을 입력해 주세요."
+                  maxLength={8}
+                />
+                <div className="lg:text-web-caption-01 text-body-03 absolute bottom-1/2 right-[16px] translate-y-1/2 text-white/60">
+                  {senderName.length}/8
+                </div>
+              </div>
             </div>
-            {!targetUserId && !targetProjectId && (
+            {!projectId && !designerId && (
               <div className="w-full md:max-w-[273px] lg:max-w-[280px]">
                 <div className="text-body-03 lg:text-web-body-02 mb-[12px] max-md:hidden">
                   받는 사람
                 </div>
                 <input
                   type="text"
-                  className="text-body-03 lg:text-web-body-02 w-full border border-primary-02/50 bg-transparent px-mobile py-[12px] outline-none focus:border-primary-02 lg:p-mobile"
+                  className="text-body-03 lg:text-web-body-02 w-full border border-primary-02/50 bg-primary-01 px-mobile py-[12px] outline-none focus:border-primary-02 lg:p-mobile"
                   placeholder="받는 사람을 선택해 주세요."
                 />
               </div>
@@ -71,7 +124,7 @@ export default function GuestBook({
           </div>
           <button
             type="submit"
-            className="text-body-03 lg:text-web-body-03 h-[110px] text-nowrap border border-primary-02/50 bg-white/10 px-mobile text-white/60 md:h-[50px] lg:h-[68px] lg:px-[34.5px]"
+            className="text-body-03 lg:text-web-body-03 h-[48px] text-nowrap border border-primary-02/50 bg-white/10 px-mobile text-white/60 hover:bg-[#FEF5AD]/20 hover:text-white hover:shadow-[0_0_15px_rgba(254,245,173,0.4)] md:h-[50px] lg:h-[68px] lg:px-[34.5px]"
           >
             등록
           </button>
@@ -82,7 +135,7 @@ export default function GuestBook({
           <textarea
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            className="lg:text-web-body-02 h-[209px] w-full border border-primary-02/50 bg-transparent px-mobile pb-[44px] pr-[52px] pt-[20px] text-[16px] font-[300] leading-[28.8px] tracking-[-0.01em] outline-none focus:border-primary-02 lg:p-[24px] lg:pb-[57px]"
+            className="lg:text-web-body-02 h-[209px] w-full border border-primary-02/50 bg-primary-01 px-mobile pb-[44px] pr-[52px] pt-[20px] text-[16px] font-[300] leading-[28.8px] tracking-[-0.01em] outline-none focus:border-primary-02 lg:p-[24px] lg:pb-[57px]"
             placeholder="내용을 입력해 주세요."
             rows={4}
             maxLength={100}
@@ -103,7 +156,11 @@ export default function GuestBook({
           아직 등록되어 있는 메시지가 없어요.
         </div>
       ) : (
-        <div></div>
+        <div>
+          {messages.map((message) => (
+            <div key={message.id}>{message.content}</div>
+          ))}
+        </div>
       )}
     </div>
   )

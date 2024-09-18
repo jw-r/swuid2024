@@ -4,9 +4,10 @@ import Link from 'next/link'
 import GuestBook from '@/components/guest-book'
 import db from '@/lib/prisma/db'
 import { notFound } from 'next/navigation'
+import { getMessages } from '@/app/guest-book/actions'
 
 export const generateMetadata = async ({ params }: Props) => {
-  const designer = await getDesigner(Number(params.id))
+  const { designer } = await getDesigner(Number(params.id))
   return { title: `SWU ID 2024 - ${designer.name}` }
 }
 
@@ -41,7 +42,11 @@ async function getDesigner(id: number) {
     },
   })
   if (!designer) notFound()
-  return designer
+
+  // 디자이너의 메시지들을 가져옵니다.
+  const messages = await getMessages(id)
+
+  return { designer, messages }
 }
 
 interface Props {
@@ -51,7 +56,7 @@ interface Props {
 }
 
 export default async function DesignerDetailPage({ params: { id } }: Props) {
-  const designer = await getDesigner(Number(id))
+  const { designer, messages } = await getDesigner(Number(id))
 
   return (
     <>
@@ -142,8 +147,8 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
         </div>
 
         <GuestBook
-          initialMessages={[]}
-          targetUserId="3"
+          initialMessages={messages}
+          designerId={Number(id)}
           className="mb-[98px] md:mb-[74px] lg:mb-[121px]"
         />
       </main>
