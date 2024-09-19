@@ -1,30 +1,36 @@
 'use client'
 
-import { Message, addMessage } from '@/app/guest-book/actions'
+import { addMessage } from '@/app/guest-book/actions'
 import { cn } from '@/lib/utils'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { Select, SelectContent, SelectItem, SelectTrigger } from './ui/select'
+import Comment from './ui/comment'
+import { MessageWithDesigner } from '@/types'
 
 interface GuestBookProps {
-  initialMessages: Message[]
+  initialMessages: MessageWithDesigner[]
+  designers?: { id: number; name: string }[]
   className?: HTMLElement['className']
   projectId?: number
   designerId?: number
-  origin?: boolean
+  type: 'A' | 'B' | 'Origin'
 }
+
+// designer id 0이면 모두에게
 
 export default function GuestBook({
   initialMessages,
+  designers,
   className,
   designerId,
   projectId,
-  origin,
+  type,
 }: GuestBookProps) {
-  const [messages, setMessages] = useState<Message[]>(initialMessages)
+  const [messages, setMessages] = useState<MessageWithDesigner[]>(initialMessages)
   const [newMessage, setNewMessage] = useState('')
   const [senderName, setSenderName] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [receiverId, setReceiverId] = useState<number | null>(null)
+  const [receiver, setReceiver] = useState<{ id: number; name: string } | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,34 +38,46 @@ export default function GuestBook({
     if (senderName.trim().length === 0 || newMessage.trim().length === 0 || isSubmitting) {
       return
     }
+    if (projectId == null && designerId == null && receiver?.id == null) {
+      return
+    }
 
     setIsSubmitting(true)
 
     // 낙관적 업데이트를 위한 임시 메시지 생성
-    const tempMessage: Message = {
+    const tempMessage: MessageWithDesigner = {
       id: Date.now(), // 임시 ID
       content: newMessage,
       createdAt: new Date(),
       sender: senderName,
-      designerId: designerId || null,
+      designerId: designerId || receiver?.id || null,
       projectId: projectId || null,
+      designer: receiver?.id ? { id: receiver.id, name: receiver.name } : null,
     }
 
     // 즉시 UI 업데이트
     setMessages((prev) => [tempMessage, ...prev])
+    initInfo()
 
     try {
       const createdMessage = await addMessage({
         senderName,
         message: newMessage,
-        designerId,
+        designerId: designerId || receiver?.id,
         projectId,
       })
 
       // 서버에서 반환된 실제 메시지로 교체
-      setMessages((prev) => prev.map((msg) => (msg.id === tempMessage.id ? createdMessage : msg)))
-
-      initInfo()
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === tempMessage.id
+            ? {
+                ...createdMessage,
+                designer: createdMessage.designer || tempMessage.designer,
+              }
+            : msg,
+        ),
+      )
     } catch (e) {
       console.error(e)
       // 에러 발생 시 임시 메시지 제거
@@ -81,7 +99,7 @@ export default function GuestBook({
   const initInfo = () => {
     setNewMessage('')
     setSenderName('')
-    setReceiverId(null)
+    setReceiver(null)
   }
 
   return (
@@ -114,17 +132,43 @@ export default function GuestBook({
                 <div className="text-body-03 lg:text-web-body-02 mb-[12px] max-md:hidden">
                   받는 사람
                 </div>
-                <input
-                  type="text"
-                  className="text-body-03 lg:text-web-body-02 w-full border border-primary-02/50 bg-primary-01 px-mobile py-[12px] outline-none focus:border-primary-02 lg:p-mobile"
-                  placeholder="받는 사람을 선택해 주세요."
-                />
+                <Select onValueChange={(value) => setReceiver(JSON.parse(value))}>
+                  <SelectTrigger asChild>
+                    <input
+                      type="text"
+                      readOnly
+                      className="text-body-03 lg:text-web-body-02 w-full cursor-pointer border border-primary-02/50 bg-primary-01 px-mobile py-[12px] outline-none focus:border-primary-02 lg:p-mobile"
+                      placeholder="받는 사람을 선택해 주세요."
+                      value={receiver?.name}
+                    />
+                  </SelectTrigger>
+                  <SelectContent className="mt-[8px] h-[430px] overflow-auto border border-[#FEF5AD]/50 bg-primary-01 p-0 md:mt-[11px] lg:h-[392] lg:w-[384px]">
+                    <SelectItem
+                      value={JSON.stringify({ id: 0, name: '모두에게' })}
+                      className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+                    >
+                      모두에게
+                    </SelectItem>
+                    {designers?.map((designer) => (
+                      <SelectItem
+                        key={designer.id}
+                        value={JSON.stringify(designer)}
+                        className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+                      >
+                        {designer.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             )}
           </div>
           <button
             type="submit"
-            className="text-body-03 lg:text-web-body-03 h-[48px] text-nowrap border border-primary-02/50 bg-white/10 px-mobile text-white/60 hover:bg-[#FEF5AD]/20 hover:text-white hover:shadow-[0_0_15px_rgba(254,245,173,0.4)] md:h-[50px] lg:h-[68px] lg:px-[34.5px]"
+            className={cn(
+              'text-body-03 lg:text-web-body-03 h-[50px] text-nowrap border border-primary-02/50 bg-white/10 px-mobile text-white/60 hover:bg-[#FEF5AD]/20 hover:text-white hover:shadow-[0_0_15px_rgba(254,245,173,0.4)] md:h-[50px] lg:h-[68px] lg:px-[34.5px]',
+              type === 'Origin' && 'h-[110px]',
+            )}
           >
             등록
           </button>
@@ -156,9 +200,16 @@ export default function GuestBook({
           아직 등록되어 있는 메시지가 없어요.
         </div>
       ) : (
-        <div>
+        <div
+          className={cn(
+            type === 'A' && 'mt-[44px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
+            type === 'B' && 'mt-[40px]',
+            type === 'Origin' &&
+              ' mt-[40px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
+          )}
+        >
           {messages.map((message) => (
-            <div key={message.id}>{message.content}</div>
+            <Comment key={message.id} type={type} message={message} />
           ))}
         </div>
       )}

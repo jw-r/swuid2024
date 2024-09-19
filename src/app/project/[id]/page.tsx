@@ -5,9 +5,10 @@ import Image from 'next/image'
 import GuestBook from '@/components/guest-book'
 import db from '@/lib/prisma/db'
 import { notFound } from 'next/navigation'
+import { getMessages } from '@/app/guest-book/actions'
 
 export const generateMetadata = async ({ params }: Props) => {
-  const project = await getProject(Number(params.id))
+  const { project } = await getProject(Number(params.id))
   return { title: `SWU ID 2024 - ${project.name}` }
 }
 
@@ -30,7 +31,10 @@ async function getProject(id: number) {
     },
   })
   if (!project) notFound()
-  return project
+
+  const messages = await getMessages({ projectId: id })
+
+  return { project, messages }
 }
 
 interface Props {
@@ -40,7 +44,7 @@ interface Props {
 }
 
 export default async function ProjectDetailPage({ params: { id } }: Props) {
-  const project = await getProject(Number(id))
+  const { project, messages } = await getProject(Number(id))
 
   return (
     <>
@@ -132,7 +136,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
         </div>
 
         <div className="custom-container mb-[120px] lg:mb-[240px]">
-          <GuestBook initialMessages={[]} projectId={Number(id)} />
+          <GuestBook initialMessages={messages} projectId={Number(id)} type="B" />
         </div>
       </main>
     </>

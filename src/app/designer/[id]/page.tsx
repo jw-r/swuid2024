@@ -43,8 +43,7 @@ async function getDesigner(id: number) {
   })
   if (!designer) notFound()
 
-  // 디자이너의 메시지들을 가져옵니다.
-  const messages = await getMessages(id)
+  const messages = await getMessages({ designerId: id })
 
   return { designer, messages }
 }
@@ -150,6 +149,7 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
           initialMessages={messages}
           designerId={Number(id)}
           className="mb-[98px] md:mb-[74px] lg:mb-[121px]"
+          type="A"
         />
       </main>
     </>

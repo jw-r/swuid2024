@@ -1,5 +1,4 @@
 import ExhibitionHeader from '@/components/exhibition-header'
-import Icon from '@/components/icon'
 import Title from '../title'
 
 const Top = () => {
