@@ -17,7 +17,7 @@ const Top = () => {
               서울여자대학교 조형예술관 바롬전시갤러리
             </div>
             <div className="text-body-02 mt-[3px] font-[500] md:text-[18px] lg:text-[24px]">
-              24.10.28(월) - 11.03(일) AM 10:00 - PM 6:00
+              24.10.28(월) - 11.03(일) AM 10:00 - PM 8:00
             </div>
           </div>
         </div>

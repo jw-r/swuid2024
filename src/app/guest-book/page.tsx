@@ -30,7 +30,7 @@ export default async function GuestBookPage() {
         <GuestBook
           initialMessages={messages.filter((message) => message.projectId === null)}
           designers={designers}
-          className="mt-[48px] md:mt-[80px] lg:mt-[96px]"
+          className="mb-[255px] mt-[48px] md:mt-[80px] lg:mt-[96px]"
           type="Origin"
         />
       </main>
