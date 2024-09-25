@@ -84,7 +84,7 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
                 </div>
 
                 <div className="text-subtitle-03 lg:text-web-headline-02 mt-[20px] lg:mt-[40px]">
-                  {designer.fields}
+                  {designer.fields.split(',').join(' ')}
                 </div>
               </div>
               <div className="text-body-01 lg:text-web-body-03 mt-[10px] md:mt-mobile lg:max-w-[820px]">
