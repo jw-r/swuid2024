@@ -3,6 +3,7 @@ import { eulyoo1945, pretendard } from './fonts'
 import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import IntroSequence from '@/components/Intro-sequence'
 
 export const metadata: Metadata = {
   title: 'SWU ID 2024',
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${eulyoo1945.variable} ${pretendard.variable}`}>
       <body className={pretendard.className}>
-        <Header />
-        <div className="relative mx-auto max-w-screen">
-          {children}
-          <Footer />
-        </div>
+        <IntroSequence>
+          <Header />
+          <div className="relative mx-auto max-w-screen">
+            {children}
+            <Footer />
+          </div>
+        </IntroSequence>
       </body>
     </html>
   )
