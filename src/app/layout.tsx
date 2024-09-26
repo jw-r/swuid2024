@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import IntroSequence from '@/components/Intro-sequence'
+import FAB from '@/components/fav-button'
 
 export const metadata: Metadata = {
   title: 'SWU ID 2024',
@@ -24,6 +25,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+          <FAB />
         </IntroSequence>
       </body>
     </html>
