@@ -23,8 +23,8 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <Image src="/assets/designer/mobile_bg_02.png" fill alt="" className="top-0" />
-        <Image src="/assets/designer/mobile_bg_03.png" fill alt="" className="bottom-0" />
+        <Image src="/assets/designer/mobile_bg_02.webp" fill alt="" className="top-0" />
+        <Image src="/assets/designer/mobile_bg_03.webp" fill alt="" className="bottom-0" />
       </div>
     )
   }
@@ -32,17 +32,17 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <Image src="/assets/designer/tablet_bg_02.png" fill alt="" className="top-0" />
-        <Image src="/assets/designer/tablet_bg_03.png" fill alt="" className="bottom-0" />
+        <Image src="/assets/designer/tablet_bg_02.webp" fill alt="" className="top-0" />
+        <Image src="/assets/designer/tablet_bg_03.webp" fill alt="" className="bottom-0" />
       </div>
     )
   }
 
   return (
     <div className="absolute inset-0 z-[-1]">
-      <Image src="/assets/designer/bg_03.png" fill alt="" />
+      <Image src="/assets/designer/bg_03.webp" fill alt="" />
       <Image
-        src="/assets/designer/bgObj_02.png"
+        src="/assets/designer/bgObj_02.webp"
         width={1922}
         height={2280}
         alt=""

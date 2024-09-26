@@ -10,7 +10,7 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <Image src="/assets/detail/mobile_bg_01.png" fill alt="" />
+        <Image src="/assets/detail/mobile_bg_01.webp" fill alt="" />
       </div>
     )
   }
@@ -18,14 +18,14 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <Image src="/assets/detail/tablet_bg_01.png" fill alt="" />
+        <Image src="/assets/detail/tablet_bg_01.webp" fill alt="" />
       </div>
     )
   }
 
   return (
     <div className="absolute inset-0 z-[-1]">
-      <Image src="/assets/detail/bgObj_04.png" fill alt="" className="bottom-0" />
+      <Image src="/assets/detail/bgObj_04.webp" fill alt="" className="bottom-0" />
     </div>
   )
 }

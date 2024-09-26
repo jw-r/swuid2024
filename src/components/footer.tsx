@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="py-[42px] text-center lg:py-[105px]">
+    <footer id="footer" className="py-[42px] text-center lg:py-[105px]">
       <p className="text-caption-01 lg:text-web-caption-01">
         Copyright© Industrial Design,Seoul Women’s University,
         <br />
