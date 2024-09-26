@@ -32,6 +32,10 @@ export default function GuestBook({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [receiver, setReceiver] = useState<{ id: number; name: string } | null>(null)
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const messagesPerPage = 8
+  const totalPages = Math.ceil(messages.length / messagesPerPage)
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -101,6 +105,12 @@ export default function GuestBook({
     setSenderName('')
     setReceiver(null)
   }
+
+  const indexOfLastMessage = currentPage * messagesPerPage
+  const indexOfFirstMessage = indexOfLastMessage - messagesPerPage
+  const currentMessages = messages.slice(indexOfFirstMessage, indexOfLastMessage)
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   return (
     <div className={className}>
@@ -200,19 +210,62 @@ export default function GuestBook({
           아직 등록되어 있는 메시지가 없어요.
         </div>
       ) : (
-        <div
-          className={cn(
-            type === 'A' && 'mt-[44px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
-            type === 'B' && 'mt-[40px]',
-            type === 'Origin' &&
-              ' mt-[40px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
+        <>
+          <div
+            className={cn(
+              type === 'A' && 'mt-[44px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
+              type === 'B' && 'mt-[40px]',
+              type === 'Origin' &&
+                ' mt-[40px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
+            )}
+          >
+            {currentMessages.map((message) => (
+              <Comment key={message.id} type={type} message={message} />
+            ))}
+          </div>
+          {messages.length > 8 && (
+            <div className="mt-[36px] flex items-center justify-center gap-[8px] md:mt-[44px] lg:mt-[72px]">
+              <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+                <ChevronLeft />
+              </button>
+              {[...Array(totalPages)].map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => paginate(index + 1)}
+                  className={cn(
+                    'px-[8px] py-[2px] text-[14px] lg:py-[3.5px] lg:px-[17px] lg:text-[22px] lg:leading-[33px] leading-[21px] tracking-[-0.01em] font-[300] text-white',
+                    currentPage === index + 1 ? '' : 'opacity-50',
+                  )}
+                >
+                  {index + 1}
+                </button>
+              ))}
+              <button
+                onClick={() => paginate(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                <ChevronRight />
+              </button>
+            </div>
           )}
-        >
-          {messages.map((message) => (
-            <Comment key={message.id} type={type} message={message} />
-          ))}
-        </div>
+        </>
       )}
     </div>
+  )
+}
+
+function ChevronLeft() {
+  return (
+    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 5.5L8 12.5L16 19.5" stroke="white" />
+    </svg>
+  )
+}
+
+function ChevronRight() {
+  return (
+    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 5.5L16 12.5L8 19.5" stroke="white" />
+    </svg>
   )
 }
