@@ -1,8 +1,8 @@
 'use client'
 
+import React, { useState, useMemo, useEffect } from 'react'
 import { addMessage } from '@/app/guest-book/actions'
 import { cn } from '@/lib/utils'
-import { useState } from 'react'
 import { Select, SelectContent, SelectItem, SelectTrigger } from './ui/select'
 import Comment from './ui/comment'
 import { MessageWithDesigner } from '@/types'
@@ -15,8 +15,6 @@ interface GuestBookProps {
   designerId?: number
   type: 'A' | 'B' | 'Origin'
 }
-
-// designer id 0이면 모두에게
 
 export default function GuestBook({
   initialMessages,
@@ -31,10 +29,28 @@ export default function GuestBook({
   const [senderName, setSenderName] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [receiver, setReceiver] = useState<{ id: number; name: string } | null>(null)
+  const [sort, setSort] = useState('All')
 
   const [currentPage, setCurrentPage] = useState(1)
   const messagesPerPage = 8
-  const totalPages = Math.ceil(messages.length / messagesPerPage)
+
+  const sortedMessages = useMemo(() => {
+    return sort === 'All'
+      ? messages
+      : messages.filter((message) => (message.designer?.name || '모두에게') === sort)
+  }, [messages, sort])
+
+  const totalPages = Math.ceil(sortedMessages.length / messagesPerPage)
+
+  const currentMessages = useMemo(() => {
+    const indexOfLastMessage = currentPage * messagesPerPage
+    const indexOfFirstMessage = indexOfLastMessage - messagesPerPage
+    return sortedMessages.slice(indexOfFirstMessage, indexOfLastMessage)
+  }, [sortedMessages, currentPage])
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [sort])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,9 +64,8 @@ export default function GuestBook({
 
     setIsSubmitting(true)
 
-    // 낙관적 업데이트를 위한 임시 메시지 생성
     const tempMessage: MessageWithDesigner = {
-      id: Date.now(), // 임시 ID
+      id: Date.now(),
       content: newMessage,
       createdAt: new Date(),
       sender: senderName,
@@ -59,7 +74,6 @@ export default function GuestBook({
       designer: receiver?.id ? { id: receiver.id, name: receiver.name } : null,
     }
 
-    // 즉시 UI 업데이트
     setMessages((prev) => [tempMessage, ...prev])
     initInfo()
 
@@ -71,7 +85,6 @@ export default function GuestBook({
         projectId,
       })
 
-      // 서버에서 반환된 실제 메시지로 교체
       setMessages((prev) =>
         prev.map((msg) =>
           msg.id === tempMessage.id
@@ -84,9 +97,7 @@ export default function GuestBook({
       )
     } catch (e) {
       console.error(e)
-      // 에러 발생 시 임시 메시지 제거
       setMessages((prev) => prev.filter((msg) => msg.id !== tempMessage.id))
-      // 에러 메시지 표시 (UI에 추가 필요)
     } finally {
       setIsSubmitting(false)
     }
@@ -96,7 +107,6 @@ export default function GuestBook({
     if (value.length > 8) {
       return
     }
-
     setSenderName(value)
   }
 
@@ -105,10 +115,6 @@ export default function GuestBook({
     setSenderName('')
     setReceiver(null)
   }
-
-  const indexOfLastMessage = currentPage * messagesPerPage
-  const indexOfFirstMessage = indexOfLastMessage - messagesPerPage
-  const currentMessages = messages.slice(indexOfFirstMessage, indexOfLastMessage)
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
@@ -204,13 +210,46 @@ export default function GuestBook({
         <div
           className={cn(
             'lg:text-web-body-02 pt-[121px] text-center text-white/40 md:pt-[223px] lg:pt-[252px]',
-            origin && 'pb-[70px] md:pb-[182px] lg:pb-[225px]',
+            type === 'Origin' && 'pb-[70px] md:pb-[182px] lg:pb-[225px]',
           )}
         >
           아직 등록되어 있는 메시지가 없어요.
         </div>
       ) : (
         <>
+          <Select onValueChange={setSort}>
+            <div className="flex justify-center md:justify-end">
+              <SelectTrigger asChild>
+                <button className="mt-[100px] flex items-center gap-[8px] border border-primary-02 bg-[#FEF5AD]/20 py-[12px] pl-[26px] pr-[19px] focus:outline-none lg:py-mobile">
+                  <div className="text-body-03 lg:text-[20px]">{sort}</div>
+                  <ChevronDown />
+                </button>
+              </SelectTrigger>
+            </div>
+            <SelectContent className="mt-[8px] h-[400px] w-[87px] overflow-auto border border-[#FEF5AD]/50 bg-primary-01 p-0 md:mt-[11px] lg:w-[110px]">
+              <SelectItem
+                value="All"
+                className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+              >
+                All
+              </SelectItem>
+              <SelectItem
+                value="모두에게"
+                className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+              >
+                모두에게
+              </SelectItem>
+              {designers?.map((designer) => (
+                <SelectItem
+                  key={designer.id}
+                  value={designer.name}
+                  className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+                >
+                  {designer.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <div
             className={cn(
               type === 'A' && 'mt-[44px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
@@ -223,7 +262,7 @@ export default function GuestBook({
               <Comment key={message.id} type={type} message={message} />
             ))}
           </div>
-          {messages.length > 8 && (
+          {sortedMessages.length > messagesPerPage && (
             <div className="mt-[36px] flex items-center justify-center gap-[8px] md:mt-[44px] lg:mt-[72px]">
               <button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
                 <ChevronLeft />
@@ -266,6 +305,14 @@ function ChevronRight() {
   return (
     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M8 5.5L16 12.5L8 19.5" stroke="white" />
+    </svg>
+  )
+}
+
+function ChevronDown() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 5L8 11L13 5" stroke="white" />
     </svg>
   )
 }
