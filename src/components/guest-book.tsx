@@ -304,48 +304,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
   </div>
 )
 
-interface SortSelectProps {
-  sort: string
-  onSortChange: (value: string) => void
-  designers?: { id: number; name: string }[]
-}
-
-const SortSelect = ({ sort, onSortChange, designers }: SortSelectProps) => (
-  <Select onValueChange={onSortChange}>
-    <div className="flex justify-center md:justify-end">
-      <SelectTrigger asChild>
-        <button className="mt-[100px] flex items-center gap-[8px] border border-primary-02 bg-[#FEF5AD]/20 py-[12px] pl-[26px] pr-[19px] focus:outline-none lg:py-mobile">
-          <div className="text-body-03 lg:text-[20px]">{sort}</div>
-          <ChevronDown />
-        </button>
-      </SelectTrigger>
-    </div>
-    <SelectContent className="mt-[8px] h-[400px] w-[87px] overflow-auto border border-[#FEF5AD]/50 bg-primary-01 p-0 md:mt-[11px] lg:w-[110px]">
-      <SelectItem
-        value="All"
-        className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
-      >
-        All
-      </SelectItem>
-      <SelectItem
-        value="모두에게"
-        className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
-      >
-        모두에게
-      </SelectItem>
-      {designers?.map((designer) => (
-        <SelectItem
-          key={designer.id}
-          value={designer.name}
-          className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
-        >
-          {designer.name}
-        </SelectItem>
-      ))}
-    </SelectContent>
-  </Select>
-)
-
 interface MessageListProps {
   messages: MessageWithDesigner[]
   designers?: { id: number; name: string }[]
@@ -357,7 +315,39 @@ interface MessageListProps {
 const MessageList = ({ messages, designers, sort, onSortChange, type }: MessageListProps) => {
   return (
     <>
-      <SortSelect sort={sort} onSortChange={onSortChange} designers={designers} />
+      <Select onValueChange={onSortChange}>
+        <div className="flex justify-center md:justify-end">
+          <SelectTrigger asChild>
+            <button className="mt-[100px] flex items-center gap-[8px] border border-primary-02 bg-[#FEF5AD]/20 py-[12px] pl-[26px] pr-[19px] focus:outline-none lg:py-mobile">
+              <div className="text-body-03 lg:text-[20px]">{sort}</div>
+              <ChevronDown />
+            </button>
+          </SelectTrigger>
+        </div>
+        <SelectContent className="mt-[8px] h-[400px] w-[87px] overflow-auto border border-[#FEF5AD]/50 bg-primary-01 p-0 md:mt-[11px] lg:w-[110px]">
+          <SelectItem
+            value="All"
+            className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+          >
+            All
+          </SelectItem>
+          <SelectItem
+            value="모두에게"
+            className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+          >
+            모두에게
+          </SelectItem>
+          {designers?.map((designer) => (
+            <SelectItem
+              key={designer.id}
+              value={designer.name}
+              className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+            >
+              {designer.name}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
       <div
         className={cn(
           type === 'A' && 'mt-[44px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
