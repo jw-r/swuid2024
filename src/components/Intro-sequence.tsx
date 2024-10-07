@@ -31,6 +31,7 @@ const IntroSequence = ({ children }: { children: React.ReactNode }) => {
         className="fixed inset-0 size-full"
       >
         <source src="/videos/진입포스터영상.webm" type="video/webm" />
+        <source src="/videos/진입포스터영상.mp4" type="video/mp4" />
       </video>
     )
   }
