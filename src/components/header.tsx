@@ -71,7 +71,7 @@ const Menu = ({ onClose }: { onClose: () => void }) => {
           <Icon name="x" className="size-[32px] cursor-pointer" onClick={onClose} />
         </div>
       </div>
-      <div className="mt-[24px] flex flex-col gap-[11px] font-pretendard text-[30px] leading-[150%] tracking-[-0.02em]">
+      <div className="mt-[24px] flex flex-col gap-[11px] text-[24px] font-[300] leading-[150%] tracking-[-0.02em] md:text-[30px]">
         <Link href="/project" onClick={onClose}>
           Project
         </Link>
