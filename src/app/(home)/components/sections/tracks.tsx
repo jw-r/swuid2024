@@ -14,15 +14,15 @@ const Tracks = () => {
           >
             <div className="text-primary-02 group-hover:text-white">
               <div className="flex items-center justify-between">
-                <h3 className="text-headline-01 text-web-subtitle-01">{track.title}</h3>
+                <h3 className="text-headline-01 lg:text-web-subtitle-01">{track.title}</h3>
                 <Icon name="arrow-right" className="lg:size-[36px]" />
               </div>
-              <div className="text-subtitle-01 text-web-subtitle-03 mt-[4px] lg:mt-[8px]">
+              <div className="text-subtitle-01 lg:text-web-subtitle-03 mt-[4px] lg:mt-[8px]">
                 {track.description}
               </div>
             </div>
             <div className="my-[20px] h-px w-full bg-primary-02/50 lg:my-[40px]" />
-            <p className="text-body-space-02 text-web-body-03">{track.detail}</p>
+            <p className="text-body-space-02 lg:text-web-body-03">{track.detail}</p>
           </Link>
         ))}
       </div>
@@ -49,7 +49,7 @@ const TRACKS = [
         제품을 신중히 설계하여 사용자 경험을 향상시키는 기회를 제공합니다.
       </span>
     ),
-    href: '',
+    href: '/project',
   },
   {
     title: 'DIGITAL FABRICATION',
@@ -68,7 +68,7 @@ const TRACKS = [
         디자인 통합 교육을 지향합니다.
       </span>
     ),
-    href: '',
+    href: '/project?type=df',
   },
   {
     title: 'BX SPACE DESIGN',
@@ -86,6 +86,6 @@ const TRACKS = [
         창조를 목표로 합니다.
       </span>
     ),
-    href: '',
+    href: '/project?type=bx',
   },
 ]

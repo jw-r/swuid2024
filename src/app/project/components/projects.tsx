@@ -7,13 +7,17 @@ import Link from 'next/link'
 import { useState } from 'react'
 import Background from './background'
 import ExhibitionHeader from '@/components/exhibition-header'
+import { useSearchParams } from 'next/navigation'
 
 interface Props {
   allProjects: ProjectWithDesigners[]
 }
 
 const Projects = ({ allProjects }: Props) => {
-  const [sort, setSort] = useState<'UX' | 'DF' | 'BX'>('UX')
+  const type = useSearchParams().get('type')
+  const [sort, setSort] = useState<'UX' | 'DF' | 'BX'>(
+    type === 'df' ? 'DF' : type === 'bx' ? 'BX' : 'UX',
+  )
   const projects = allProjects.filter((project) => project.type === sort)
 
   return (
