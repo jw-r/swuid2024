@@ -62,8 +62,8 @@ const Committee = () => {
       <div className="mt-[22px] flex gap-[20px] lg:mt-[95px] lg:gap-[133px]">
         {charges.map(({ role, name }) => (
           <div key={role} className="flex gap-[12px] lg:gap-[21px]">
-            <span className="text-body-02 lg:text-web-subtitle-03">{role}</span>
-            <span className="text-subtitle-02 lg:text-web-body-02">{name}</span>
+            <span className="text-subtitle-02 lg:text-web-subtitle-03">{role}</span>
+            <span className="text-body-02 lg:text-web-body-02">{name}</span>
           </div>
         ))}
       </div>
