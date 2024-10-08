@@ -6,7 +6,7 @@ const Congratulatory = () => {
       <div className="text-headline-01 mt-[10px] text-primary-02 md:mt-[20px] lg:mt-[36px] lg:text-[36px] lg:leading-[auto] lg:tracking-[auto]">
         박남춘 교수님
       </div>
-      <p className="text-body-space-01 text-web-body-space-02 mt-[10px] md:mt-[20px] lg:mt-[36px]">
+      <p className="text-body-space-01 lg:text-web-body-space-02 mt-[10px] md:mt-[20px] lg:mt-[36px]">
         서울여자대학교 산업디자인학과 4학년 학생들이 치열한 고민과 순수한 열정을 바탕으로 진행해 온
         다양한 디자인 작업들이 결실을 맺어 제 41회 졸업전시회를 통해 선보이게 된 것을 진심으로
         기쁘게 생각합니다. 진지한 자세로 디자인 주제를 탐구하고, 그 속에서 발견한 insight를 창의적인
