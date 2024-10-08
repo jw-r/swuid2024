@@ -8,16 +8,16 @@ const Footer = () => {
         서울시 노원구 화랑로 621
       </p>
       <div className="text-caption-01 lg:text-web-caption-01 text-primary-02">
-        <a href="https://www.instagram.com/swu_id/" target="_blank" rel="noopener noreferrer">
-          Instagram
-        </a>{' '}
-        |{' '}
         <a
-          href="https://www.behance.net/2024swindustr/projects"
+          href="https://www.instagram.com/swu_id/?igsh=MWw4YnQzaG9pbjd5dA%3D%3D"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Behence
+          Instagram
+        </a>{' '}
+        |{' '}
+        <a href="https://www.behance.net/swu2024" target="_blank" rel="noopener noreferrer">
+          Behance
         </a>{' '}
         |{' '}
         <a href="https://notefolio.net/swuid2024" target="_blank" rel="noopener noreferrer">
