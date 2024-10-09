@@ -30,7 +30,7 @@ const Projects = ({ allProjects }: Props) => {
           Project
         </h2>
 
-        <div className="mt-[24px] flex gap-[16px] *:w-fit max-md:flex-col md:mt-[32px] lg:mt-[48px]">
+        <div className="lg:text-web-body-02 mt-[24px] flex gap-[16px] transition-shadow *:w-fit *:hover:hover:shadow-[0_0_15px_0_rgba(254,245,173,0.4)] max-md:flex-col md:mt-[32px] lg:mt-[48px]">
           <button
             onClick={() => setSort('UX')}
             className={cn(
