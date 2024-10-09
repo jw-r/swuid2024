@@ -60,9 +60,9 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
           </h2>
           <div className="mt-mobile flex gap-[8px] lg:mt-[24px] lg:gap-[16px]">
             <span className="text-subtitle-01 lg:text-web-subtitle-03">
-              {project.teamName || '팀이름'}
+              {project.teamName || '디자이너'}
             </span>
-            <span className="text-body-01 lg:text-web-body-02">
+            <span className="text-body-01 lg:text-web-body-02 opacity-70">
               {project.designers.map((designer) => designer.name).join(' ')}
             </span>
           </div>
@@ -96,7 +96,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
 
         <div className="custom-container mb-[120px] lg:mb-[240px]">
           <h3 className="text-headline-01 lg:text-web-headline-01 mt-[120px] text-primary-02 lg:mt-[200px]">
-            {project.teamName || '팀이름'}
+            {project.teamName || '디자이너'}
           </h3>
           <div className="mt-[20px] grid grid-cols-2 gap-[10px] md:grid-cols-4 lg:mt-[33px]">
             {project.designers.map((designer) => (
