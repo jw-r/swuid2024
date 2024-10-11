@@ -13,6 +13,9 @@ const config: Config = {
         eulyoo1945: ['EULYOO1945', 'serif'],
         pretendard: ['Pretendard'],
       },
+      boxShadow: {
+        hovering_btn: '0 0 15px 0 rgba(254,245,173,0.4)',
+      },
       screens: {
         md: '520px',
         lg: '830px',

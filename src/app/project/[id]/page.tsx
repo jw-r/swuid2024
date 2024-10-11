@@ -77,13 +77,13 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
             모형의 디자인 결과물에 로렘 용도로 입숨을 텍스트로, 입숨은 부르며, 사용하는 표준이게
             사백자
           </p>
-          {true && (
+          {project.type === 'UX' && (
             <div className="mt-[40px] flex justify-end">
               <a
                 href=""
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-fit cursor-pointer items-center gap-[8px] border border-primary-02/50 bg-primary-02/20 py-[14.5px] pl-[36px] pr-[32px]"
+                className="flex w-fit cursor-pointer items-center gap-[8px] border border-primary-02/50 bg-primary-02/20 py-[14.5px] pl-[36px] pr-[32px] transition-all hover:border-primary-02 hover:shadow-hovering_btn"
               >
                 <span className="lg:text-web-body-03 text-body-03">서비스 사용해보기</span>
                 <Icon name="arrow-right" className="lg:size-[20px]" />
@@ -98,9 +98,13 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
           <h3 className="text-headline-01 lg:text-web-headline-01 mt-[120px] text-primary-02 lg:mt-[200px]">
             {project.teamName || '디자이너'}
           </h3>
-          <div className="mt-[20px] grid grid-cols-2 gap-[10px] md:grid-cols-4 lg:mt-[33px]">
+          <div className="mt-[20px] grid grid-cols-2 gap-[10px] gap-y-[20px] md:grid-cols-4 lg:mt-[33px]">
             {project.designers.map((designer) => (
-              <Link key={designer.id} href={`/designer/${designer.id}`} className="group">
+              <Link
+                key={designer.id}
+                href={`/designer/${designer.id}`}
+                className="group hover:shadow-hovering_btn"
+              >
                 <div className="relative aspect-[168/224] overflow-hidden border border-primary-02/70">
                   <div className="absolute size-full">
                     <Image

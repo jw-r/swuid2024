@@ -43,10 +43,10 @@ const Comment = ({ message, type }: Props) => {
   }
 
   return (
-    <div className="flex border-b border-primary-02 py-[24px] max-lg:flex-col max-lg:gap-[12px]">
+    <div className="flex border-b border-primary-02/50 py-[24px] max-lg:flex-col max-lg:gap-[12px]">
       <div>
         <h3 className="text-subtitle-01 lg:text-web-subtitle-03 lg:w-[235px]">{message.sender}</h3>
-        <div className="text-body-02 lg:text-web-caption-01 mt-[4px] lg:mt-[8px]">
+        <div className="text-body-02 lg:text-web-caption-01 mt-[4px] opacity-70 lg:mt-[8px]">
           {formatDate(message.createdAt)}
         </div>
       </div>

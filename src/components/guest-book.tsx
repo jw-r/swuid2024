@@ -109,7 +109,18 @@ const GuestBook = ({
 
   return (
     <div className={className}>
-      <h2 className="text-headline-02 text-primary-02">Guest Book</h2>
+      {type === 'B' ? (
+        <h2 className="mb-[20px] md:mb-[10px] lg:mb-[52px]">
+          <span className="text-headline-01 lg:text-web-headline-01 mr-[8px] text-primary-02 lg:mr-mobile">
+            댓글
+          </span>
+          <span className="lg:text-web-subtitle-02 text-[20px] font-[300] text-white">
+            {messages.length}
+          </span>
+        </h2>
+      ) : (
+        <h2 className="text-headline-02 text-primary-02">Guest Book</h2>
+      )}
 
       <GuestBookForm
         onSubmit={handleSubmit}
@@ -210,7 +221,7 @@ const GuestBookForm = ({
               </div>
             </div>
           </div>
-          {!projectId && !designerId && (
+          {type === 'Origin' && (
             <div className="w-full md:max-w-[273px] lg:max-w-[280px]">
               <div className="text-body-03 lg:text-web-body-02 mb-[12px] max-md:hidden">
                 받는 사람
@@ -315,43 +326,46 @@ interface MessageListProps {
 const MessageList = ({ messages, designers, sort, onSortChange, type }: MessageListProps) => {
   return (
     <>
-      <Select onValueChange={onSortChange}>
-        <div className="flex justify-center md:justify-end">
-          <SelectTrigger asChild>
-            <button className="mt-[100px] flex items-center gap-[8px] border border-primary-02 bg-[#FEF5AD]/20 py-[12px] pl-[26px] pr-[19px] focus:outline-none lg:py-mobile">
-              <div className="text-body-03 lg:text-[20px]">{sort}</div>
-              <ChevronDown />
-            </button>
-          </SelectTrigger>
-        </div>
-        <SelectContent className="mt-[8px] h-[400px] w-[87px] overflow-auto border border-[#FEF5AD]/50 bg-primary-01 p-0 md:mt-[11px] lg:w-[110px]">
-          <SelectItem
-            value="All"
-            className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
-          >
-            All
-          </SelectItem>
-          <SelectItem
-            value="모두에게"
-            className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
-          >
-            모두에게
-          </SelectItem>
-          {designers?.map((designer) => (
+      {type === 'Origin' && (
+        <Select onValueChange={onSortChange}>
+          <div className="flex justify-center md:justify-end">
+            <SelectTrigger asChild>
+              <button className="mt-[100px] flex items-center gap-[8px] border border-primary-02 bg-[#FEF5AD]/20 py-[12px] pl-[26px] pr-[19px] focus:outline-none lg:py-mobile">
+                <div className="text-body-03 lg:text-[20px]">{sort}</div>
+                <ChevronDown />
+              </button>
+            </SelectTrigger>
+          </div>
+          <SelectContent className="mt-[8px] h-[400px] w-[87px] overflow-auto border border-[#FEF5AD]/50 bg-primary-01 p-0 md:mt-[11px] lg:w-[110px]">
             <SelectItem
-              key={designer.id}
-              value={designer.name}
+              value="All"
               className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
             >
-              {designer.name}
+              All
             </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+            <SelectItem
+              value="모두에게"
+              className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+            >
+              모두에게
+            </SelectItem>
+            {designers?.map((designer) => (
+              <SelectItem
+                key={designer.id}
+                value={designer.name}
+                className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
+              >
+                {designer.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      )}
       <div
         className={cn(
-          type === 'A' && 'mt-[44px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
-          type === 'B' && 'mt-[40px]',
+          type === 'A' &&
+            'mt-[44px] lg:mt-[151px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
+          type === 'B' && 'mt-[64px] md:mt-[72px] lg:mt-[192px]',
           type === 'Origin' &&
             'mt-[40px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
         )}

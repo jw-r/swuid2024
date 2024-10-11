@@ -30,11 +30,11 @@ const Projects = ({ allProjects }: Props) => {
           Project
         </h2>
 
-        <div className="lg:text-web-body-02 text-body-04 mt-[24px] flex gap-[16px] transition-shadow *:w-fit *:hover:hover:shadow-[0_0_15px_0_rgba(254,245,173,0.4)] max-md:flex-col md:mt-[32px] lg:mt-[48px]">
+        <div className="lg:text-web-body-02 text-body-04 mt-[24px] flex gap-[16px] transition-shadow *:w-fit max-md:flex-col md:mt-[32px] lg:mt-[48px]">
           <button
             onClick={() => setSort('UX')}
             className={cn(
-              'border border-primary-02 bg-primary-02/20 px-[16px] py-[10px] lg:px-[36px] lg:py-[13px] opacity-30 hover:opacity-100 transition-all duration-300 ease-out',
+              'border border-primary-02 hover:shadow-hovering_btn bg-primary-02/20 px-[16px] py-[10px] lg:px-[36px] lg:py-[13px] opacity-30 hover:opacity-100 transition-all duration-300 ease-out',
               sort === 'UX' && 'opacity-100',
             )}
           >
@@ -43,7 +43,7 @@ const Projects = ({ allProjects }: Props) => {
           <button
             onClick={() => setSort('DF')}
             className={cn(
-              'border border-primary-02 bg-primary-02/20 px-[16px] py-[10px] lg:px-[36px] lg:py-[13px] opacity-30 hover:opacity-100 transition-all duration-300 ease-out',
+              'border border-primary-02 bg-primary-02/20 hover:shadow-hovering_btn px-[16px] py-[10px] lg:px-[36px] lg:py-[13px] opacity-30 hover:opacity-100 transition-all duration-300 ease-out',
               sort === 'DF' && 'opacity-100',
             )}
           >
@@ -52,7 +52,7 @@ const Projects = ({ allProjects }: Props) => {
           <button
             onClick={() => setSort('BX')}
             className={cn(
-              'border border-primary-02 bg-primary-02/20 px-[16px] py-[10px] lg:px-[36px] lg:py-[13px] opacity-30 hover:opacity-100 transition-all duration-300 ease-out',
+              'border border-primary-02 bg-primary-02/20 hover:shadow-hovering_btn px-[16px] py-[10px] lg:px-[36px] lg:py-[13px] opacity-30 hover:opacity-100 transition-all duration-300 ease-out',
               sort === 'BX' && 'opacity-100',
             )}
           >
