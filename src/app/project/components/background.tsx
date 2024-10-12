@@ -14,7 +14,7 @@ const Background = ({ sort }: Props) => {
   const array =
     sort === 'UX'
       ? Array.from({ length: 2 })
-      : sort === 'BX'
+      : sort === 'DF'
         ? Array.from({ length: 4 })
         : Array.from({ length: 1 })
 
@@ -77,7 +77,7 @@ const Background = ({ sort }: Props) => {
 
   return (
     <div className="absolute inset-0 z-[-1]">
-      <Image src="/assets/project/bg_02.webp" fill alt="" className="bottom-0" />
+      <Image src="/assets/project/bg_02.webp" fill alt="" className="top-0" />
       <Image
         src="/assets/project/desktop-top-right.webp"
         width={350}
