@@ -1,12 +1,16 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 
 const IntroSequence = ({ children }: { children: React.ReactNode }) => {
-  const [posterComplete, setPosterComplete] = useState(false)
+  const pathname = usePathname()
+  const [posterComplete, setPosterComplete] = useState(pathname !== '/')
   const posterVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
+    if (pathname !== '/') return
+
     const posterVideo = document.createElement('video')
     posterVideo.src = '/videos/진입포스터영상.webm'
     posterVideo.preload = 'auto'
