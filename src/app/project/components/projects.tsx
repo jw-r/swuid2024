@@ -61,33 +61,53 @@ const Projects = ({ allProjects }: Props) => {
         </div>
 
         <div className="mt-[24px] grid grid-cols-2 gap-x-[7px] gap-y-[48px] md:grid-cols-3 md:gap-x-[15px] lg:mt-[48px] lg:gap-[20px]">
-          {projects.map((project) => (
-            <Link key={project.id} href={`/project/${project.id}`}>
-              <div className="group relative aspect-square flex-1 overflow-hidden border border-primary-02/70">
-                <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
+          {projects.map((project, idx) => {
+            const hasContent = idx % 2 === 0
 
-                <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
-                  <div className="flex h-full flex-col justify-between p-[32px]">
-                    <div className="text-web-headline-01">
-                      {sort === 'UX' ? 'UX' : sort === 'DF' ? 'DF' : 'BX'}
+            return (
+              <Link
+                key={project.id}
+                href={`/project/${project.id}`}
+                className={cn(!hasContent && 'pointer-events-none')}
+              >
+                <div className="group relative aspect-square flex-1 overflow-hidden border border-primary-02/70">
+                  {/* no content */}
+                  {hasContent ? (
+                    <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
+                  ) : (
+                    <div className="flex size-full items-center justify-center bg-primary-01">
+                      <div className="relative size-[72px] md:size-[96px] lg:size-[230px]">
+                        <Image src="/no-content.png" alt="" fill className="object-cover" />
+                      </div>
+                      <div className="text-body-02 md:text-subtitle-02 lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 md:bottom-[16px] lg:bottom-[56px]">
+                        준비 중⋯
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-web-subtitle-01">{project.name}</div>
-                      <div className="text-web-subtitle-03 mt-[5px]">
-                        {project.designers.map((designer) => designer.name).join(' ')}
+                  )}
+
+                  <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
+                    <div className="flex h-full flex-col justify-between p-[32px]">
+                      <div className="text-web-headline-01">
+                        {sort === 'UX' ? 'UX' : sort === 'DF' ? 'DF' : 'BX'}
+                      </div>
+                      <div>
+                        <div className="text-web-subtitle-01">{project.name}</div>
+                        <div className="text-web-subtitle-03 mt-[5px]">
+                          {project.designers.map((designer) => designer.name).join(' ')}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="mt-mobile lg:hidden">
-                <div className="text-subtitle-01">{project.name}</div>
-                <div className="text-body-02 mt-[5px]">
-                  {project.designers.map((designer) => designer.name).join(' ')}
+                <div className="mt-mobile lg:hidden">
+                  <div className="text-subtitle-01">{project.name}</div>
+                  <div className="text-body-02 mt-[5px]">
+                    {project.designers.map((designer) => designer.name).join(' ')}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            )
+          })}
         </div>
       </main>
     </>
