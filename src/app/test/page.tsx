@@ -19,8 +19,8 @@ async function insertDesignerData() {
     ] = designerData[i].split('\t')
 
     const fields = []
-    if (uxField === 'O') fields.push('DF')
     if (bxField === 'O') fields.push('UX')
+    if (uxField === 'O') fields.push('DF')
     if (dfField === 'O') fields.push('BX')
 
     // 아바타 파일 이름이 있는 경우에만 경로를 설정
@@ -46,7 +46,7 @@ async function insertDesignerData() {
 }
 
 async function insertProjectData() {
-  const projectTypes = ['BX', 'DF', 'UX'] as const
+  const projectTypes = ['UX', 'DF', 'BX'] as const
 
   for (const type of projectTypes) {
     const projects = projectData[type]
