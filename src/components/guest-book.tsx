@@ -119,7 +119,7 @@ const GuestBook = ({
           </span>
         </h2>
       ) : (
-        <h2 className="text-headline-02 text-primary-02">Guest Book</h2>
+        <h2 className="text-headline-02 lg:text-web-subtitle-01 text-primary-02">Guest Book</h2>
       )}
 
       <GuestBookForm

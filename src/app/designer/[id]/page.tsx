@@ -134,8 +134,9 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
                     </div>
                   </div>
                 </div>
-                <div className="mt-mobile lg:hidden">
-                  <div className="text-subtitle-01">{project.name}</div>
+                <div className="mt-[12px] lg:hidden">
+                  <div className="text-body-01">{project.type}</div>
+                  <div className="text-subtitle-01 mt-[4px]">{project.name}</div>
                   <div className="text-body-02 mt-[5px]">
                     {project.designers.map((designer) => designer.name).join(' ')}
                   </div>
