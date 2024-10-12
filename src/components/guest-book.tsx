@@ -226,7 +226,14 @@ const GuestBookForm = ({
               <div className="text-body-03 lg:text-web-body-02 mb-[12px] max-md:hidden">
                 받는 사람
               </div>
-              <Select onValueChange={(value) => setReceiver(JSON.parse(value))}>
+              <Select
+                value={receiver?.name || ''}
+                onValueChange={(value) => {
+                  if (value) {
+                    setReceiver(JSON.parse(value))
+                  }
+                }}
+              >
                 <SelectTrigger asChild>
                   <input
                     type="text"
