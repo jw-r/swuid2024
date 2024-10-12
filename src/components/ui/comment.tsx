@@ -9,7 +9,7 @@ interface Props {
 const Comment = ({ message, type }: Props) => {
   if (type === 'Origin') {
     return (
-      <div className="border border-[#FEF5ADB2]/70 bg-[#211A18BF]/75 p-[19px_23px_18.6px_24px] lg:p-[56px_48px_56px_48px]">
+      <div className="border border-[#FEF5ADB2]/70 bg-[#211A18BF]/75 p-[19px_23px_18.6px_24px] lg:min-h-[488px] lg:p-[56px_48px_56px_48px]">
         <h3 className="lg:text-web-headline-02 text-[18px] font-[700] leading-[27px] tracking-[-0.02em] text-primary-02">
           From. {message.sender}
         </h3>
