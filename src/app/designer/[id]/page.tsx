@@ -57,6 +57,15 @@ interface Props {
 export default async function DesignerDetailPage({ params: { id } }: Props) {
   const { designer, messages } = await getDesigner(Number(id))
 
+  // Custom sorting function for ProjectType
+  const sortProjects = (a: any, b: any) => {
+    const order = { UX: 0, DF: 1, BX: 2 }
+    return order[a.type as keyof typeof order] - order[b.type as keyof typeof order]
+  }
+
+  // Sort the projects
+  const sortedProjects = [...designer.projects].sort(sortProjects)
+
   return (
     <>
       <Background />
@@ -117,7 +126,7 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
             참여 프로젝트
           </div>
           <div className="mt-[20px] flex gap-x-[7px] gap-y-[48px] max-md:grid max-md:grid-cols-2 md:mt-[30px] lg:mt-[48px]">
-            {designer.projects.map((project) => (
+            {sortedProjects.map((project) => (
               <Link key={project.id} href={`/project/${project.id}`}>
                 <div className="group relative flex-1 overflow-hidden border border-primary-02/70 max-md:aspect-square md:size-[255px] lg:size-[450px]">
                   <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
