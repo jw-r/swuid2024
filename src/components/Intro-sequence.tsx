@@ -23,32 +23,29 @@ const IntroSequence = ({ children }: { children: React.ReactNode }) => {
           })
           .catch((error) => {
             console.warn('Auto-play failed:', error)
-            // 여기서 사용자에게 재생 버튼을 표시하는 로직을 추가할 수 있습니다.
           })
       }, 1000)
 
       // 디버깅을 위한 이벤트 리스너들
-      if (process.env.NODE_ENV === 'development') {
-        const onLoadedMetadata = () => console.log('Video metadata loaded')
-        const onCanPlay = () => console.log('Video can play')
-        const onPlay = () => console.log('Video started playing')
-        const onError = (e: Event) => {
-          console.error('Video error:', (e.target as HTMLVideoElement).error)
-          setVideoError((e.target as HTMLVideoElement).error?.message || 'Unknown error')
-        }
+      const onLoadedMetadata = () => console.log('Video metadata loaded')
+      const onCanPlay = () => console.log('Video can play')
+      const onPlay = () => console.log('Video started playing')
+      const onError = (e: Event) => {
+        console.error('Video error:', (e.target as HTMLVideoElement).error)
+        setVideoError((e.target as HTMLVideoElement).error?.message || 'Unknown error')
+      }
 
-        video.addEventListener('loadedmetadata', onLoadedMetadata)
-        video.addEventListener('canplay', onCanPlay)
-        video.addEventListener('play', onPlay)
-        video.addEventListener('error', onError)
+      video.addEventListener('loadedmetadata', onLoadedMetadata)
+      video.addEventListener('canplay', onCanPlay)
+      video.addEventListener('play', onPlay)
+      video.addEventListener('error', onError)
 
-        return () => {
-          clearInterval(playAttempt)
-          video.removeEventListener('loadedmetadata', onLoadedMetadata)
-          video.removeEventListener('canplay', onCanPlay)
-          video.removeEventListener('play', onPlay)
-          video.removeEventListener('error', onError)
-        }
+      return () => {
+        clearInterval(playAttempt)
+        video.removeEventListener('loadedmetadata', onLoadedMetadata)
+        video.removeEventListener('canplay', onCanPlay)
+        video.removeEventListener('play', onPlay)
+        video.removeEventListener('error', onError)
       }
     }
   }, [pathname])
