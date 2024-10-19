@@ -76,8 +76,8 @@ const Background = ({ sort }: Props) => {
   }
 
   return (
-    <div className="absolute inset-0 z-[-1]">
-      <ImageWithFallback src="/assets/project/bg_02.webp" fill alt="" className="top-0" />
+    <div className="absolute inset-0 z-[-1] overflow-hidden">
+      <ImageWithFallback src="/assets/project/bg_02.webp" width={1920} height={3250} alt="" />
       <ImageWithFallback
         src="/assets/project/desktop-top-right.webp"
         width={350}
