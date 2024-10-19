@@ -16,6 +16,7 @@ const IntroSequence = ({ children }: { children: React.ReactNode }) => {
       <video
         autoPlay
         muted
+        playsInline
         src="/videos/진입포스터영상.mp4"
         onEnded={handlePosterVideoEnd}
         className="fixed inset-0 size-full"

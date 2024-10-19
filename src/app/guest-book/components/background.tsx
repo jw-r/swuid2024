@@ -1,7 +1,7 @@
 'use client'
 
+import ImageWithFallback from '@/components/image-with-fallback'
 import { useMediaQuery } from '@/hooks/use-media-query'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 const Background = () => {
@@ -37,8 +37,18 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]" style={backgroundStyle}>
-        <Image src="/assets/guest/mobile_bg_04.webp" fill alt="" className="top-0 object-cover" />
-        <Image src="/assets/guest/mobile_Obj_04.webp" fill alt="" className="top-0 object-cover" />
+        <ImageWithFallback
+          src="/assets/guest/mobile_bg_04.webp"
+          fill
+          alt=""
+          className="top-0 object-cover"
+        />
+        <ImageWithFallback
+          src="/assets/guest/mobile_Obj_04.webp"
+          fill
+          alt=""
+          className="top-0 object-cover"
+        />
       </div>
     )
   }
@@ -46,8 +56,13 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]" style={backgroundStyle}>
-        <Image src="/assets/guest/tablet_bg_04.webp" fill alt="" className="top-0 object-cover" />
-        <Image
+        <ImageWithFallback
+          src="/assets/guest/tablet_bg_04.webp"
+          fill
+          alt=""
+          className="top-0 object-cover"
+        />
+        <ImageWithFallback
           src="/assets/guest/tablet_obj_04.webp"
           fill
           alt=""
@@ -59,8 +74,8 @@ const Background = () => {
 
   return (
     <div className="absolute inset-0 z-[-1]" style={backgroundStyle}>
-      <Image src="/assets/guest/bg_04.webp" fill alt="" className="object-cover" />
-      <Image
+      <ImageWithFallback src="/assets/guest/bg_04.webp" fill alt="" className="object-cover" />
+      <ImageWithFallback
         src="/assets/guest/bgObj_gestbook_01.webp"
         width={1922}
         height={2280}

@@ -1,7 +1,7 @@
 'use client'
 
+import ImageWithFallback from '@/components/image-with-fallback'
 import { useMediaQuery } from '@/hooks/use-media-query'
-import Image from 'next/image'
 
 const Background = () => {
   const isMobile = useMediaQuery('(max-width: 519px)')
@@ -10,7 +10,7 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <Image src="/assets/detail/mobile_bg_01.webp" fill alt="" />
+        <ImageWithFallback src="/assets/detail/mobile_bg_01.webp" fill alt="" />
       </div>
     )
   }
@@ -18,14 +18,14 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <Image src="/assets/detail/tablet_bg_01.webp" fill alt="" />
+        <ImageWithFallback src="/assets/detail/tablet_bg_01.webp" fill alt="" />
       </div>
     )
   }
 
   return (
     <div className="absolute inset-0 z-[-1]">
-      <Image src="/assets/detail/bgObj_04.webp" fill alt="" className="bottom-0" />
+      <ImageWithFallback src="/assets/detail/bgObj_04.webp" fill alt="" className="bottom-0" />
     </div>
   )
 }
