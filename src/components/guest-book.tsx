@@ -32,12 +32,15 @@ const GuestBook = ({
 }: GuestBookProps) => {
   const [messages, setMessages] = useState<MessageWithDesigner[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [sort, setSort] = useState('All')
   const [currentPage, setCurrentPage] = useState(1)
   const firstCommentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    getMessages().then(setMessages)
+    getMessages()
+      .then(setMessages)
+      .finally(() => setIsLoading(false))
   }, [])
 
   const sortedMessages = useMemo(() => {
@@ -147,7 +150,9 @@ const GuestBook = ({
         type={type}
       />
 
-      {messages.length === 0 ? (
+      {isLoading ? (
+        <LoadingMessage />
+      ) : messages.length === 0 ? (
         <NoneMessage type={type} />
       ) : (
         <>
@@ -412,6 +417,12 @@ const MessageList = ({
     </>
   )
 }
+
+const LoadingMessage = () => (
+  <div className="lg:text-web-body-02 pt-[121px] text-center text-white/40 md:pt-[223px] lg:pt-[252px]">
+    댓글을 불러오는 중입니다...
+  </div>
+)
 
 interface NoneMessageProps {
   type: 'A' | 'B' | 'Origin'
