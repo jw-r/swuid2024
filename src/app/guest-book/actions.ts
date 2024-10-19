@@ -1,6 +1,5 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
 import db from '@/lib/prisma/db'
 import { MessageWithDesigner } from '@/types'
 
@@ -76,14 +75,6 @@ export async function addMessage({
       },
     },
   })
-
-  if (designerId) {
-    revalidatePath(`/designer/${designerId}`)
-  } else if (projectId) {
-    revalidatePath(`/project/${projectId}`)
-  } else {
-    revalidatePath('/guestbook')
-  }
 
   return newMessage
 }

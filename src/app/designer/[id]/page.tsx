@@ -43,9 +43,7 @@ async function getDesigner(id: number) {
   })
   if (!designer) notFound()
 
-  const messages = await getMessages({ designerId: id })
-
-  return { designer, messages }
+  return { designer }
 }
 
 interface Props {
@@ -55,7 +53,7 @@ interface Props {
 }
 
 export default async function DesignerDetailPage({ params: { id } }: Props) {
-  const { designer, messages } = await getDesigner(Number(id))
+  const { designer } = await getDesigner(Number(id))
 
   // Custom sorting function for ProjectType
   const sortProjects = (a: any, b: any) => {
@@ -156,7 +154,11 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
         </div>
 
         <GuestBook
-          initialMessages={messages}
+          getMessages={async () => {
+            'use server'
+
+            return await getMessages({ designerId: Number(id) })
+          }}
           designerId={Number(id)}
           className="mb-[98px] md:mb-[74px] lg:mb-[121px]"
           type="A"

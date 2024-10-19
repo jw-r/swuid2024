@@ -32,9 +32,7 @@ async function getProject(id: number) {
   })
   if (!project) notFound()
 
-  const messages = await getMessages({ projectId: id })
-
-  return { project, messages }
+  return { project }
 }
 
 interface Props {
@@ -44,7 +42,7 @@ interface Props {
 }
 
 export default async function ProjectDetailPage({ params: { id } }: Props) {
-  const { project, messages } = await getProject(Number(id))
+  const { project } = await getProject(Number(id))
 
   return (
     <>
@@ -140,7 +138,16 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
         </div>
 
         <div className="custom-container mb-[120px] lg:mb-[240px]">
-          <GuestBook initialMessages={messages} projectId={Number(id)} type="B" />
+          <GuestBook
+            getMessages={async () => {
+              'use server'
+
+              const messages = await getMessages({ projectId: Number(id) })
+              return messages
+            }}
+            projectId={Number(id)}
+            type="B"
+          />
         </div>
       </main>
     </>

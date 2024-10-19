@@ -14,7 +14,7 @@ interface Designer {
 }
 
 interface GuestBookProps {
-  initialMessages: MessageWithDesigner[]
+  getMessages: () => Promise<MessageWithDesigner[]>
   designers?: Designer[]
   className?: HTMLElement['className']
   projectId?: number
@@ -23,17 +23,21 @@ interface GuestBookProps {
 }
 
 const GuestBook = ({
-  initialMessages,
+  getMessages,
   designers,
   className,
   designerId,
   projectId,
   type,
 }: GuestBookProps) => {
-  const [messages, setMessages] = useState<MessageWithDesigner[]>(initialMessages)
+  const [messages, setMessages] = useState<MessageWithDesigner[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [sort, setSort] = useState('All')
   const [currentPage, setCurrentPage] = useState(1)
+
+  useEffect(() => {
+    getMessages().then(setMessages)
+  }, [])
 
   const sortedMessages = useMemo(() => {
     return sort === 'All'

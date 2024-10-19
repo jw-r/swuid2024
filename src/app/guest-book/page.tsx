@@ -15,13 +15,11 @@ async function getDesignersAndMessages() {
     },
   })
 
-  const allMessages = await getMessages()
-
-  return { designers, messages: allMessages }
+  return { designers }
 }
 
 export default async function GuestBookPage() {
-  const { designers, messages } = await getDesignersAndMessages()
+  const { designers } = await getDesignersAndMessages()
 
   return (
     <>
@@ -30,7 +28,12 @@ export default async function GuestBookPage() {
         <ExhibitionHeader className="pt-[24px] lg:pt-[40px]" />
 
         <GuestBook
-          initialMessages={messages.filter((message) => message.projectId === null)}
+          getMessages={async () => {
+            'use server'
+
+            const messages = await getMessages()
+            return messages.filter((message) => message.projectId === null)
+          }}
           designers={designers}
           className="mt-[48px] pb-[255px] md:mt-[80px] lg:mt-[96px]"
           type="Origin"
