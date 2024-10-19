@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { addMessage } from '@/app/guest-book/actions'
 import { cn } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger } from './ui/select'
@@ -34,6 +34,7 @@ const GuestBook = ({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [sort, setSort] = useState('All')
   const [currentPage, setCurrentPage] = useState(1)
+  const firstCommentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     getMessages().then(setMessages)
@@ -56,6 +57,18 @@ const GuestBook = ({
   useEffect(() => {
     setCurrentPage(1)
   }, [sort])
+
+  useEffect(() => {
+    if (firstCommentRef.current) {
+      const yOffset = -140 // 140px 위로 조정
+      const y = firstCommentRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset
+      window.scrollTo({ top: y, behavior: 'instant' })
+    }
+  }, [currentPage])
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
 
   const handleSubmit = async ({
     senderName,
@@ -144,12 +157,13 @@ const GuestBook = ({
             sort={sort}
             onSortChange={setSort}
             type={type}
+            firstCommentRef={firstCommentRef}
           />
           {sortedMessages.length > MESSAGES_PER_PAGE && (
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
             />
           )}
         </>
@@ -332,9 +346,17 @@ interface MessageListProps {
   sort: string
   onSortChange: (value: string) => void
   type: 'A' | 'B' | 'Origin'
+  firstCommentRef: React.RefObject<HTMLDivElement>
 }
 
-const MessageList = ({ messages, designers, sort, onSortChange, type }: MessageListProps) => {
+const MessageList = ({
+  messages,
+  designers,
+  sort,
+  onSortChange,
+  type,
+  firstCommentRef,
+}: MessageListProps) => {
   return (
     <>
       {type === 'Origin' && (
@@ -381,8 +403,10 @@ const MessageList = ({ messages, designers, sort, onSortChange, type }: MessageL
             'mt-[40px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
         )}
       >
-        {messages.map((message) => (
-          <Comment key={message.id} type={type} message={message} />
+        {messages.map((message, index) => (
+          <div key={message.id} ref={index === 0 ? firstCommentRef : null}>
+            <Comment type={type} message={message} />
+          </div>
         ))}
       </div>
     </>

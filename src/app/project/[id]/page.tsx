@@ -57,14 +57,14 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
             {project.name}
           </h2>
           <div className="mt-mobile flex gap-[8px] lg:mt-[24px] lg:gap-[16px]">
-            <span className="text-subtitle-01 lg:text-web-subtitle-03">
+            <span className="text-body-01 lg:text-web-body-02 opacity-70">
               {project.teamName || '디자이너'}
             </span>
-            <span className="text-body-01 lg:text-web-body-02 opacity-70">
+            <span className="text-subtitle-01 lg:text-web-subtitle-03">
               {project.designers.map((designer) => designer.name).join(' ')}
             </span>
           </div>
-          <p className="text-body-space-01 lg:text-web-body-space-02 mt-[40px]">
+          <p className="text-body-space-01 lg:text-web-body-space-02 mt-[40px] max-lg:!font-[300]">
             채워지기 출판이나 폰트, 입숨을 로렘 입숨은 연출을 글로도 실제적인 타이포그래피, 표준
             레이아웃 그래픽 그래픽 레이아웃 분야에서 들어가는 실제적인 실제적인 이용된다. 모형의
             모형의 지칭하는 로렘 요소나 로렘 들어가는 입숨은 표준 모형의 디자인 결과물에 로렘 용도로
@@ -81,7 +81,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
                 href=""
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-fit cursor-pointer items-center gap-[8px] border border-primary-02/50 bg-primary-02/20 py-[14.5px] pl-[36px] pr-[32px] transition-all hover:border-primary-02 hover:shadow-hovering_btn"
+                className="flex w-fit cursor-pointer items-center gap-[8px] border border-primary-02/50 bg-primary-02/20 px-mobile py-[12px] transition-all hover:border-primary-02 hover:shadow-hovering_btn lg:py-[14.5px] lg:pl-[36px] lg:pr-[32px]"
               >
                 <span className="lg:text-web-body-03 text-body-03">서비스 사용해보기</span>
                 <Icon name="arrow-right" className="lg:size-[20px]" />
