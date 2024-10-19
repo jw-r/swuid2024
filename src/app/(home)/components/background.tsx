@@ -13,11 +13,19 @@ const Background = () => {
         <ImageWithFallback src="/assets/home/mobile_bg_05.webp" fill alt="" />
 
         <ImageWithFallback
+          src="/assets/home/mobile_bgObj_03_top.png"
+          width={375}
+          height={686.5}
+          alt=""
+          className="absolute top-0 w-full"
+        />
+
+        <ImageWithFallback
           src="/assets/home/mobile-top-right.webp"
           width={162}
           height={301.98}
           alt=""
-          className="absolute right-0 top-0"
+          className="absolute right-0 top-[608px]"
         />
 
         <ImageWithFallback
