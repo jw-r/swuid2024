@@ -12,7 +12,7 @@ const IntroSequence = ({ children }: { children: React.ReactNode }) => {
     if (pathname !== '/') return
 
     const posterVideo = document.createElement('video')
-    posterVideo.src = '/videos/진입포스터영상.webm'
+    posterVideo.src = '/videos/진입포스터영상.mp4'
     posterVideo.preload = 'auto'
 
     return () => {
