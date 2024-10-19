@@ -41,7 +41,7 @@ const Title = () => {
       <Icon
         id="icon"
         name="사각"
-        className="aspect-[85/53] w-[85px] shrink-0 md:h-[68px] md:w-[109px] lg:h-[161px] lg:w-[258px]"
+        className="h-[53px] w-[85px] shrink-0 md:h-[68px] md:w-[109px] lg:h-[161px] lg:w-[258px]"
       />
       <div
         id="text"
