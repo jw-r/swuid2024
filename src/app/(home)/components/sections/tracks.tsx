@@ -55,17 +55,17 @@ const TRACKS = [
     title: 'DIGITAL FABRICATION',
     description: (
       <span>
-        3D 모델링을 통해
-        <br className="max-lg:hidden" /> 감각적이며
-        <br className="md:hidden" /> 기능적인 제품을 설계하는 트랙
+        3D 모델링을 통해 감각적이며
+        <br className="md:hidden lg:block" />
+        기능적인 제품을 설계하는 트랙
       </span>
     ),
     detail: (
       <span>
         3D 모델링 데이터를 이용하여 소비자들의 편리성부터 미적 감각에 대한 욕구까지 부합하는 제품의
         설계를 도모합니다.
-        <br className="md:hidden lg:block" /> 감각적 특성부터 구조 및 기능적 관점을 고려하는 제품
-        디자인 통합 교육을 지향합니다.
+        <br className="md:hidden lg:block" />
+        감각적 특성부터 구조 및 기능적 관점을 고려하는 제품 디자인 통합 교육을 지향합니다.
       </span>
     ),
     href: '/project?type=df',
@@ -74,8 +74,9 @@ const TRACKS = [
     title: 'BX SPACE DESIGN',
     description: (
       <span>
-        브랜드와 사용자가 만나는 모든 공간에서의
-        <br className="md:hidden lg:block" /> 상호작용을 설계하는 트랙
+        브랜드와 사용자가 만나는 모든
+        <br className="md:hidden lg:block" />
+        공간에서의 상호작용을 설계하는 트랙
       </span>
     ),
     detail: (
