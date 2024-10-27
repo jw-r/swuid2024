@@ -9,6 +9,10 @@ import Image from 'next/image'
 export default function Project({ searchParams }: { searchParams: { type: 'UX' | 'DF' | 'BX' } }) {
   const type = ['UX', 'DF', 'BX'].includes(searchParams.type) ? searchParams.type : 'UX'
 
+  const filteredSortedProjects = projects
+    .filter((project) => project.type === type)
+    .sort((a, b) => (b?.order && a?.order ? a.order - b.order : 0))
+
   return (
     <>
       <Background type={type} />
@@ -53,61 +57,54 @@ export default function Project({ searchParams }: { searchParams: { type: 'UX' |
         </div>
 
         <div className="mt-[24px] grid grid-cols-2 gap-x-[7px] gap-y-[48px] md:grid-cols-3 md:gap-x-[15px] lg:mt-[48px] lg:gap-[20px]">
-          {projects
-            .filter((project) => project.type === type)
-            .map((project) => {
-              const hasThumbnail = !!project.thumbnail
-              const designers = getProjectMembers(project.id)
+          {filteredSortedProjects.map((project) => {
+            const hasThumbnail = !!project.thumbnail
+            const designers = getProjectMembers(project.id)
 
-              return (
-                <Link
-                  key={project.id}
-                  href={`/project/${project.id}`}
-                  className={cn(!hasThumbnail && 'pointer-events-none')}
-                >
-                  <div className="group relative aspect-square flex-1 overflow-hidden border border-primary-02/70">
-                    {/* no content */}
-                    {hasThumbnail ? (
-                      <Image
-                        src={project.thumbnail}
-                        alt=""
-                        fill
-                        className="lg:group-hover:blur-sm"
-                      />
-                    ) : (
-                      <div className="flex size-full items-center justify-center bg-primary-01">
-                        <div className="relative size-[72px] md:size-[96px] lg:size-[230px]">
-                          <Image src="/no-content.png" alt="" fill className="object-cover" />
-                        </div>
-                        <div className="text-body-02 md:text-subtitle-02 !md:font-[400] lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 opacity-70 md:bottom-[16px] lg:bottom-[56px]">
-                          준비 중⋯
-                        </div>
+            return (
+              <Link
+                key={project.id}
+                href={`/project/${project.id}`}
+                className={cn(!hasThumbnail && 'pointer-events-none')}
+              >
+                <div className="group relative aspect-square flex-1 overflow-hidden border border-primary-02/70">
+                  {/* no content */}
+                  {hasThumbnail ? (
+                    <Image src={project.thumbnail} alt="" fill className="lg:group-hover:blur-sm" />
+                  ) : (
+                    <div className="flex size-full items-center justify-center bg-primary-01">
+                      <div className="relative size-[72px] md:size-[96px] lg:size-[230px]">
+                        <Image src="/no-content.png" alt="" fill className="object-cover" />
                       </div>
-                    )}
+                      <div className="text-body-02 md:text-subtitle-02 !md:font-[400] lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 opacity-70 md:bottom-[16px] lg:bottom-[56px]">
+                        준비 중⋯
+                      </div>
+                    </div>
+                  )}
 
-                    <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
-                      <div className="flex h-full flex-col justify-between p-[32px]">
-                        <div className="text-web-headline-01">
-                          {type === 'UX' ? 'UX' : type === 'DF' ? 'DF' : 'BX'}
-                        </div>
-                        <div>
-                          <div className="text-web-subtitle-01">{project.name}</div>
-                          <div className="text-web-subtitle-03 mt-[5px]">
-                            {designers.map((designer) => designer.name).join(' ')}
-                          </div>
+                  <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
+                    <div className="flex h-full flex-col justify-between p-[32px]">
+                      <div className="text-web-headline-01">
+                        {type === 'UX' ? 'UX' : type === 'DF' ? 'DF' : 'BX'}
+                      </div>
+                      <div>
+                        <div className="text-web-subtitle-01">{project.name}</div>
+                        <div className="text-web-subtitle-03 mt-[5px]">
+                          {designers.map((designer) => designer.name).join(' ')}
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="mt-mobile lg:hidden">
-                    <div className="text-subtitle-01">{project.name}</div>
-                    <div className="text-body-02 mt-[5px]">
-                      {designers.map((designer) => designer.name).join(' ')}
-                    </div>
+                </div>
+                <div className="mt-mobile lg:hidden">
+                  <div className="text-subtitle-01">{project.name}</div>
+                  <div className="text-body-02 mt-[5px]">
+                    {designers.map((designer) => designer.name).join(' ')}
                   </div>
-                </Link>
-              )
-            })}
+                </div>
+              </Link>
+            )
+          })}
         </div>
       </main>
     </>
