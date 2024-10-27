@@ -76,7 +76,7 @@ export default function Project({ searchParams }: { searchParams: { type: 'UX' |
                       <div className="relative size-[72px] md:size-[96px] lg:size-[230px]">
                         <Image src="/no-content.png" alt="" fill className="object-cover" />
                       </div>
-                      <div className="text-body-02 md:text-subtitle-02 !md:font-[400] lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 opacity-70 md:bottom-[16px] lg:bottom-[56px]">
+                      <div className="text-body-02 !md:font-[400] lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 opacity-70 md:bottom-[16px] lg:bottom-[56px]">
                         준비 중⋯
                       </div>
                     </div>
