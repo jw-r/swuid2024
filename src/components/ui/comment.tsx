@@ -1,8 +1,9 @@
-import { MessageWithDesigner } from '@/types'
+import { CommentType } from '@/app/guest-book/actions'
+import { designers } from '@/constants/designers'
 import { formatDate } from '@/utils'
 
 interface Props {
-  message: MessageWithDesigner
+  message: CommentType
   type: 'A' | 'B' | 'Origin'
 }
 
@@ -17,7 +18,9 @@ const Comment = ({ message, type }: Props) => {
           {formatDate(message.createdAt)}
         </div>
         <div className="lg:text-web-subtitle-03 mt-[7px] text-[18px] font-[700] leading-[27px] tracking-[-0.02em] text-primary-02 lg:mt-[20px]">
-          To. {message.designer?.name || '모두에게'}
+          To.{' '}
+          {designers.find((designer) => designer.classNumber === message.classNumber)?.name ||
+            '모두에게'}
         </div>
         <p className="lg:text-web-body-03 mt-[4px] text-[16px] font-[300] leading-[28.8px] tracking-[-0.01em] lg:mt-[7px]">
           {message.content}

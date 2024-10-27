@@ -8,48 +8,11 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-enum ProjectType {
-  UX
-  DF
-  BX
-}
-
-model Designer {
-  id          Int       @id @default(autoincrement())
-  order       Int
-  avatar      String
-  name        String
-  classNumber Int
-  fields      String
-  englishName String
-  email       String    @unique
-  instagram   String?
-  behance     String?
-  thought     String
-  projects    Project[] @relation("DesignerToProject")
-  comments    Comment[] @relation("DesignerComments")
-}
-
-model Project {
-  id          Int         @id @default(autoincrement())
-  name        String
-  type        ProjectType
-  thumbnail   String?
-  order       Int
-  teamName    String?
-  url         String?
-  description String?
-  designers   Designer[]  @relation("DesignerToProject")
-  comments    Comment[]   @relation("ProjectComments")
-}
-
 model Comment {
-  id         Int       @id @default(autoincrement())
-  content    String
-  createdAt  DateTime  @default(now())
-  sender     String
-  designer   Designer? @relation("DesignerComments", fields: [designerId], references: [id])
-  designerId Int?
-  project    Project?  @relation("ProjectComments", fields: [projectId], references: [id])
-  projectId  Int?
+  id          Int      @id @default(autoincrement())
+  content     String
+  createdAt   DateTime @default(now())
+  sender      String
+  classNumber String?
+  projectId   Int?
 }

@@ -1,80 +1,60 @@
 'use server'
 
 import db from '@/lib/prisma/db'
-import { MessageWithDesigner } from '@/types'
+
+export interface CommentType {
+  id: number
+  content: string
+  createdAt: Date
+  sender: string
+  classNumber: string | null
+  projectId: number | null
+}
 
 export async function getMessages(params?: {
-  designerId?: number
-  projectId?: number
-}): Promise<MessageWithDesigner[]> {
-  if (params?.designerId != null) {
-    return db.comment.findMany({
-      where: { designerId: params.designerId },
+  classNumber?: string | null
+  projectId?: number | null
+}): Promise<CommentType[]> {
+  let comments
+  if (params?.classNumber != null) {
+    comments = await db.comment.findMany({
+      where: { classNumber: params.classNumber },
       orderBy: { createdAt: 'desc' },
-      include: {
-        designer: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
-      },
     })
   } else if (params?.projectId != null) {
-    return db.comment.findMany({
+    comments = await db.comment.findMany({
       where: { projectId: params.projectId },
       orderBy: { createdAt: 'desc' },
-      include: {
-        designer: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
-      },
     })
   } else {
-    return db.comment.findMany({
+    comments = await db.comment.findMany({
+      where: { projectId: null },
       orderBy: { createdAt: 'desc' },
-      include: {
-        designer: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
-      },
     })
   }
+
+  return comments
 }
 
 export async function addMessage({
   senderName,
   message,
-  designerId,
+  classNumber,
   projectId,
 }: {
   senderName: string
   message: string
-  designerId?: number
+  classNumber?: string
   projectId?: number
-}): Promise<MessageWithDesigner> {
-  const newMessage = await db.comment.create({
+}): Promise<CommentType> {
+  const newComment = await db.comment.create({
     data: {
       content: message,
       sender: senderName,
-      designer: designerId ? { connect: { id: designerId } } : undefined,
-      project: projectId ? { connect: { id: projectId } } : undefined,
-    },
-    include: {
-      designer: {
-        select: {
-          id: true,
-          name: true,
-        },
-      },
+      classNumber,
+      projectId,
     },
   })
 
-  return newMessage
+  return newComment
 }

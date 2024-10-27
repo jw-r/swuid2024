@@ -4,17 +4,17 @@ import ImageWithFallback from '@/components/image-with-fallback'
 import { useMediaQuery } from '@/hooks/use-media-query'
 
 interface Props {
-  sort: 'UX' | 'DF' | 'BX'
+  type: 'UX' | 'DF' | 'BX'
 }
 
-const Background = ({ sort }: Props) => {
+const Background = ({ type }: Props) => {
   const isMobile = useMediaQuery('(max-width: 519px)')
   const isTablet = useMediaQuery('(min-width: 520px) and (max-width: 829px)')
 
   const array =
-    sort === 'UX'
+    type === 'UX'
       ? Array.from({ length: 2 })
-      : sort === 'DF'
+      : type === 'DF'
         ? Array.from({ length: 4 })
         : Array.from({ length: 1 })
 

@@ -1,4 +1,16 @@
-export const designer = [
+export const designers = [
+  {
+    id: 0,
+    name: '모두에게',
+    classNumber: '0',
+    englishName: '',
+    email: '',
+    instagram: '',
+    behance: '',
+    message: '',
+    avatar: '',
+    fields: [],
+  },
   {
     id: 1,
     name: '강지은',
@@ -9,6 +21,7 @@ export const designer = [
     behance: '',
     message: '다들 정말 고생하셨습니다! 고생한 만큼 뜻깊은 결과물을 얻을 수 있는 시간이었어요.',
     avatar: '/avatar/강지은.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 2,
@@ -20,6 +33,7 @@ export const designer = [
     behance: '',
     message: '함께 만든 추억과 배움이 앞으로의 여정에 빛이 되길 바랍니다.',
     avatar: '/avatar/고경희.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 3,
@@ -32,6 +46,7 @@ export const designer = [
     message:
       '많은 것을 배웠던 시간이었습니다. 다들 정말 수고 많으셨습니다! 학우분들이 뒤 이어 나아갈 길을 늘 응원합니다.',
     avatar: '/avatar/고은지.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 4,
@@ -43,6 +58,7 @@ export const designer = [
     behance: '',
     message: '모두들 너무 고생 많으셨습니다! 앞으로도 다들 좋은 일만 있으시길 바래요!',
     avatar: '/avatar/공성연.webp',
+    fields: ['UX'],
   },
   {
     id: 5,
@@ -54,6 +70,7 @@ export const designer = [
     behance: '',
     message: '모두의 앞으로를 응원합니다.',
     avatar: '/avatar/19김소은.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 6,
@@ -66,6 +83,7 @@ export const designer = [
     message:
       '내게 능력 주시는 자 안에서 내가 모든 것을 할 수 있느니라. 모두들 감사합니다, 응원합니다!',
     avatar: '/avatar/20김소은.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 7,
@@ -77,6 +95,7 @@ export const designer = [
     behance: '',
     message: '사~랑해요~',
     avatar: '/avatar/김유진.webp',
+    fields: ['UX', 'BX'],
   },
   {
     id: 8,
@@ -89,6 +108,7 @@ export const designer = [
     message:
       '좋은 분들과 함께할 수 있어서 뜻 깊은 시간이었고 함께한 모든 분들께 감사함을 전합니다. 앞으로의 길을 응원합니다!',
     avatar: '/avatar/김지현.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 9,
@@ -100,6 +120,7 @@ export const designer = [
     behance: '',
     message: '모두 수고 많으셨습니다! 앞으로를 응원합니다:)',
     avatar: '/avatar/김채원.webp',
+    fields: ['UX', 'BX'],
   },
   {
     id: 10,
@@ -111,6 +132,7 @@ export const designer = [
     behance: '',
     message: '힘들고 재밌었습니다 다들 행복하세요><',
     avatar: '/avatar/문가희.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 11,
@@ -122,6 +144,7 @@ export const designer = [
     behance: 'Suyeon Park',
     message: '함께 마무리할 수 있어서 감사했습니다. 새로운 시작도 응원합니다!',
     avatar: '/avatar/박수연.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 12,
@@ -133,6 +156,7 @@ export const designer = [
     behance: '',
     message: '지금껏 잘해왔 듯, 새롭게 시작하는 모두의 앞날을 응원합니다!',
     avatar: '/avatar/박은아.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 13,
@@ -144,6 +168,7 @@ export const designer = [
     behance: 'Lee eun Park',
     message: '반짝이는 가치를 지닌 °˖✧◝(⁰▿⁰)◜✧˖° 디자이너로서의 시작을 응원합니다. ୧(˙Ⱉ˙)୨',
     avatar: '/avatar/박이은.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 14,
@@ -155,6 +180,7 @@ export const designer = [
     behance: '',
     message: 'Anyone can be anything! 여러분의 꿈을 응원합니다 :)',
     avatar: '/avatar/박인애.webp',
+    fields: ['UX', 'BX'],
   },
   {
     id: 15,
@@ -166,6 +192,7 @@ export const designer = [
     behance: '',
     message: '언젠가 좋은 기회로 만나면 좋겠습니다.',
     avatar: '/avatar/반유진.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 16,
@@ -178,6 +205,7 @@ export const designer = [
     message:
       '긴 프로젝트 함께 고생하느라 수고하셨습니다! 모두의 앞길이 빛나길 응원합니다. ദ്ദി・ᴗ・)✧',
     avatar: '/avatar/송의진.webp',
+    fields: ['UX'],
   },
   {
     id: 17,
@@ -189,6 +217,7 @@ export const designer = [
     behance: 'Juni Shin',
     message: '최선을 다했습니다. I did my best :-)',
     avatar: '/avatar/신주은.webp',
+    fields: ['UX'],
   },
   {
     id: 18,
@@ -200,6 +229,7 @@ export const designer = [
     behance: '',
     message: '도비는 자유예요 !',
     avatar: '/avatar/오유진.webp',
+    fields: ['UX', 'BX'],
   },
   {
     id: 19,
@@ -211,6 +241,7 @@ export const designer = [
     behance: 'Kyuri Woo',
     message: '모두에게 더 많은 행복과 행운이 오기를!',
     avatar: '/avatar/우규리.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 20,
@@ -222,6 +253,7 @@ export const designer = [
     behance: '',
     message: '가장 설레는 새로운 시작이 기다리고 있습니다, 모두 응원합니다!',
     avatar: '/avatar/유주하.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 21,
@@ -233,6 +265,7 @@ export const designer = [
     behance: '',
     message: '모든 선택을 응원합니다',
     avatar: '/avatar/윤주하.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 22,
@@ -244,6 +277,7 @@ export const designer = [
     behance: 'lee gayeon',
     message: '우리의 모든 순간을 응원합니다 :-)',
     avatar: '/avatar/이가연.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 23,
@@ -255,6 +289,7 @@ export const designer = [
     behance: '',
     message: '졸업・ 야호♪───Ｏ（≧∇≦）Ｏ────♪',
     avatar: '/avatar/이서영.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 24,
@@ -266,6 +301,7 @@ export const designer = [
     behance: 'soyeon LEE',
     message: '새로운 시작, 새로운 출발을 응원합니다:)',
     avatar: '/avatar/이소연.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 25,
@@ -277,6 +313,7 @@ export const designer = [
     behance: '',
     message: '우리의 경험들을 빛내어 더 멋진 미래로 나아갑시다',
     avatar: '/avatar/이수현.webp',
+    fields: ['BX'],
   },
   {
     id: 26,
@@ -288,6 +325,7 @@ export const designer = [
     behance: '',
     message: '모두 고생 많으셨습니다, 앞으로 모든 일이 잘 풀리기를 기원합니다',
     avatar: '/avatar/48이지은.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 27,
@@ -299,6 +337,7 @@ export const designer = [
     behance: '',
     message: '다들 열심히 마무리 지었습니다. 앞으로 닿는 모든 발걸음 응원합니다:)',
     avatar: '/avatar/47이지은.webp',
+    fields: ['UX', 'BX'],
   },
   {
     id: 28,
@@ -310,6 +349,7 @@ export const designer = [
     behance: '',
     message: '모두의 앞날에 꽃길만 가득하길 응원하겠습니다',
     avatar: '/avatar/이혜인.webp',
+    fields: ['UX'],
   },
   {
     id: 29,
@@ -321,6 +361,7 @@ export const designer = [
     behance: 'Yoonseo Jang',
     message: '새로운 시작을 응원합니다 !',
     avatar: '/avatar/장윤서.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 30,
@@ -332,6 +373,7 @@ export const designer = [
     behance: '',
     message: '짧은 시간 다들 고생 많으셨습니다 :) 모두의 꿈을 응원합니다!',
     avatar: '/avatar/전예지.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 31,
@@ -343,6 +385,7 @@ export const designer = [
     behance: '',
     message: '모두 감사합니다! 수고하셨습니다:)',
     avatar: '/avatar/정가윤.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 32,
@@ -354,6 +397,7 @@ export const designer = [
     behance: '',
     message: '새로운 시작을 축하하며, 앞으로의 모든 여정이 행복으로 가득하길 기원합니다!',
     avatar: '/avatar/정다은.webp',
+    fields: ['UX', 'BX'],
   },
   {
     id: 33,
@@ -365,6 +409,7 @@ export const designer = [
     behance: '',
     message: '헤매는만큼 내 땅이야!',
     avatar: '/avatar/정예승.webp',
+    fields: ['UX', 'BX'],
   },
   {
     id: 34,
@@ -377,6 +422,7 @@ export const designer = [
     message:
       '함께해서 진심으로 행복했습니다( • ᴗ - )🤍!!! 매일이 행복으로 가득하기를 바라며 앞으로 더 빛날 미래를 응원합니다 ₊*｡⁺✩',
     avatar: '/avatar/조수민.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 35,
@@ -388,6 +434,7 @@ export const designer = [
     behance: 'Soobin Cho',
     message: '앞으로 새로운 페이지를 써 내려갈 모든 여정을 응원합니다!',
     avatar: '/avatar/조수빈.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 36,
@@ -399,6 +446,7 @@ export const designer = [
     behance: '',
     message: '하고싶은 일을 하며 살아가기를 기도합니다 :)',
     avatar: '/avatar/지예성.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 37,
@@ -411,6 +459,7 @@ export const designer = [
     message:
       '여러분들과 함께 멋진 마무리를 할 수 있어 즐거웠습니다. 모두들 원하시는 바 이루시도록 응원하겠습니다!',
     avatar: '/avatar/천유정.webp',
+    fields: ['UX'],
   },
   {
     id: 38,
@@ -422,6 +471,7 @@ export const designer = [
     behance: '',
     message: '다들 정말 고생 많으셨습니다. 앞으로의 여정에서도 운과 행복이 함께하길 바랍니다. ^_^',
     avatar: '/avatar/허찬비.webp',
+    fields: ['BX'],
   },
   {
     id: 39,
@@ -433,6 +483,7 @@ export const designer = [
     behance: 'SUJUNG HONG',
     message: '먹고싶은게 많아서 꿈도 너무 많아! 뭐가됐든 행복하면 됐지⋆｡𖦹°˚ ༘⋆｡˚⊹',
     avatar: '/avatar/홍수정.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 40,
@@ -445,6 +496,7 @@ export const designer = [
     message:
       '너무 고생하셨고 덕분에 행복했습니다! 서로의 꿈을 응원하며, 앞으로 행복만 가득하기를 기도하겠습니다 :) ',
     avatar: '/avatar/황예린.webp',
+    fields: ['UX', 'DF'],
   },
   {
     id: 41,
@@ -456,5 +508,6 @@ export const designer = [
     behance: '',
     message: '새롭게 도전할 우리의 그 모든 순간들을 응원합니다 :)',
     avatar: '/avatar/황자경.webp',
+    fields: ['UX'],
   },
 ] as const

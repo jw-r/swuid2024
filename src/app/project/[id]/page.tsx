@@ -3,36 +3,12 @@ import Background from './components/background'
 import Link from 'next/link'
 import Image from 'next/image'
 import GuestBook from '@/components/guest-book'
-import db from '@/lib/prisma/db'
-import { notFound } from 'next/navigation'
-import { getMessages } from '@/app/guest-book/actions'
+import { projects } from '@/constants/projects'
+import { getProjectMembers } from '@/utils'
 
-export const generateMetadata = async ({ params }: Props) => {
-  const { project } = await getProject(Number(params.id))
+export const generateMetadata = ({ params }: Props) => {
+  const project = projects[Number(params.id)]
   return { title: `SWU ID 2024 - ${project.name}` }
-}
-
-export async function generateStaticParams() {
-  const projects = await db.project.findMany({
-    select: { id: true },
-  })
-  return projects.map((project) => ({
-    id: project.id.toString(),
-  }))
-}
-
-async function getProject(id: number) {
-  const project = await db.project.findUnique({
-    where: {
-      id,
-    },
-    include: {
-      designers: true,
-    },
-  })
-  if (!project) notFound()
-
-  return { project }
 }
 
 interface Props {
@@ -42,7 +18,8 @@ interface Props {
 }
 
 export default async function ProjectDetailPage({ params: { id } }: Props) {
-  const { project } = await getProject(Number(id))
+  const project = projects[Number(id)]
+  const designers = getProjectMembers(Number(id))
 
   return (
     <>
@@ -61,7 +38,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
               {project.teamName || '디자이너'}
             </span>
             <span className="text-subtitle-01 lg:text-web-subtitle-03">
-              {project.designers.map((designer) => designer.name).join(' ')}
+              {designers.map((designer) => designer.name).join(' ')}
             </span>
           </div>
           <p className="text-body-space-01 lg:text-web-body-space-02 mt-[40px] max-lg:!font-[300]">
@@ -97,7 +74,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
             {project.teamName || '디자이너'}
           </h3>
           <div className="mt-[20px] grid grid-cols-2 gap-[10px] gap-y-[20px] md:grid-cols-4 lg:mt-[33px]">
-            {project.designers.map((designer) => (
+            {designers.map((designer) => (
               <Link
                 key={designer.id}
                 href={`/designer/${designer.id}`}
@@ -115,9 +92,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
                       <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
                         <div className="pb-[20px] pl-[32px] pr-[29px] pt-[24px]">
                           <div className="flex items-center justify-between">
-                            <span className="text-web-body-01">
-                              {designer.fields.split(',').join(' ')}
-                            </span>
+                            <span className="text-web-body-01">{designer.fields.join(' ')}</span>
                             <Icon name="arrow-right" className="size-[36px]" />
                           </div>
                         </div>
@@ -129,7 +104,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
                   </div>
                 </div>
                 <div className="mt-[12px] lg:hidden">
-                  <div className="text-body-03">{designer.fields.split(',').join(' ')}</div>
+                  <div className="text-body-03">{designer.fields.join(' ')}</div>
                   <div className="text-subtitle-03 mt-[4px]">{designer.name}</div>
                 </div>
               </Link>
@@ -138,16 +113,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
         </div>
 
         <div className="custom-container mb-[120px] lg:mb-[240px]">
-          <GuestBook
-            getMessages={async () => {
-              'use server'
-
-              const messages = await getMessages({ projectId: Number(id) })
-              return messages
-            }}
-            projectId={Number(id)}
-            type="B"
-          />
+          <GuestBook projectId={Number(id)} type="B" />
         </div>
       </main>
     </>

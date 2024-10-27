@@ -1,36 +1,23 @@
 'use client'
 
 import React, { useState, useMemo, useEffect, useRef } from 'react'
-import { addMessage } from '@/app/guest-book/actions'
+import { CommentType, addMessage, getMessages } from '@/app/guest-book/actions'
 import { cn } from '@/lib/utils'
 import { Select, SelectContent, SelectItem, SelectTrigger } from './ui/select'
 import Comment from './ui/comment'
-import { MessageWithDesigner } from '@/types'
+import { designers } from '@/constants/designers'
 
 const MESSAGES_PER_PAGE = 8
-interface Designer {
-  id: number
-  name: string
-}
 
 interface GuestBookProps {
-  getMessages: () => Promise<MessageWithDesigner[]>
-  designers?: Designer[]
   className?: HTMLElement['className']
+  classNumber?: string
   projectId?: number
-  designerId?: number
   type: 'A' | 'B' | 'Origin'
 }
 
-const GuestBook = ({
-  getMessages,
-  designers,
-  className,
-  designerId,
-  projectId,
-  type,
-}: GuestBookProps) => {
-  const [messages, setMessages] = useState<MessageWithDesigner[]>([])
+const GuestBook = ({ className, classNumber, projectId, type }: GuestBookProps) => {
+  const [messages, setMessages] = useState<CommentType[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [sort, setSort] = useState('All')
@@ -38,15 +25,27 @@ const GuestBook = ({
   const firstCommentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    getMessages()
-      .then(setMessages)
-      .finally(() => setIsLoading(false))
+    if (classNumber != null) {
+      getMessages({ classNumber })
+        .then(setMessages)
+        .finally(() => setIsLoading(false))
+    } else if (projectId != null) {
+      getMessages({ projectId })
+        .then(setMessages)
+        .finally(() => setIsLoading(false))
+    } else {
+      getMessages()
+        .then(setMessages)
+        .finally(() => setIsLoading(false))
+    }
   }, [])
 
   const sortedMessages = useMemo(() => {
-    return sort === 'All'
-      ? messages
-      : messages.filter((message) => (message.designer?.name || '모두에게') === sort)
+    if (sort === 'All') {
+      return messages
+    } else {
+      return messages.filter((message) => message.classNumber === sort)
+    }
   }, [messages, sort])
 
   const totalPages = Math.ceil(sortedMessages.length / MESSAGES_PER_PAGE)
@@ -76,27 +75,24 @@ const GuestBook = ({
   const handleSubmit = async ({
     senderName,
     newMessage,
-    designerId,
+    classNumber,
     projectId,
   }: {
     senderName: string
     newMessage: string
-    designerId?: number
+    classNumber?: string
     projectId?: number
   }) => {
     if (isSubmitting) return
     setIsSubmitting(true)
 
-    const tempMessage: MessageWithDesigner = {
+    const tempMessage = {
       id: Date.now(),
       content: newMessage,
       createdAt: new Date(),
       sender: senderName,
-      designerId: designerId || null,
+      classNumber: classNumber || null,
       projectId: projectId || null,
-      designer: designerId
-        ? { id: designerId, name: designers?.find((d) => d.id === designerId)?.name || '' }
-        : null,
     }
 
     setMessages((prev) => [tempMessage, ...prev])
@@ -105,20 +101,11 @@ const GuestBook = ({
       const createdMessage = await addMessage({
         senderName,
         message: newMessage,
-        designerId,
+        classNumber,
         projectId,
       })
 
-      setMessages((prev) =>
-        prev.map((msg) =>
-          msg.id === tempMessage.id
-            ? {
-                ...createdMessage,
-                designer: createdMessage.designer || tempMessage.designer,
-              }
-            : msg,
-        ),
-      )
+      setMessages((prev) => prev.map((msg) => (msg.id === tempMessage.id ? createdMessage : msg)))
     } catch (e) {
       console.error(e)
       setMessages((prev) => prev.filter((msg) => msg.id !== tempMessage.id))
@@ -145,8 +132,7 @@ const GuestBook = ({
       <GuestBookForm
         onSubmit={handleSubmit}
         projectId={projectId}
-        designerId={designerId}
-        designers={designers}
+        classNumber={classNumber}
         type={type}
       />
 
@@ -158,7 +144,6 @@ const GuestBook = ({
         <>
           <MessageList
             messages={currentMessages}
-            designers={designers}
             sort={sort}
             onSortChange={setSort}
             type={type}
@@ -181,45 +166,39 @@ interface GuestBookFormProps {
   onSubmit: (data: {
     senderName: string
     newMessage: string
-    designerId?: number
+    classNumber?: string
     projectId?: number
   }) => void
   projectId?: number
-  designerId?: number
-  designers?: Designer[]
+  classNumber?: string
   type: 'A' | 'B' | 'Origin'
 }
 
-const GuestBookForm = ({
-  onSubmit,
-  projectId,
-  designerId,
-  designers,
-  type,
-}: GuestBookFormProps) => {
+const GuestBookForm = ({ onSubmit, projectId, classNumber, type }: GuestBookFormProps) => {
   const [newMessage, setNewMessage] = useState('')
   const [senderName, setSenderName] = useState('')
-  const [receiver, setReceiver] = useState<Designer | null>(null)
+  const [selectedDesigner, setSelectedDesigner] = useState<(typeof designers)[number] | null>(null)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (senderName.trim().length === 0 || newMessage.trim().length === 0) return
-    if (projectId == null && designerId == null && receiver?.id == null) return
+    if (projectId == null && classNumber == null && selectedDesigner?.classNumber == null) return
 
     onSubmit({
       senderName,
       newMessage,
-      designerId: designerId || receiver?.id,
+      classNumber: classNumber || selectedDesigner?.classNumber,
       projectId,
     })
 
     setNewMessage('')
     setSenderName('')
-    setReceiver(null)
+    setSelectedDesigner(null)
   }
 
   const handleChangeSender = (value: string) => {
-    if (value.length <= 8) setSenderName(value)
+    if (value.length > 8) return
+    setSenderName(value)
   }
 
   return (
@@ -250,10 +229,10 @@ const GuestBookForm = ({
                 받는 사람
               </div>
               <Select
-                value={receiver?.name || ''}
+                value={selectedDesigner?.name || ''}
                 onValueChange={(value) => {
                   if (value) {
-                    setReceiver(JSON.parse(value))
+                    setSelectedDesigner(JSON.parse(value))
                   }
                 }}
               >
@@ -263,17 +242,11 @@ const GuestBookForm = ({
                     readOnly
                     className="text-body-03 lg:text-web-body-02 w-full cursor-pointer border border-primary-02/50 bg-primary-01 px-mobile py-[12px] outline-none focus:border-primary-02 lg:p-mobile"
                     placeholder="받는 사람을 선택해 주세요."
-                    value={receiver?.name || ''}
+                    value={selectedDesigner?.name || ''}
                   />
                 </SelectTrigger>
                 <SelectContent className="mt-[8px] h-[430px] overflow-auto border border-[#FEF5AD]/50 bg-primary-01 p-0 md:mt-[11px] lg:h-[392] lg:w-[384px]">
-                  <SelectItem
-                    value={JSON.stringify({ id: 0, name: '모두에게' })}
-                    className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
-                  >
-                    모두에게
-                  </SelectItem>
-                  {designers?.map((designer) => (
+                  {designers.map((designer) => (
                     <SelectItem
                       key={designer.id}
                       value={JSON.stringify(designer)}
@@ -346,22 +319,14 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
 )
 
 interface MessageListProps {
-  messages: MessageWithDesigner[]
-  designers?: { id: number; name: string }[]
+  messages: CommentType[]
   sort: string
   onSortChange: (value: string) => void
   type: 'A' | 'B' | 'Origin'
   firstCommentRef: React.RefObject<HTMLDivElement>
 }
 
-const MessageList = ({
-  messages,
-  designers,
-  sort,
-  onSortChange,
-  type,
-  firstCommentRef,
-}: MessageListProps) => {
+const MessageList = ({ messages, sort, onSortChange, type, firstCommentRef }: MessageListProps) => {
   return (
     <>
       {type === 'Origin' && (
@@ -369,7 +334,9 @@ const MessageList = ({
           <div className="flex justify-center md:justify-end">
             <SelectTrigger asChild>
               <button className="mt-[100px] flex items-center gap-[8px] border border-primary-02 bg-[#FEF5AD]/20 py-[12px] pl-[26px] pr-[19px] focus:outline-none lg:py-mobile">
-                <div className="text-body-03 lg:text-[20px]">{sort}</div>
+                <div className="text-body-03 lg:text-[20px]">
+                  {designers.find((designer) => designer.classNumber === sort)?.name || 'All'}
+                </div>
                 <ChevronDown />
               </button>
             </SelectTrigger>
@@ -381,16 +348,10 @@ const MessageList = ({
             >
               All
             </SelectItem>
-            <SelectItem
-              value="모두에게"
-              className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
-            >
-              모두에게
-            </SelectItem>
             {designers?.map((designer) => (
               <SelectItem
                 key={designer.id}
-                value={designer.name}
+                value={designer.classNumber}
                 className="text-body-02 lg:text-web-caption-01 cursor-pointer from-white/10 to-white/0 px-[10.5px] pb-[12.5px] pt-[18.5px] outline-none hover:bg-gradient-to-r lg:p-mobile lg:pb-[8px]"
               >
                 {designer.name}
@@ -399,21 +360,25 @@ const MessageList = ({
           </SelectContent>
         </Select>
       )}
-      <div
-        className={cn(
-          type === 'A' &&
-            'mt-[44px] lg:mt-[151px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
-          type === 'B' && 'mt-[64px] md:mt-[72px] lg:mt-[192px]',
-          type === 'Origin' &&
-            'mt-[40px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
-        )}
-      >
-        {messages.map((message, index) => (
-          <div key={message.id} ref={index === 0 ? firstCommentRef : null}>
-            <Comment type={type} message={message} />
-          </div>
-        ))}
-      </div>
+      {messages.length > 0 ? (
+        <div
+          className={cn(
+            type === 'A' &&
+              'mt-[44px] lg:mt-[151px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
+            type === 'B' && 'mt-[64px] md:mt-[72px] lg:mt-[192px]',
+            type === 'Origin' &&
+              'mt-[40px] grid grid-cols-1 md:grid-cols-2 gap-[16px] lg:grid-cols-4',
+          )}
+        >
+          {messages.map((message, index) => (
+            <div key={message.id} ref={index === 0 ? firstCommentRef : null}>
+              <Comment type={type} message={message} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <NoneMessage type="Origin" />
+      )}
     </>
   )
 }

@@ -2,48 +2,14 @@ import Image from 'next/image'
 import Background from './components/background'
 import Link from 'next/link'
 import GuestBook from '@/components/guest-book'
-import db from '@/lib/prisma/db'
-import { notFound } from 'next/navigation'
 import { getMessages } from '@/app/guest-book/actions'
+import { designers } from '@/constants/designers'
+import { getDesignerProjects, getProjectMembers } from '@/utils'
+import { notFound } from 'next/navigation'
 
-export const generateMetadata = async ({ params }: Props) => {
-  const { designer } = await getDesigner(Number(params.id))
+export const generateMetadata = ({ params }: Props) => {
+  const designer = designers[Number(params.id)]
   return { title: `SWU ID 2024 - ${designer.name}` }
-}
-
-export async function generateStaticParams() {
-  const designers = await db.designer.findMany({
-    select: { id: true },
-  })
-  return designers.map((designer) => ({
-    id: designer.id.toString(),
-  }))
-}
-
-async function getDesigner(id: number) {
-  const designer = await db.designer.findUnique({
-    where: {
-      id,
-    },
-    include: {
-      projects: {
-        select: {
-          id: true,
-          type: true,
-          name: true,
-          designers: {
-            select: {
-              id: true,
-              name: true,
-            },
-          },
-        },
-      },
-    },
-  })
-  if (!designer) notFound()
-
-  return { designer }
 }
 
 interface Props {
@@ -53,16 +19,15 @@ interface Props {
 }
 
 export default async function DesignerDetailPage({ params: { id } }: Props) {
-  const { designer } = await getDesigner(Number(id))
+  const designer = designers[Number(id)]
 
-  // Custom sorting function for ProjectType
-  const sortProjects = (a: any, b: any) => {
-    const order = { UX: 0, DF: 1, BX: 2 }
-    return order[a.type as keyof typeof order] - order[b.type as keyof typeof order]
+  if (!designer) {
+    notFound()
   }
 
-  // Sort the projects
-  const sortedProjects = [...designer.projects].sort(sortProjects)
+  const projects = getDesignerProjects(designer.classNumber)
+
+  const sortedProjects = [...projects].sort(sortProjects)
 
   return (
     <>
@@ -91,11 +56,11 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
                 </div>
 
                 <div className="text-subtitle-03 lg:text-web-headline-02 mt-[20px] lg:mt-[40px]">
-                  {designer.fields.split(',').join(' ')}
+                  {designer.fields.join(' ')}
                 </div>
               </div>
               <div className="text-body-01 lg:text-web-body-03 mt-[10px] md:mt-mobile lg:max-w-[820px]">
-                {designer.thought}
+                {designer.message}
               </div>
             </div>
             <div className="text-body-02 lg:text-web-body-03 mt-[35px] md:mt-[33px] lg:mt-[100px] lg:pb-[27px]">
@@ -124,42 +89,41 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
             참여 프로젝트
           </div>
           <div className="mt-[20px] flex gap-x-[7px] gap-y-[48px] max-md:grid max-md:grid-cols-2 md:mt-[30px] lg:mt-[48px]">
-            {sortedProjects.map((project) => (
-              <Link key={project.id} href={`/project/${project.id}`}>
-                <div className="group relative flex-1 overflow-hidden border border-primary-02/70 max-md:aspect-square md:size-[255px] lg:size-[450px]">
-                  <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
+            {sortedProjects.map((project) => {
+              const designers = getProjectMembers(project.id)
 
-                  <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
-                    <div className="flex h-full flex-col justify-between p-[32px]">
-                      <div className="text-web-headline-01">{project.type}</div>
-                      <div>
-                        <div className="text-web-subtitle-01">{project.name}</div>
-                        <div className="text-web-subtitle-03 mt-[5px]">
-                          {project.designers.map((designer) => designer.name).join(' ')}
+              return (
+                <Link key={project.id} href={`/project/${project.id}`}>
+                  <div className="group relative flex-1 overflow-hidden border border-primary-02/70 max-md:aspect-square md:size-[255px] lg:size-[450px]">
+                    <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
+
+                    <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
+                      <div className="flex h-full flex-col justify-between p-[32px]">
+                        <div className="text-web-headline-01">{project.type}</div>
+                        <div>
+                          <div className="text-web-subtitle-01">{project.name}</div>
+                          <div className="text-web-subtitle-03 mt-[5px]">
+                            {designers.map((designer) => designer.name).join(' ')}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="mt-[12px] lg:hidden">
-                  <div className="text-body-01">{project.type}</div>
-                  <div className="text-subtitle-01 mt-[4px]">{project.name}</div>
-                  <div className="text-body-02 mt-[5px]">
-                    {project.designers.map((designer) => designer.name).join(' ')}
+                  <div className="mt-[12px] lg:hidden">
+                    <div className="text-body-01">{project.type}</div>
+                    <div className="text-subtitle-01 mt-[4px]">{project.name}</div>
+                    <div className="text-body-02 mt-[5px]">
+                      {designers.map((designer) => designer.name).join(' ')}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              )
+            })}
           </div>
         </div>
 
         <GuestBook
-          getMessages={async () => {
-            'use server'
-
-            return await getMessages({ designerId: Number(id) })
-          }}
-          designerId={Number(id)}
+          classNumber={designer.classNumber}
           className="mb-[98px] md:mb-[74px] lg:mb-[121px]"
           type="A"
         />
@@ -168,4 +132,8 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
   )
 }
 
-export const dynamic = 'force-static'
+// Custom sorting function for ProjectType
+const sortProjects = (a: any, b: any) => {
+  const order = { UX: 0, DF: 1, BX: 2 }
+  return order[a.type as keyof typeof order] - order[b.type as keyof typeof order]
+}
