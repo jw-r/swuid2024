@@ -397,7 +397,7 @@ export const projects: Project[] = [
     teamName: '바톤땃쥐',
     thumbnail: '/projects/11/thumbnail.webp',
     banner: '/projects/11/banner.webp',
-    assets: [{ type: 'image', src: '/projects/11/main/2.png' }],
+    assets: [{ type: 'image', src: '/projects/11/main/2.jpg' }],
   },
 
   // DF
