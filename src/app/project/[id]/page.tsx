@@ -54,16 +54,8 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
               {designers.map((designer) => designer.name).join(' ')}
             </span>
           </div>
-          <p className="text-body-space-01 lg:text-web-body-space-02 mt-[40px] max-lg:!font-[300]">
-            채워지기 출판이나 폰트, 입숨을 로렘 입숨은 연출을 글로도 실제적인 타이포그래피, 표준
-            레이아웃 그래픽 그래픽 레이아웃 분야에서 들어가는 실제적인 실제적인 이용된다. 모형의
-            모형의 지칭하는 로렘 요소나 로렘 들어가는 입숨은 표준 모형의 디자인 결과물에 로렘 용도로
-            입숨을 텍스트로, 입숨은 부르며, 사용하는 표준 시각적 레이아웃 연출을 채우기 시각적 최종
-            로렘 차지하는 글로도 채우기 때 이런 채워지기 출판이나 폰트, 입숨을 로렘 입숨은 연출을
-            글로도 실제적인 타이포그래피, 표준 레이아웃 그래픽 그래픽 레이아웃 분야에서 들어가는
-            실제적인 실제적인 이용된다. 모형의 모형의 지칭하는 로렘 요소나 로렘 들어가는 입숨은 표준
-            모형의 디자인 결과물에 로렘 용도로 입숨을 텍스트로, 입숨은 부르며, 사용하는 표준이게
-            사백자
+          <p className="text-body-space-01 lg:text-web-body-space-02 mt-[40px] whitespace-pre-line max-lg:!font-[300]">
+            {project.description}
           </p>
           {project.type === 'UX' && (
             <div className="mt-[40px] flex justify-end">

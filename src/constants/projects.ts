@@ -4,6 +4,7 @@ type Project = {
   order?: number
   members: { name: string; classNumber: string }[]
   name: string
+  description?: string
   teamName: string | null
   thumbnail: string
   banner: string
@@ -27,6 +28,10 @@ export const projects: Project[] = [
       { name: '황예린', classNumber: '2021111456' },
     ],
     name: '소솜',
+    description: `바쁜 일상 속에서 우연한 경험을 통해 자신을 기록하고 주체적인 삶을 찾아가도록 돕는 서비스.
+    ‘소솜'은 자신을 돌아볼 여유가 없는 사람들에게 자신이 무엇을 좋아하고 어떤 사람인지 우연한 경험을 통해 기록하고 추억하며 자신의 이야기를 만들어 나아갈 수 있게 도와줍니다.
+    
+    Amid a busy life, 'Sosom' is a service that helps individuals discover themselves through serendipitous experiences, empowering them to create a life of their own. For those with little time for self-reflection, Sosom enables them to record, reminisce, and build their personal story by capturing moments that reveal what they truly enjoy and who they are.`,
     teamName: '2월의 춘',
     thumbnail: '/projects/1/thumbnail.webp',
     banner: '/projects/1/banner.webp',
@@ -62,6 +67,15 @@ export const projects: Project[] = [
       { name: '홍수정', classNumber: '2020111458' },
     ],
     name: '모멘타임(Momentime)',
+    description: `현재 내 행동에 대한 미래가 막연하게 느껴지시나요?
+    지금, '모멘타임(momentime)과 함께 시간여행을 떠나보세요!
+    흥미로운 여정을 통해 현재의 작은 행동이 앞으로 어떤 큰 변화를 만들어낼지 직접 확인할 수 있습니다.
+    더불어, [모멘텀]이라는 실천 가능한 행동 챌린지를 통해 일상 속에서 쉽게 더 나은 미래를 만들어갈 기회를 잡아보세요.
+    
+    Does the future feel uncertain due to your current actions?
+    Now, embark on a time travel journey with 'Momentime'!
+    Through an exciting journey, you can see firsthand how small actions today can lead to significant changes in the future.
+    Additionally, seize the opportunity to create a better future in your daily life through [Momentum], an actionable challenge that’s easy to implement.`,
     teamName: '공릉동특공대',
     thumbnail: '/projects/2/thumbnail.webp',
     banner: '/projects/2/banner.webp',
@@ -98,6 +112,9 @@ export const projects: Project[] = [
       { name: '천유정', classNumber: '2019111455' },
     ],
     name: 'set-up : 하루하루 해가 뜨고 질 때까지',
+    description: `set-up은 일과 휴식을 명확히 분리해 균형 잡힌 생활을 돕는 서비스입니다. 환경 단서를 통해 일의 끝과 휴식의 시작을 인식하게 하여, 일할 때는 집중하고 쉴 때는 온전히 휴식할 수 있도록 구분해줍니다. 마치 파자마로 갈아입고 차를 마시는 습관이 휴식의 시작을 알리는 신호가 되는 것처럼 말이죠. 이를 통해 일과 휴식이 조화롭게 연결된, 지속 가능한 갓생을 살 수 있도록 돕습니다.
+
+    Set-up is a service that helps you live a balanced life by clearly separating work and rest. It helps you quickly immerse yourself in work and rest through environmental cues.`,
     teamName: '달큰걸즈',
     thumbnail: '/projects/3/thumbnail.webp',
     banner: '/projects/3/banner.webp',
@@ -112,6 +129,15 @@ export const projects: Project[] = [
       { name: '이혜인', classNumber: '2020111449' },
     ],
     name: 'Très Bion!(트리비온) : 지속가능한 패션산업 활성화 서비스',
+    description: `지속가능한 패션은 우리의 미래를 위해 추구해야할 패션입니다.
+    작은 마을과 같은 Très Bion! 에서 교류하고, 경험하고, 참여하고 공유하며 다른 사용자들과 연결되어보세요!
+    작은소비 및 업사이클링 커스텀 실천을 통해 환경보호와 가치소비까지 연결되는 서비스입니다.
+    Très Bion은 지속가능한 패션을 기반으로한 브랜드, 커뮤니티 , DIY 제작 등의
+    경험을 제공하는 패션산업 활성화 서비스입니다.
+    
+    Sustainable fashion is the fashion we should pursue for our future.
+    Interact, experience, engage, share, and connect with other users at Très Bion!, such as a small town!
+    `,
     teamName: '듀얼크루',
     thumbnail: '/projects/4/thumbnail.webp',
     banner: '/projects/4/banner.webp',
@@ -141,6 +167,7 @@ export const projects: Project[] = [
       { name: '박은아', classNumber: '2020111435' },
     ],
     name: 'STOREET',
+    description: `사용자의 취향을 바탕으로 장소와 활동을 추천하여, 일상 속에서 새로운 경험을 발견하고 취향을 확장해 나갈 수 있도록 돕는 서비스입니다. 여러분이 방문한 장소와 그곳에서의 활동을 통해 자신만의 취향을 확장해보세요!`,
     teamName: '막둥이',
     thumbnail: '/projects/5/thumbnail.webp',
     banner: '/projects/5/banner.webp',
@@ -168,6 +195,7 @@ export const projects: Project[] = [
       { name: '조수빈', classNumber: '2020111455' },
     ],
     name: '커밋티',
+    description: `커밋티는 AI기반의 다자간 커뮤니케이션 서비스로 서로의 상황을 이해하고, 고려하며 대화 가능한 서비스입니다. 영상통화, 메신저 등 다양한 형식의 대화에서 동일한 하나의 생성형AI가 다수에게 도움이 될 수 있습니다. 나만을 위했던 생성형AI가 아닌, 이제는 동시에 실시간으로 우리 모두를 돕는 생성형AI를 사용해보세요. 회의는 간단하게, 합의는 수월하게, 관계는 돈독하게 다자간의 대화 속에서 좋은 경험을 만들어가요.`,
     teamName: '세컨아워',
     thumbnail: '/projects/6/thumbnail.webp',
     banner: '/projects/6/banner.webp',
@@ -209,6 +237,10 @@ export const projects: Project[] = [
       { name: '황자경', classNumber: '2020111460' },
     ],
     name: 'WILLO',
+    description: `WILLO는 일상 속에서 자연스럽게 관심을 갖게 되는 다양한 주제를 바탕으로, 
+    사용자가 손쉽게 참여할 수 있는 사회적 가치 활동 미션을 제안하는 서비스입니다. 
+    우리는 서비스를 통해 한 사람 한 사람의 작은 행동들이 모여 더 큰 사회적 변화를 이끌어낼 수 있도록 돕고자 합니다. 
+    WILLO와 함께라면 누구나 쉽게 일상 속에서 사회적 가치를 창출하고, 더 나은 세상을 만드는 데 도움이 될 수 있습니다.`,
     teamName: '쉼표',
     thumbnail: '/projects/7/thumbnail.webp',
     banner: '/projects/7/banner.webp',
@@ -225,6 +257,15 @@ export const projects: Project[] = [
       { name: '정예승', classNumber: '2020111526' },
     ],
     name: 'MOAA : 작은 행동이 큰 변화로 이어지는 순간',
+    description: `“과연 내가 하는 작은 실천들이 세상에 의미 있는 변화를
+    가져올까?”라는 의문 가져본 적 있지 않으신가요?
+    MOAA는 그 의문을 해소하려는 데서 출발했습니다.
+    
+    Make Our Action Arise
+    
+    사소하게 느껴지는 일상 속 작은 실천들을 모아,
+    개인이 실현하기 어려운 사회적 활동으로 전환시켜
+    세상을 긍정적으로 변화시키는 서비스입니다.`,
     teamName: '스물다섯 스물셋',
     thumbnail: '/projects/8/thumbnail.webp',
     banner: '/projects/8/banner.webp',
@@ -266,6 +307,9 @@ export const projects: Project[] = [
       { name: '이지은', classNumber: '2020111448' },
     ],
     name: 'LocalLink(로컬링크)',
+    description: `로컬링크는 현지인의 데이터와 시간을 바탕으로 한 소외 지역의 정보를
+    여행 코스로 제공하고, 방문객이 스스로에게 알맞은 코스를 소비함으로써 
+    소외된 지역의 활성화에 기여하는 서비스입니다.`,
     teamName: '은포',
     thumbnail: '/projects/9/thumbnail.webp',
     banner: '/projects/9/banner.webp',
@@ -302,6 +346,9 @@ export const projects: Project[] = [
       { name: '문가희', classNumber: '2020111431' },
     ],
     name: 'Perful',
+    description: `Your Perspective, Your Path to Fulfillment!
+
+    Perful은 사용자가 자기 자신을 더 깊이 이해하고, 이를 통해 자연스러운 성장을 경험하도록 돕는 서비스입니다. 계획을 세우고 목표를 달성하는 과정을 함께 반복하며, 사용자와 지속적인 성장 여정을 함께 해보세요.`,
     teamName: '이인삼각',
     thumbnail: '/projects/10/thumbnail.webp',
     banner: ``,
@@ -337,6 +384,10 @@ export const projects: Project[] = [
       { name: '장윤서', classNumber: '2021111447' },
     ],
     name: 'Relait(릴레잇)',
+    description: `우리는 다이어트, 운동, 공부 같은 목표를 자주 세우지만, 미루다 보면 시도조차 못 할 때가 많죠. 릴레잇은 이런 목표들을 혼자가 아닌 친구나 다른 사람들과 함께 릴레이 형식으로 실천할 수 있게 도와줍니다. 릴레잇과 함께 차근차근 목표를 달성해 보세요!
+
+    We often set goals like dieting, exercising, and studying, but end up procrastinating and never trying. Relait helps you achieve these goals in a relay format with friends or others. Let Relait help you reach your goals step by step!
+    `,
     teamName: '바톤땃쥐',
     thumbnail: '/projects/11/thumbnail.webp',
     banner: '/projects/11/banner.webp',
@@ -616,6 +667,11 @@ export const projects: Project[] = [
       { name: '허찬비', classNumber: '2019111457' },
     ],
     name: '유어예',
+    description: `유어예(游於藝)는 디지털 콘텐츠에 기반한 취미 활동을 경계하고
+    더 나은 여가를 원하는 현대인들을 위한 아트 플로우 빌리지입니다.
+    
+    모두에게 열린 공간인 유어예는
+    예측 불가능한 사회에서 벗어나 예술과 자연에 노니는 시간을 선사합니다.`,
     teamName: null,
     thumbnail: '/projects/38/thumbnail.webp',
     banner: '/projects/38/banner.webp',
@@ -630,6 +686,8 @@ export const projects: Project[] = [
       { name: '이지은', classNumber: '2020111447' },
     ],
     name: '희피당',
+    description: `빠르게 변화하는 시대 가운데 한국의 전통에도 많은 변화가 일어나고 있습니다. 따라서 K-Culture를 K-Postmodern Culture에 맞춰 재해석한 공간을 기획했습니다.
+    희피당에서 단조로움과 정형화에서 벗어나 과거와 현재가 공존하는 새로운 K-Culture를 만나보세요.`,
     teamName: null,
     thumbnail: '/projects/39/thumbnail.webp',
     banner: '/projects/39/banner.webp',
@@ -644,6 +702,13 @@ export const projects: Project[] = [
       { name: '정다은', classNumber: '2021111449' },
     ],
     name: '넷필리온',
+    description: `NETPILION은 콘텐츠를 통해 사람들을 연결하고, 영감을 불어넣는 넷플릭스만의 독창적인 공간입니다.
+    우리는 좋은 콘텐츠가 사람들에게 깊은 영향을 미친다고 믿으며, 다양한 문화적 경험을 제공하는 
+    넷플릭스 파빌리온을 구축했습니다.
+
+    NETPILION is Netflix's unique space to connect and inspire people through content.
+    We believe that good content deeply affects people, and we have built a
+    Netflix Pavilion that offers a variety of cultural experiences.`,
     teamName: null,
     thumbnail: '/projects/40/thumbnail.webp',
     banner: '/projects/40/banner.webp',
@@ -658,6 +723,11 @@ export const projects: Project[] = [
       { name: '오유진', classNumber: '2020111440' },
     ],
     name: 'GG 3.5',
+    description: `Green Gourmet 3.5는 ‘3.5%의 행동이 사회를 변화시킨다’는
+    법칙에서 비롯된 풀무원만의 비건 미식 공간입니다.
+    
+    단순한 식당을 넘어, 환경에 대한 책임감을 느끼고 지속가능한
+    선택을 일상 속에서 실천할 수 있도록 디자인되었습니다.`,
     teamName: null,
     thumbnail: '/projects/41/thumbnail.webp',
     banner: '/projects/41/banner.webp',
