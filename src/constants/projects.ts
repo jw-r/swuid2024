@@ -118,7 +118,13 @@ export const projects: Project[] = [
     teamName: '달큰걸즈',
     thumbnail: '/projects/3/thumbnail.webp',
     banner: '/projects/3/banner.webp',
-    assets: [],
+    assets: [
+      { type: 'image', src: '/projects/3/main/1.webp' },
+      { type: 'image', src: '/projects/3/main/3.webp' },
+      { type: 'image', src: '/projects/3/main/4.webp' },
+      { type: 'image', src: '/projects/3/main/5.webp' },
+      { type: 'image', src: '/projects/3/main/6.webp' },
+    ],
   },
   {
     id: 4,
@@ -400,6 +406,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '강지은', classNumber: '2020111419' }],
     name: 'Mugsip',
+    description: `공간이 부족한 작은 원룸에 커피 머신과 같은 가전을 들이기에는 부담스럽고, 기존에 판매되는 휴대용 커피머신들보다는 좀 더 '실내' '1인 가구' 키워드에 초점이 맞추어져 있기를 원하는 사람들을 위해 제작된, 한 모금의 작은 휴식을 제공하는 미니 커피 머신 Mugsip입니다`,
     teamName: null,
     thumbnail: '/projects/12/thumbnail.webp',
     banner: '/projects/12/banner.webp',
@@ -420,6 +427,17 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '고은지', classNumber: '2020111423' }],
     name: 'looffit',
+    description: `loopfit은 사용자가 시간 관리를 반복적으로 개선하며 점차 목표와
+    실제 시간을 맞춰가는 IOT 타이머입니다.
+    예상 시간과 실제 시간을 비교해 계획을 효율적으로 조정 할 수 있도
+    록 도와주며, 직관적인 사용 경험을 제공합니다. 반복되는 일상 속
+    loopfit과 함께 더 나은 일상의 균형을 찾아보세요.
+    
+    loopfit helps users iteratively improve their time management and gradually achieve their goals.
+    It is an IOT timer as opposed to real time.
+    You can adjust estimated and actual times to help you plan and respond.
+    Located on a rock, it provides a flat user environment. Repetitive daily stories
+    Find better symmetry in your daily life with loopfit.`,
     teamName: null,
     thumbnail: '/projects/14/thumbnail.webp',
     banner: '/projects/14/banner.webp',
@@ -430,6 +448,8 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '김소은', classNumber: '2019111419' }],
     name: 'FlexiLaser',
+    description: `FlexiLaser는 휴대성과 간편함을 극대화한 접이식 레이저 키보드로, 기존 레이저 키보드가 가진 불편함과 사용환경의 제약을 개선했습니다.  
+    언제 어디서나 자유롭게 사용할 수 있는 FlexiLaser로 효율적인 작업을 경험하세요.`,
     teamName: null,
     thumbnail: '/projects/15/thumbnail.webp',
     banner: '/projects/15/banner.webp',
@@ -440,6 +460,9 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '김소은', classNumber: '2020111505' }],
     name: 'steriC',
+    description: `스마트폰 청결: 새로운 위생 패러다임
+    
+    Today, many people recognize the importance of handwashing; however, ironically, after washing their hands, they often touch their smartphones, compromising their cleanliness once again. Inspired by this, I designed a solution based on the idea that we need to extend hygiene management to smartphones as well.`,
     teamName: null,
     thumbnail: '/projects/16/thumbnail.webp',
     banner: '/projects/16/banner.webp',
@@ -450,6 +473,9 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '김지현', classNumber: '2021111430' }],
     name: 'Luminergy',
+    description: `Luminergy는 무선으로 스마트 워치를 충전하며 착용할 수 있는 워치 보조배터리와 개폐식 자동 줄자 기능이 탑재된 핸드폰 보조배터리가 결합된 혁신적인 충전 키트입니다.
+
+    Luminergy is an innovative charging kit that combines a wearable smartwatch battery that wirelessly charges your smartwatch and a portable battery for cell phones with a retractable automatic tape measure function.`,
     teamName: null,
     thumbnail: '/projects/17/thumbnail.webp',
     banner: '/projects/17/banner.webp',
@@ -460,6 +486,9 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '문가희', classNumber: '2020111431' }],
     name: 'Capstick',
+    description: `매번 까먹게 되는 영양제를 제때 복용할 수 있도록 도와주는 맥세이프 영양제 리마인더
+
+MagSafe nutritional reminder that helps you take nutritional supplements on time that you always forget.`,
     teamName: null,
     thumbnail: ``,
     banner: ``,
@@ -470,6 +499,11 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '박수연', classNumber: '2020111434' }],
     name: 'FOR∙REST',
+    description: `수험생의 건강한 휴식을 위한, 스트레칭 타이머 시계입니다.
+    많은 공부량으로 장시간 학습을 하는 수험생들이 효율적으로 시간을 관리하고 건강한 습관을 형성할 수 있도록 도와줍니다.
+
+    This is a stretching timer clock designed for students to take healthy breaks.
+    It helps students who study for long hours due to a large amount of study manage their time efficiently and develop healthy habits.`,
     teamName: null,
     thumbnail: ``,
     banner: ``,
@@ -480,6 +514,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '박은아', classNumber: '2020111435' }],
     name: 'pot-pot',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/20/thumbnail.webp',
     banner: '/projects/20/banner.webp',
@@ -490,6 +525,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '박이은', classNumber: '2021120105' }],
     name: 'FlipGrip',
+    description: ``,
     teamName: null,
     thumbnail: ``,
     banner: ``,
@@ -500,6 +536,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '반유진', classNumber: '2021111438' }],
     name: 'Redpoint',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/22/thumbnail.webp',
     banner: '/projects/22/banner.webp',
@@ -510,6 +547,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '우규리', classNumber: '2020111442' }],
     name: 'Boundi',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/23/thumbnail.webp',
     banner: '/projects/23/banner.webp',
@@ -520,6 +558,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '유주하', classNumber: '2021111443' }],
     name: 'GRIP',
+    description: ``,
     teamName: null,
     thumbnail: ``,
     banner: ``,
@@ -530,6 +569,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '윤주하', classNumber: '2018111439' }],
     name: 'toaxter',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/25/thumbnail.webp',
     banner: '/projects/25/banner.webp',
@@ -540,6 +580,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '이가연', classNumber: '2020111444' }],
     name: 'BUFFLER',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/26/thumbnail.webp',
     banner: '/projects/26/banner.webp',
@@ -550,6 +591,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '이서영', classNumber: '2020111445' }],
     name: 'FLIP BOTTLE',
+    description: ``,
     teamName: null,
     thumbnail: ``,
     banner: '/projects/27/banner.webp',
@@ -560,6 +602,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '이소연', classNumber: '2020111446' }],
     name: 'FLOMO',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/28/thumbnail.webp',
     banner: '/projects/28/banner.webp',
@@ -570,6 +613,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '이지은', classNumber: '2020111448' }],
     name: '팁탭',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/29/thumbnail.webp',
     banner: '/projects/29/banner.webp',
@@ -580,6 +624,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '장윤서', classNumber: '2021111447' }],
     name: 'WipClean',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/30/thumbnail.webp',
     banner: '/projects/30/banner.webp',
@@ -590,6 +635,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '전예지', classNumber: '2021120106' }],
     name: 'PUSHME',
+    description: ``,
     teamName: null,
     thumbnail: ``,
     banner: ``,
@@ -600,6 +646,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '정가윤', classNumber: '2021111448' }],
     name: 'TICK+OCK',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/32/thumbnail.webp',
     banner: '/projects/32/banner.webp',
@@ -610,6 +657,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '조수민', classNumber: '2020111454' }],
     name: 'Unplug',
+    description: ``,
     teamName: null,
     thumbnail: ``,
     banner: ``,
@@ -620,6 +668,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '조수빈', classNumber: '2020111455' }],
     name: 'OPEN UP',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/34/thumbnail.webp',
     banner: '/projects/34/banner.webp',
@@ -630,6 +679,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '지예성', classNumber: '2021111450' }],
     name: 'PUMPPY',
+    description: ``,
     teamName: null,
     thumbnail: '/projects/35/thumbnail.webp',
     banner: ``,
@@ -640,6 +690,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '홍수정', classNumber: '2020111458' }],
     name: 'Fruzii',
+    description: ``,
     teamName: null,
     thumbnail: ``,
     banner: '/projects/36/banner.webp',
@@ -650,6 +701,7 @@ export const projects: Project[] = [
     type: 'DF' as const,
     members: [{ name: '황예린', classNumber: '2021111456' }],
     name: 'PhoRella',
+    description: ``,
     teamName: null,
     thumbnail: ``,
     banner: ``,
