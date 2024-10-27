@@ -10,12 +10,19 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <ImageWithFallback src="/assets/designer/mobile_bg_02.webp" fill alt="" className="top-0" />
+        <ImageWithFallback
+          src="/assets/designer/mobile_bg_02.webp"
+          width={375}
+          height={590}
+          alt=""
+          className="top-0 w-full"
+        />
         <ImageWithFallback
           src="/assets/designer/mobile_bg_03.webp"
-          fill
+          width={375}
+          height={590}
           alt=""
-          className="bottom-0"
+          className="bottom-0 w-full"
         />
         <ImageWithFallback
           src="/assets/designer/bgObj_02.webp"
@@ -31,12 +38,19 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <ImageWithFallback src="/assets/designer/tablet_bg_02.webp" fill alt="" className="top-0" />
+        <ImageWithFallback
+          src="/assets/designer/tablet_bg_02.webp"
+          width={830}
+          height={1306}
+          alt=""
+          className="top-0 w-full"
+        />
         <ImageWithFallback
           src="/assets/designer/tablet_bg_03.webp"
-          fill
+          width={830}
+          height={1306}
           alt=""
-          className="bottom-0"
+          className="bottom-0 w-full"
         />
         <ImageWithFallback
           src="/assets/designer/bgObj_02.webp"
@@ -51,7 +65,13 @@ const Background = () => {
 
   return (
     <div className="absolute inset-0 z-[-1]">
-      <ImageWithFallback src="/assets/designer/bg_03.webp" fill alt="" className="bottom-0" />
+      <ImageWithFallback
+        src="/assets/designer/bg_03.webp"
+        width={1920}
+        height={5813}
+        alt=""
+        className="bottom-0 w-full"
+      />
       <ImageWithFallback
         src="/assets/designer/bgObj_03.webp"
         width={1186}

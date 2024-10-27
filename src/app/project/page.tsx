@@ -56,25 +56,30 @@ export default function Project({ searchParams }: { searchParams: { type: 'UX' |
           {projects
             .filter((project) => project.type === type)
             .map((project, idx) => {
-              const hasContent = idx % 2 === 0
+              const hasThumbnail = !!project.thumbnail
               const designers = getProjectMembers(project.id)
 
               return (
                 <Link
                   key={project.id}
                   href={`/project/${project.id}`}
-                  className={cn(!hasContent && 'pointer-events-none')}
+                  className={cn(!hasThumbnail && 'pointer-events-none')}
                 >
                   <div className="group relative aspect-square flex-1 overflow-hidden border border-primary-02/70">
                     {/* no content */}
-                    {hasContent ? (
-                      <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
+                    {hasThumbnail ? (
+                      <Image
+                        src={project.thumbnail}
+                        alt=""
+                        fill
+                        className="lg:group-hover:blur-sm"
+                      />
                     ) : (
                       <div className="flex size-full items-center justify-center bg-primary-01">
                         <div className="relative size-[72px] md:size-[96px] lg:size-[230px]">
                           <Image src="/no-content.png" alt="" fill className="object-cover" />
                         </div>
-                        <div className="text-body-02 md:text-subtitle-02 lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 opacity-70 md:bottom-[16px] lg:bottom-[56px]">
+                        <div className="text-body-02 md:text-subtitle-02 !md:font-[400] lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 opacity-70 md:bottom-[16px] lg:bottom-[56px]">
                           준비 중⋯
                         </div>
                       </div>

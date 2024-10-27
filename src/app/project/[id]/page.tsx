@@ -5,10 +5,12 @@ import Image from 'next/image'
 import GuestBook from '@/components/guest-book'
 import { projects } from '@/constants/projects'
 import { getProjectMembers } from '@/utils'
+import { notFound } from 'next/navigation'
+import VimeoPlayer from '@/components/vimeo-player'
 
 export const generateMetadata = ({ params }: Props) => {
   const project = projects[Number(params.id)]
-  return { title: `SWU ID 2024 - ${project.name}` }
+  return { title: `SWU ID 2024 - ${project?.name}` }
 }
 
 interface Props {
@@ -18,7 +20,12 @@ interface Props {
 }
 
 export default async function ProjectDetailPage({ params: { id } }: Props) {
-  const project = projects[Number(id)]
+  const project = projects.find((project) => project.id === Number(id))
+
+  if (!project) {
+    notFound()
+  }
+
   const designers = getProjectMembers(Number(id))
 
   return (
@@ -26,7 +33,13 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
       <Background />
       <main>
         <div>
-          <div className="aspect-[375/200] w-full bg-gray-50 md:aspect-[830/300] lg:aspect-[192/60]" />
+          {!!project.banner ? (
+            <div className="relative aspect-[375/200] w-full md:aspect-[830/300] lg:aspect-[192/60]">
+              <Image src={project.banner} alt="" fill />
+            </div>
+          ) : (
+            <div className="aspect-[375/200] w-full bg-gray-50 md:aspect-[830/300] lg:aspect-[192/60]" />
+          )}
         </div>
 
         <div className="custom-container mb-[96px] mt-[40px] lg:mb-[160px] lg:mt-[80px]">
@@ -67,7 +80,40 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
           )}
         </div>
 
-        <div className="h-[800px] w-full bg-gray-50" />
+        {project.assets.length > 0 ? (
+          <div className="w-full">
+            {project.assets.map((asset) => {
+              if (asset.type === 'image') {
+                return (
+                  <Image
+                    key={asset.src}
+                    src={asset.src}
+                    alt=""
+                    width={1920}
+                    height={0}
+                    className="w-full"
+                  />
+                )
+              }
+              if (asset.type === 'vimeo') {
+                return <VimeoPlayer key={asset.link} link={asset.link} />
+              }
+              if (asset.type === 'video') {
+                return (
+                  <video
+                    key={asset.src}
+                    src={asset.src}
+                    className="aspect-[16/9] w-full"
+                    controls
+                  />
+                )
+              }
+              return null
+            })}
+          </div>
+        ) : (
+          <div className="h-[800px] w-full bg-gray-50" />
+        )}
 
         <div className="custom-container mb-[120px] lg:mb-[240px]">
           <h3 className="text-headline-01 lg:text-web-headline-01 mt-[120px] text-primary-02 lg:mt-[200px]">
