@@ -91,11 +91,28 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
           <div className="mt-[20px] flex gap-x-[7px] gap-y-[48px] max-md:grid max-md:grid-cols-2 md:mt-[30px] lg:mt-[48px]">
             {sortedProjects.map((project) => {
               const designers = getProjectMembers(project.id)
+              const hasThumbnail = !!project.thumbnail
 
               return (
                 <Link key={project.id} href={`/project/${project.id}`}>
                   <div className="group relative flex-1 overflow-hidden border border-primary-02/70 max-md:aspect-square md:size-[255px] lg:size-[450px]">
-                    <Image src="/dummy.png" alt="" fill className="lg:group-hover:blur-sm" />
+                    {hasThumbnail ? (
+                      <Image
+                        src={project.thumbnail}
+                        alt=""
+                        fill
+                        className="lg:group-hover:blur-sm"
+                      />
+                    ) : (
+                      <div className="flex size-full items-center justify-center bg-primary-01">
+                        <div className="relative size-[72px] md:size-[96px] lg:size-[230px]">
+                          <Image src="/no-content.png" alt="" fill className="object-cover" />
+                        </div>
+                        <div className="text-body-02 md:text-subtitle-02 !md:font-[400] lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 opacity-70 md:bottom-[16px] lg:bottom-[56px]">
+                          준비 중⋯
+                        </div>
+                      </div>
+                    )}
 
                     <div className="absolute size-full opacity-0 transition-opacity duration-300 hover:bg-black/60 hover:opacity-100 max-lg:hidden">
                       <div className="flex h-full flex-col justify-between p-[32px]">

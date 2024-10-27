@@ -55,7 +55,7 @@ export default function Project({ searchParams }: { searchParams: { type: 'UX' |
         <div className="mt-[24px] grid grid-cols-2 gap-x-[7px] gap-y-[48px] md:grid-cols-3 md:gap-x-[15px] lg:mt-[48px] lg:gap-[20px]">
           {projects
             .filter((project) => project.type === type)
-            .map((project, idx) => {
+            .map((project) => {
               const hasThumbnail = !!project.thumbnail
               const designers = getProjectMembers(project.id)
 
