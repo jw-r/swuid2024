@@ -34,7 +34,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
       <main>
         <div>
           {!!project.banner ? (
-            <div className="relative aspect-[375/200] w-full md:aspect-[830/300] lg:aspect-[192/60]">
+            <div className="relative aspect-[192/60]">
               <Image src={project.banner} alt="" fill />
             </div>
           ) : (
