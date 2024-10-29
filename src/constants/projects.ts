@@ -696,7 +696,9 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '박은아', classNumber: '2020111435' }],
     name: 'pot-pot',
-    description: ``,
+    description: `요리할 때 계량하는 동안 음식이 태운 경험이 있으신가요? 특히 레시피를 보며 계량하다 보면 시간이 오래 걸리고, 때로는 음식이 쉽게 타버리기도 합니다. 이제 조미료 계량을 한번의 한번의 터치로 간편하게 해결해보세요.
+
+    원하는 양을 미리 설정해두고 버튼만 누르면, 빠르고 정확하게 조미료를 넣을 수 있습니다. 간단한 조작으로 요리의 시간을 줄이고, 더 맛있는 결과를 만들어낼 수 있는 pot-pot과 함께 요리를 즐겁게 즐겨보세요!`,
     teamName: null,
     thumbnail: '/projects/df/20/thumbnail.webp',
     banner: '/projects/df/20/banner.webp',
@@ -716,7 +718,11 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '박이은', classNumber: '2021120105' }],
     name: 'FlipGrip',
-    description: ``,
+    description: `FlipGrip은 폴더블폰 사용자에게 안정적인 그립 기능과 충전 편의성을 
+    제공하는 무선 충전 보조배터리입니다. 슬라이드 그립 구조로, 
+    폴더블 기기와 자연스럽게 호환되며, 안정적 고정력과 무선 충전 기능을 결합해 보다 새로워진 충전 방식의 경험을 제안합니다.
+    
+    FlipGrip is a wireless charging power bank designed for foldable smartphones, offering a stable grip and charging convenience. Its new slide grip design ensures secure attachment and seamless wireless charging for an effortless user experience.`,
     teamName: null,
     thumbnail: '/projects/df/21/thumbnail.webp',
     banner: '/projects/df/21/banner.webp',
@@ -741,7 +747,11 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '반유진', classNumber: '2021111438' }],
     name: 'Redpoint',
-    description: ``,
+    description: `클라이밍에서 레드포인트는 클라이밍 방식 중 하나로, 루트를 충분히 연습한 후 확보물을 사용하여 추락 없이 정상에 도달하는 방식입니다.
+    제품 Redpoint는 이러한 클라이밍 방식을 돕고자 등반 중 기록 위주로 돕는 웨어러블 디바이스입니다.
+    
+    In climbing, Redpoint is a way of climbing that involves practicing the route well and then using your holds to reach the top without falling.
+    The product Redpoint is a wearable device that aims to help you keep track of your climbing.`,
     teamName: null,
     thumbnail: '/projects/df/22/thumbnail.webp',
     banner: '/projects/df/22/banner.webp',
@@ -777,7 +787,9 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '유주하', classNumber: '2021111443' }],
     name: 'GRIP',
-    description: ``,
+    description: `grip은 아이들이 페트병 뚜껑을 더 이상 힘겹게 열지 않도록 설계된 제품입니다.
+
+    뚜껑을 열기 어려워하는 아이들에게 grip은 간편하면서도 안전하게 페트병을 열 수 있는 새로운 방법을 제공합니다.`,
     teamName: null,
     thumbnail: '/projects/df/24/thumbnail.webp',
     banner: '/projects/df/24/banner.webp',
@@ -798,7 +810,8 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '윤주하', classNumber: '2018111439' }],
     name: 'toaxter',
-    description: ``,
+    description: `과도한 도파민, 절제되지 않는 스마트폰 사용이 고민이신가요?
+    그렇다면 지금 ‘toaxt!’ 하세요`,
     teamName: null,
     thumbnail: '/projects/df/25/thumbnail.webp',
     banner: '/projects/df/25/banner.webp',
@@ -821,7 +834,9 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '이가연', classNumber: '2020111444' }],
     name: 'BUFFLER',
-    description: ``,
+    description: `‘BUPPLER[부풀러]’는 언제 어디서나 쉽게 부풀려 다리 사이에 끼워 사용할 수 있는 간이 테이블입니다. 스윙벨브 기술로 별도의 수동 바람 주입 없이 자동으로 부풀며, 키링 형식으로 접어 휴대하기에도 편리합니다.
+
+    The "BUPPLER" is a portable table that can be easily inflated and placed between your legs for use anytime, anywhere. With Swing Valve technology, it automatically inflates without the need for manual air input, and its keyring-style folding design makes it convenient to carry.`,
     teamName: null,
     thumbnail: '/projects/df/26/thumbnail.webp',
     banner: '/projects/df/26/banner.webp',
@@ -847,7 +862,8 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '이서영', classNumber: '2020111445' }],
     name: 'FLIP BOTTLE',
-    description: ``,
+    description: `스마트폰 거치가 가능한 물병, FLIP BOTTLE
+헬스장에서 많은 사용자들이 운동 중 스마트폰을 활용하지만 운동하며 휴대폰을 둘 적절한 장소는 제한적입니다. Flip Bottle은 이러한 문제를 해결하기 위해 물병에 스마트폰 거치 기능을 결합한 제품입니다. 별도의 추가 장비를 챙기지 않아도  물병 자체로 휴대폰을 안정적으로 거치할 수 있어, 운동 중에도 편리한 스마트폰 사용과 보관이 가능합니다.`,
     teamName: null,
     thumbnail: '/projects/df/27/thumbnail.webp',
     banner: '/projects/df/27/banner.webp',
