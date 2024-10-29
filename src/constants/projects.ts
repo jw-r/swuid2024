@@ -785,14 +785,38 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     thumbnail: '/projects/df/23/thumbnail.webp',
     banner: '/projects/df/23/banner.webp',
     assets: [
-      { type: 'image', src: '/projects/df/23/main/1.webp' },
-      { type: 'image', src: '/projects/df/23/main/2.webp' },
-      { type: 'image', src: '/projects/df/23/main/3.webp' },
-      { type: 'image', src: '/projects/df/23/main/4.webp' },
-      { type: 'image', src: '/projects/df/23/main/5.webp' },
-      { type: 'image', src: '/projects/df/23/main/6.webp' },
-      { type: 'image', src: '/projects/df/23/main/7.webp' },
-      { type: 'image', src: '/projects/df/23/main/8.webp' },
+      {
+        type: 'image',
+        src: 'https://velog.velcdn.com/images/rjw0907/post/0d2307d0-d7f2-4406-872f-326fc76cc0ad/image.png',
+      },
+      {
+        type: 'image',
+        src: 'https://velog.velcdn.com/images/rjw0907/post/49b22f0f-d11e-4558-a6cc-8e67421ee54b/image.png',
+      },
+      {
+        type: 'image',
+        src: 'https://velog.velcdn.com/images/rjw0907/post/f71693aa-212c-4dd3-8a77-0cc314a971d3/image.gif',
+      },
+      {
+        type: 'image',
+        src: 'https://velog.velcdn.com/images/rjw0907/post/ddbd740e-eb00-4404-8957-b5e071cbce0c/image.png',
+      },
+      {
+        type: 'image',
+        src: 'https://velog.velcdn.com/images/rjw0907/post/a5959520-c9d0-4a4f-bdef-4cda936e17a4/image.png',
+      },
+      {
+        type: 'image',
+        src: 'https://velog.velcdn.com/images/rjw0907/post/42c6aabd-68de-48c3-9c44-7d5e2a232857/image.png',
+      },
+      {
+        type: 'image',
+        src: 'https://velog.velcdn.com/images/rjw0907/post/6e9db787-86b8-4e7d-b0a3-35c939aaf58b/image.png',
+      },
+      {
+        type: 'image',
+        src: 'https://velog.velcdn.com/images/rjw0907/post/ccdf8624-c9aa-46b2-9d71-d705a9ccc850/image.png',
+      },
     ],
   },
   {
