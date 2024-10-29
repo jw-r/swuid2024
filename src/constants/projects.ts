@@ -1066,8 +1066,8 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     모두에게 열린 공간인 유어예는
     예측 불가능한 사회에서 벗어나 예술과 자연에 노니는 시간을 선사합니다.`,
     teamName: null,
-    thumbnail: '/projects/38/thumbnail.webp',
-    banner: '/projects/38/banner.webp',
+    thumbnail: '/projects/bx/38/thumbnail.webp',
+    banner: '/projects/bx/38/banner.webp',
     assets: [
       { type: 'image', src: '/projects/bx/38/main/1.webp' },
       { type: 'vimeo', link: 'https://vimeo.com/1023286045' },
@@ -1107,8 +1107,8 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     description: `빠르게 변화하는 시대 가운데 한국의 전통에도 많은 변화가 일어나고 있습니다. 따라서 K-Culture를 K-Postmodern Culture에 맞춰 재해석한 공간을 기획했습니다.
     희피당에서 단조로움과 정형화에서 벗어나 과거와 현재가 공존하는 새로운 K-Culture를 만나보세요.`,
     teamName: null,
-    thumbnail: '/projects/39/thumbnail.webp',
-    banner: '/projects/39/banner.webp',
+    thumbnail: '/projects/bx/39/thumbnail.webp',
+    banner: '/projects/bx/39/banner.webp',
     assets: [
       { type: 'vimeo', link: 'https://vimeo.com/1022723339' },
       { type: 'image', src: '/projects/bx/39/main/1.webp' },
@@ -1145,8 +1145,8 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     We believe that good content deeply affects people, and we have built a
     Netflix Pavilion that offers a variety of cultural experiences.`,
     teamName: null,
-    thumbnail: '/projects/40/thumbnail.webp',
-    banner: '/projects/40/banner.webp',
+    thumbnail: '/projects/bx/40/thumbnail.webp',
+    banner: '/projects/bx/40/banner.webp',
     assets: [
       { type: 'vimeo', link: 'https://vimeo.com/1023216406' },
       { type: 'image', src: '/projects/bx/40/main/1.webp' },
@@ -1181,8 +1181,8 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     단순한 식당을 넘어, 환경에 대한 책임감을 느끼고 지속가능한
     선택을 일상 속에서 실천할 수 있도록 디자인되었습니다.`,
     teamName: null,
-    thumbnail: '/projects/41/thumbnail.webp',
-    banner: '/projects/41/banner.webp',
+    thumbnail: '/projects/bx/41/thumbnail.webp',
+    banner: '/projects/bx/41/banner.webp',
     assets: [
       { type: 'image', src: '/projects/bx/41/main/1.webp' },
       { type: 'image', src: '/projects/bx/41/main/2.webp' },
