@@ -4,7 +4,7 @@ type Project = {
   order?: number
   members: { name: string; classNumber: string }[]
   name: string
-  description?: string
+  description: string
   teamName: string | null
   thumbnail: string
   banner: string
@@ -511,6 +511,7 @@ export const projects: Project[] = [
     teamName: null,
     thumbnail: '/projects/df/13/thumbnail.webp',
     banner: '/projects/df/13/banner.webp',
+    description: ``,
     assets: [
       { type: 'image', src: '/projects/df/13/main/1.webp' },
       { type: 'image', src: '/projects/df/13/main/3.webp' },
@@ -782,6 +783,11 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
       { type: 'image', src: '/projects/df/23/main/1.webp' },
       { type: 'image', src: '/projects/df/23/main/2.webp' },
       { type: 'image', src: '/projects/df/23/main/3.webp' },
+      { type: 'image', src: '/projects/df/23/main/4.webp' },
+      { type: 'image', src: '/projects/df/23/main/5.webp' },
+      { type: 'image', src: '/projects/df/23/main/6.webp' },
+      { type: 'image', src: '/projects/df/23/main/7.webp' },
+      { type: 'image', src: '/projects/df/23/main/8.webp' },
     ],
   },
   {
@@ -886,7 +892,9 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '이소연', classNumber: '2020111446' }],
     name: 'FLOMO',
-    description: ``,
+    description: `‘FLOMO’ 네임택을 통해 여분의 가방을 캐리어에 편리하게 고정하고
+
+    , 자신의 수화물을 빠르게 발견해보세요.Use the 'FLOMO' name tag to conveniently secure extra bags to your suitcase and quickly identify your luggage.`,
     teamName: null,
     thumbnail: '/projects/df/28/thumbnail.webp',
     banner: '/projects/df/28/banner.webp',
@@ -908,7 +916,7 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '이지은', classNumber: '2020111448' }],
     name: '팁탭',
-    description: ``,
+    description: `가이드 막대가 있어 보지 않아도 바를 수 있는 립스틱  막대를 통해  사용자의 입술 모양에 맞춰 라인을 잡고,한손으로 립스틱을 바를 수 있게 디자인한 립스틱입니다`,
     teamName: null,
     thumbnail: '/projects/df/29/thumbnail.webp',
     banner: '/projects/df/29/banner.webp',
@@ -926,7 +934,10 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '장윤서', classNumber: '2021111447' }],
     name: 'WipClean',
-    description: ``,
+    description: `하루만 지나도 쌓이는 먼지로 더러워진 탁상거울,
+    살면서 한 번쯤 마주한 적 있지 않으신가요?
+    
+    ‘Wip Clean’은 탁상거울에 스퀴즈를 결합하여, 필요할 때 그 자리에서 언제나 쉽고 간편하게 깨끗한 탁상거울로 유지할 수 있게 도움을 줍니다.`,
     teamName: null,
     thumbnail: '/projects/df/30/thumbnail.webp',
     banner: '/projects/df/30/banner.webp',
@@ -942,7 +953,11 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '전예지', classNumber: '2021120106' }],
     name: 'PUSHME',
-    description: ``,
+    description: `‘PUSHME’는 매일같이 비행하는 승무원을 위해 설계된 캐리어입니다. 승무원들에게 파우치는 기내에서 다양한 업무를 신속하게 처리하는 데 필수적인 도구입니다. 하지만 일반적인 캐리어는 파우치를 꺼낼 때 지퍼를 열어야 하는 번거로움이 있습니다. ‘PUSHME’는 이러한 불편을 줄이기 위해, 캐리어를 열지 않고도 상단부에서 파우치를 쉽게 꺼낼 수 있는 디자인을 적용했습니다. 
+
+
+    “PUSHME” is a carrier designed specifically for flight attendants who work daily on flights. For them, pouches are essential tools to handle various tasks efficiently on board. However, with conventional carriers, there is the inconvenience of unzipping every time they need to access these pouches. To reduce this hassle, PUSHME features a design that allows easy access to pouches from the top without needing to open the main carrier.
+    `,
     teamName: null,
     thumbnail: '/projects/df/31/thumbnail.webp',
     banner: '/projects/df/31/banner.webp',
@@ -964,7 +979,10 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '정가윤', classNumber: '2021111448' }],
     name: 'TICK+OCK',
-    description: ``,
+    description: `TICK+OCK은 하루종일 컨텐츠와 함께하는 사람들이 번거롭지 않게 태블릿 PC 케이스와 거치대를 결합 및 분리할 수 있는 제품입니다.
+
+    TICK+OCK is a product that allows people who spend all day with content to combine and separate tablet PC cases and holders without hassle.
+    `,
     teamName: null,
     thumbnail: '/projects/df/32/thumbnail.webp',
     banner: '/projects/df/32/banner.webp',
@@ -985,7 +1003,11 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '조수민', classNumber: '2020111454' }],
     name: 'Unplug',
-    description: ``,
+    description: `‘Unplug’는 모바일과 블루투스 시스템을 통해 스마트폰 사용 시간을 기록하고 시각적 피드백을 제공합니다. 
+    이를 통해 점진적으로 스마트폰 사용을 줄이고, 집중력 향상과 정신적 휴식을 지원하여 일상에서 디지털 디톡스를 실천하도록 돕는 제품입니다.
+    
+    ‘Unplug’ records smartphone usage time through a Bluetooth system and provides visual feedback to encourage users to gradually reduce their phone usage. 
+    This supports concentration and mental relaxation, helping users practice digital detox in daily life.`,
     teamName: null,
     thumbnail: '/projects/df/33/thumbnail.webp',
     banner: '/projects/df/33/banner.webp',
@@ -1005,7 +1027,9 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '조수빈', classNumber: '2020111455' }],
     name: 'OPEN UP',
-    description: ``,
+    description: `나의 소중한 반려동물과의 편안한 여행을 위한 확장형 반려동물 케이지 
+
+    반려동물 이동장(Cage)은 단순히 이동에만 사용하는 것이 아닌 안식처로써 꼭 필요한 공간으로 나의 반려동물과 여행을 시작하는 순간부터 목적지까지의 모든 과정에 안전하고 편안한 환경을 만들어 가기 위해 제작되었습니다. 나의 반려동물과 좋은 추억을 경험해보세요.`,
     teamName: null,
     thumbnail: '/projects/df/34/thumbnail.webp',
     banner: '/projects/df/34/banner.webp',
@@ -1025,7 +1049,7 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '지예성', classNumber: '2021111450' }],
     name: 'PUMPPY',
-    description: ``,
+    description: `반려가족과 가족이 되는 '펫펨족'이 증가하며 반려동물 동반 입장 가능 구역이 확장 되는 사실에 초점을 두고 아이디어를 도출 했습니다. "PUMPPY"는 우리가 작은 친구들과 함께 여행을 가거나 외출을 할 때 꼭 필요한 물과 식량을 해결해 줄 수 있는 휴대용 물통 디자인 입니다. 현재 시중에 있는 제품의 원리가 아닌 새로운 원리와 사용성 개발에 초점을 두고 제작된 아이디어 제품 입니다. `,
     teamName: null,
     thumbnail: '/projects/df/35/thumbnail.webp',
     banner: '/projects/df/35/banner.webp',
@@ -1040,7 +1064,19 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '홍수정', classNumber: '2020111458' }],
     name: 'Fruzii',
-    description: ``,
+    description: `“ 살면서 호신용품 쓸 일은 일어나지 말아야지!
+    그래도 혹-시 모르니까 가지고 다녀야 하는김에 예쁘면 좀좋아? ”
+    
+    위급상황에서의 빠르고 직관적인 사용이 불편한 점을 개선하고
+    ‘참’의 기능을 하는 아이템 ‘트렌드: 키링’에 따라
+    전혀 새로운 방식의 호신용 스프레이 [Fruzii]를 제안합니다.
+    
+    “During life, I hope I never have to use self-defense items!
+    But just in case, wouldn’t it be nice if they were pretty too?”
+    
+    To improve the convenience of quick and intuitive use in emergencies,
+    we present a completely new type of self-defense spray [Fruzii],
+    inspired by the ‘trend: keyring’ concept, which serves as a functional accessory.`,
     teamName: null,
     thumbnail: '/projects/df/36/thumbnail.webp',
     banner: '/projects/df/36/banner.webp',
