@@ -423,7 +423,7 @@ export const projects: Project[] = [
     Perful은 사용자가 자기 자신을 더 깊이 이해하고, 이를 통해 자연스러운 성장을 경험하도록 돕는 서비스입니다. 계획을 세우고 목표를 달성하는 과정을 함께 반복하며, 사용자와 지속적인 성장 여정을 함께 해보세요.`,
     teamName: '이인삼각',
     thumbnail: '/projects/ux/10/thumbnail.webp',
-    banner: ``,
+    banner: '/projects/ux/10/banner.webp',
     assets: [
       { type: 'image', src: '/projects/ux/10/main/1.webp' },
       { type: 'image', src: '/projects/ux/10/main/3.webp' },

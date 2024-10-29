@@ -70,13 +70,7 @@ export default function Project({ searchParams }: { searchParams: { type: 'UX' |
                 <div className="group relative aspect-square flex-1 overflow-hidden border border-primary-02/70">
                   {/* no content */}
                   {hasThumbnail ? (
-                    <Image
-                      src={project.thumbnail}
-                      alt=""
-                      fill
-                      className="lg:group-hover:blur-sm"
-                      unoptimized
-                    />
+                    <Image src={project.thumbnail} alt="" fill className="lg:group-hover:blur-sm" />
                   ) : (
                     <div className="flex size-full items-center justify-center bg-primary-01">
                       <div className="relative size-[72px] md:size-[96px] lg:size-[230px]">
