@@ -9,7 +9,7 @@ import { notFound } from 'next/navigation'
 import VimeoPlayer from '@/components/vimeo-player'
 
 export const generateMetadata = ({ params }: Props) => {
-  const project = projects.slice(1)[Number(params.id)]
+  const project = projects.slice(1).find((project) => project.id === Number(params.id))
   return { title: `SWU ID 2024 - ${project?.name}` }
 }
 
