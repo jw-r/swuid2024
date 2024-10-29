@@ -518,6 +518,7 @@ export const projects: Project[] = [
     해보는 경험을 유도함으로서 자율성을 기를 수 있도록 돕습니다.`,
     assets: [
       { type: 'image', src: '/projects/df/13/main/1.webp' },
+      { type: 'image', src: '/projects/df/13/main/2.webp' },
       { type: 'image', src: '/projects/df/13/main/3.webp' },
       { type: 'image', src: '/projects/df/13/main/4.webp' },
       { type: 'image', src: '/projects/df/13/main/5.webp' },
