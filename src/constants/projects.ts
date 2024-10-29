@@ -677,8 +677,8 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     This is a stretching timer clock designed for students to take healthy breaks.
     It helps students who study for long hours due to a large amount of study manage their time efficiently and develop healthy habits.`,
     teamName: null,
-    thumbnail: ``,
-    banner: ``,
+    thumbnail: '/projects/df/19/thumbnail.webp',
+    banner: '/projects/df/19/banner.webp',
     assets: [
       { type: 'image', src: '/projects/df/19/main/1.webp' },
       { type: 'image', src: '/projects/df/19/main/2.webp' },
