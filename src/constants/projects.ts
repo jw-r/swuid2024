@@ -82,7 +82,7 @@ export const projects: Project[] = [
     Now, embark on a time travel journey with 'Momentime'!
     Through an exciting journey, you can see firsthand how small actions today can lead to significant changes in the future.
     Additionally, seize the opportunity to create a better future in your daily life through [Momentum], an actionable challenge that’s easy to implement.`,
-    teamName: '공릉동특공대',
+    teamName: '공릉동 특공대',
     thumbnail: '/projects/ux/2/thumbnail.webp',
     banner: '/projects/ux/2/banner.webp',
     assets: [
@@ -792,7 +792,6 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
       { type: 'image', src: '/projects/df/23/main/6.webp' },
       { type: 'image', src: '/projects/df/23/main/7.webp' },
       { type: 'image', src: '/projects/df/23/main/8.webp' },
-      { type: 'image', src: '/projects/df/23/main/9.webp' },
     ],
   },
   {
