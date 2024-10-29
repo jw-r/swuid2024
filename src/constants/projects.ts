@@ -772,7 +772,9 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '우규리', classNumber: '2020111442' }],
     name: 'Boundi',
-    description: ``,
+    description: `Boundi는 많은 짐을 안전하게 담을 수 있는 자전거 바구니입니다.
+    사용자의 필요에 따라 바구니를 잡아 당겨 간편하게 크기를 늘릴 수 있고 또, 벨트를 통해 바구니 안에 든 짐을 고정해 사용자가 안전하게 자전거를 탈 수 있도록 도와줍니다.
+    이제 Boundi와 함께 자전거를 더 편하고, 안전하게 타세요!`,
     teamName: null,
     thumbnail: '/projects/df/23/thumbnail.webp',
     banner: '/projects/df/23/banner.webp',
@@ -816,8 +818,8 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     thumbnail: '/projects/df/25/thumbnail.webp',
     banner: '/projects/df/25/banner.webp',
     assets: [
-      { type: 'image', src: '/projects/df/25/main/2.webp' },
       { type: 'image', src: '/projects/df/25/main/1.webp' },
+      { type: 'image', src: '/projects/df/25/main/2.webp' },
       { type: 'image', src: '/projects/df/25/main/3.webp' },
       { type: 'image', src: '/projects/df/25/main/4.webp' },
       { type: 'image', src: '/projects/df/25/main/5.webp' },
