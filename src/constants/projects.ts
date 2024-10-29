@@ -792,6 +792,7 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
       { type: 'image', src: '/projects/df/23/main/6.webp' },
       { type: 'image', src: '/projects/df/23/main/7.webp' },
       { type: 'image', src: '/projects/df/23/main/8.webp' },
+      { type: 'image', src: '/projects/df/23/main/9.webp' },
     ],
   },
   {
@@ -896,9 +897,9 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '이소연', classNumber: '2020111446' }],
     name: 'FLOMO',
-    description: `‘FLOMO’ 네임택을 통해 여분의 가방을 캐리어에 편리하게 고정하고
+    description: `‘FLOMO’ 네임택을 통해 여분의 가방을 캐리어에 편리하게 고정하고, 자신의 수화물을 빠르게 발견해보세요.
 
-    , 자신의 수화물을 빠르게 발견해보세요.Use the 'FLOMO' name tag to conveniently secure extra bags to your suitcase and quickly identify your luggage.`,
+    Use the 'FLOMO' name tag to conveniently secure extra bags to your suitcase and quickly identify your luggage.`,
     teamName: null,
     thumbnail: '/projects/df/28/thumbnail.webp',
     banner: '/projects/df/28/banner.webp',
@@ -920,7 +921,7 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     type: 'DF' as const,
     members: [{ name: '이지은', classNumber: '2020111448' }],
     name: '팁탭',
-    description: `가이드 막대가 있어 보지 않아도 바를 수 있는 립스틱  막대를 통해  사용자의 입술 모양에 맞춰 라인을 잡고,한손으로 립스틱을 바를 수 있게 디자인한 립스틱입니다`,
+    description: `가이드 막대가 있어 보지 않아도 바를 수 있는 립스틱 막대를 통해 사용자의 입술 모양에 맞춰 라인을 잡고,한손으로 립스틱을 바를 수 있게 디자인한 립스틱입니다.`,
     teamName: null,
     thumbnail: '/projects/df/29/thumbnail.webp',
     banner: '/projects/df/29/banner.webp',
