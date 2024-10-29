@@ -511,7 +511,11 @@ export const projects: Project[] = [
     teamName: null,
     thumbnail: '/projects/df/13/thumbnail.webp',
     banner: '/projects/df/13/banner.webp',
-    description: ``,
+    description: `부모와 아이가 함께 시간대 별 할 일을 계획하고, 설정한 시간에 
+    따라 활동을 수행하며 시각적으로 성취감을 경험할 수 있는
+    IoT 타이머 입니다.
+    아이에게 시간 관리의 중요성을 가르치며, 스스로 시간을 분배
+    해보는 경험을 유도함으로서 자율성을 기를 수 있도록 돕습니다.`,
     assets: [
       { type: 'image', src: '/projects/df/13/main/1.webp' },
       { type: 'image', src: '/projects/df/13/main/3.webp' },
@@ -781,7 +785,7 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     banner: '/projects/df/23/banner.webp',
     assets: [
       { type: 'image', src: '/projects/df/23/main/1.webp' },
-      { type: 'image', src: '/projects/df/23/main/2.webp' },
+      { type: 'image', src: '/public/projects/df/23/main/2.webp' },
       { type: 'image', src: '/projects/df/23/main/3.webp' },
       { type: 'image', src: '/projects/df/23/main/4.webp' },
       { type: 'image', src: '/projects/df/23/main/5.webp' },
@@ -964,9 +968,9 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
     assets: [
       { type: 'vimeo', link: 'https://vimeo.com/1024150450?share=copy' },
       { type: 'image', src: '/projects/df/31/main/1.webp' },
-      { type: 'image', src: '/projects/df/31/main/2.webp' },
+      { type: 'image', src: '/projects/df/31/main/2.gif' },
       { type: 'image', src: '/projects/df/31/main/3.webp' },
-      { type: 'image', src: '/projects/df/31/main/4.webp' },
+      { type: 'image', src: '/projects/df/31/main/4.gif' },
       { type: 'image', src: '/projects/df/31/main/5.webp' },
       { type: 'image', src: '/projects/df/31/main/6.webp' },
       { type: 'image', src: '/projects/df/31/main/7.webp' },
