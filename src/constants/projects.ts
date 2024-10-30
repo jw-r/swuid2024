@@ -477,7 +477,8 @@ export const projects: Project[] = [
 
     We often set goals like dieting, exercising, and studying, but end up procrastinating and never trying. Relait helps you achieve these goals in a relay format with friends or others. Let Relait help you reach your goals step by step!
     `,
-    prototypeUrl: '',
+    prototypeUrl:
+      'https://www.figma.com/proto/V1TW355iinAahwSrTf29e1/프로토타입-링크용?page-id=0%3A1&node-id=8-2&node-type=canvas&viewport=606%2C646%2C0.74&t=JNE9kddPUf5k95cS-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=8%3A2',
     teamName: '바톤땃쥐',
     thumbnail: '/projects/ux/11/thumbnail.webp',
     banner: '/projects/ux/11/banner.webp',
