@@ -394,7 +394,8 @@ export const projects: Project[] = [
     description: `로컬링크는 현지인의 데이터와 시간을 바탕으로 한 소외 지역의 정보를
     여행 코스로 제공하고, 방문객이 스스로에게 알맞은 코스를 소비함으로써 
     소외된 지역의 활성화에 기여하는 서비스입니다.`,
-    prototypeUrl: '',
+    prototypeUrl:
+      'https://cloud.protopie.io/p/c167fabdc95f35146e96a8ad?ui=true&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23F5F5F5&bgImage=undefined&playSpeed=1',
     teamName: '은포',
     thumbnail: '/projects/ux/9/thumbnail.webp',
     banner: '/projects/ux/9/banner.webp',
@@ -436,7 +437,7 @@ export const projects: Project[] = [
 
     Perful은 사용자가 자기 자신을 더 깊이 이해하고, 이를 통해 자연스러운 성장을 경험하도록 돕는 서비스입니다. 계획을 세우고 목표를 달성하는 과정을 함께 반복하며, 사용자와 지속적인 성장 여정을 함께 해보세요.`,
     prototypeUrl:
-      'https://www.figma.com/proto/V1TW355iinAahwSrTf29e1/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85-%EB%A7%81%ED%81%AC%EC%9A%A9?page-id=0%3A1&node-id=43-6024&node-type=canvas&viewport=606%2C646%2C0.74&t=JNE9kddPUf5k95cS-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=8%3A2',
+      'https://www.figma.com/proto/fCxmuw0WXjOGLPTDQtkpXu/다끝났어-이제?page-id=0%3A1&node-id=419-4508&node-type=frame&viewport=-2779%2C-5615%2C0.55&t=GOlRzRDCTWkI5bLa-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=419%3A4508&show-proto-sidebar=1',
     teamName: '이인삼각',
     thumbnail: '/projects/ux/10/thumbnail.webp',
     banner: '/projects/ux/10/banner.webp',
@@ -476,6 +477,7 @@ export const projects: Project[] = [
 
     We often set goals like dieting, exercising, and studying, but end up procrastinating and never trying. Relait helps you achieve these goals in a relay format with friends or others. Let Relait help you reach your goals step by step!
     `,
+    prototypeUrl: '',
     teamName: '바톤땃쥐',
     thumbnail: '/projects/ux/11/thumbnail.webp',
     banner: '/projects/ux/11/banner.webp',
