@@ -2,6 +2,7 @@ type Project = {
   id: number
   type: 'UX' | 'DF' | 'BX'
   order?: number
+  prototypeUrl?: string
   members: { name: string; classNumber: string }[]
   name: string
   description: string
@@ -32,6 +33,8 @@ export const projects: Project[] = [
     ‘소솜'은 자신을 돌아볼 여유가 없는 사람들에게 자신이 무엇을 좋아하고 어떤 사람인지 우연한 경험을 통해 기록하고 추억하며 자신의 이야기를 만들어 나아갈 수 있게 도와줍니다.
     
     Amid a busy life, 'Sosom' is a service that helps individuals discover themselves through serendipitous experiences, empowering them to create a life of their own. For those with little time for self-reflection, Sosom enables them to record, reminisce, and build their personal story by capturing moments that reveal what they truly enjoy and who they are.`,
+    prototypeUrl:
+      'https://www.figma.com/proto/TOc4OtHmmpoeLBoyGngjGz/UX%EB%94%94%ED%94%84_2%ED%95%99%EA%B8%B0?page-id=1785%3A9162&node-id=1873-34153&node-type=canvas&viewport=894%2C799%2C0.03&t=bQ2nvFm4Xc38a2oQ-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1873%3A34153&show-proto-sidebar=1',
     teamName: '2월의 춘',
     thumbnail: '/projects/ux/1/thumbnail.webp',
     banner: '/projects/ux/1/banner.webp',
@@ -82,6 +85,8 @@ export const projects: Project[] = [
     Now, embark on a time travel journey with 'Momentime'!
     Through an exciting journey, you can see firsthand how small actions today can lead to significant changes in the future.
     Additionally, seize the opportunity to create a better future in your daily life through [Momentum], an actionable challenge that’s easy to implement.`,
+    prototypeUrl:
+      'https://cloud.protopie.io/p/396612efeff9e9a771ef9b76?ui=true&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23F5F5F5&bgImage=undefined&playSpeed=1',
     teamName: '공릉동 특공대',
     thumbnail: '/projects/ux/2/thumbnail.webp',
     banner: '/projects/ux/2/banner.webp',
@@ -134,6 +139,7 @@ export const projects: Project[] = [
     description: `set-up은 일과 휴식을 명확히 분리해 균형 잡힌 생활을 돕는 서비스입니다. 환경 단서를 통해 일의 끝과 휴식의 시작을 인식하게 하여, 일할 때는 집중하고 쉴 때는 온전히 휴식할 수 있도록 구분해줍니다. 마치 파자마로 갈아입고 차를 마시는 습관이 휴식의 시작을 알리는 신호가 되는 것처럼 말이죠. 이를 통해 일과 휴식이 조화롭게 연결된, 지속 가능한 갓생을 살 수 있도록 돕습니다.
 
     Set-up is a service that helps you live a balanced life by clearly separating work and rest. It helps you quickly immerse yourself in work and rest through environmental cues.`,
+    prototypeUrl: 'https://cloud.protopie.io/p/2c6ed3a9c92b4eea6aa54c6a',
     teamName: '달큰걸즈',
     thumbnail: '/projects/ux/3/thumbnail.webp',
     banner: '/projects/ux/3/banner.webp',
@@ -182,6 +188,8 @@ export const projects: Project[] = [
     Sustainable fashion is the fashion we should pursue for our future.
     Interact, experience, engage, share, and connect with other users at Très Bion!, such as a small town!
     `,
+    prototypeUrl:
+      'https://www.figma.com/proto/vCXOcxUjBCN2ZCWyNRcJyX/DuelCrew?page-id=809%3A2642&node-id=1302-6101&node-type=frame&viewport=1105%2C-216%2C0.2&t=qsAwgirij06Njgzw-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1302%3A6101&show-proto-sidebar=1',
     teamName: '듀얼크루',
     thumbnail: '/projects/ux/4/thumbnail.webp',
     banner: '/projects/ux/4/banner.webp',
@@ -218,6 +226,8 @@ export const projects: Project[] = [
     ],
     name: 'STOREET',
     description: `사용자의 취향을 바탕으로 장소와 활동을 추천하여, 일상 속에서 새로운 경험을 발견하고 취향을 확장해 나갈 수 있도록 돕는 서비스입니다. 여러분이 방문한 장소와 그곳에서의 활동을 통해 자신만의 취향을 확장해보세요!`,
+    prototypeUrl:
+      'https://cloud.protopie.io/p/5bcff3256345f92ad52aacf1?ui=true&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23F5F5F5&bgImage=undefined&playSpeed=1',
     teamName: '막둥이',
     thumbnail: '/projects/ux/5/thumbnail.webp',
     banner: '/projects/ux/5/banner.webp',
@@ -249,6 +259,7 @@ export const projects: Project[] = [
     ],
     name: '커밋티',
     description: `커밋티는 AI기반의 다자간 커뮤니케이션 서비스로 서로의 상황을 이해하고, 고려하며 대화 가능한 서비스입니다. 영상통화, 메신저 등 다양한 형식의 대화에서 동일한 하나의 생성형AI가 다수에게 도움이 될 수 있습니다. 나만을 위했던 생성형AI가 아닌, 이제는 동시에 실시간으로 우리 모두를 돕는 생성형AI를 사용해보세요. 회의는 간단하게, 합의는 수월하게, 관계는 돈독하게 다자간의 대화 속에서 좋은 경험을 만들어가요.`,
+    prototypeUrl: 'https://cloud.protopie.io/p/183694aa2119847d680bc55d',
     teamName: '세컨아워',
     thumbnail: '/projects/ux/6/thumbnail.webp',
     banner: '/projects/ux/6/banner.webp',
@@ -295,6 +306,7 @@ export const projects: Project[] = [
     사용자가 손쉽게 참여할 수 있는 사회적 가치 활동 미션을 제안하는 서비스입니다. 
     우리는 서비스를 통해 한 사람 한 사람의 작은 행동들이 모여 더 큰 사회적 변화를 이끌어낼 수 있도록 돕고자 합니다. 
     WILLO와 함께라면 누구나 쉽게 일상 속에서 사회적 가치를 창출하고, 더 나은 세상을 만드는 데 도움이 될 수 있습니다.`,
+    prototypeUrl: 'https://cloud.protopie.io/p/2f80c97557832db8de207188',
     teamName: '쉼표',
     thumbnail: '/projects/ux/7/thumbnail.webp',
     banner: '/projects/ux/7/banner.webp',
@@ -335,6 +347,7 @@ export const projects: Project[] = [
     사소하게 느껴지는 일상 속 작은 실천들을 모아,
     개인이 실현하기 어려운 사회적 활동으로 전환시켜
     세상을 긍정적으로 변화시키는 서비스입니다.`,
+    prototypeUrl: 'https://cloud.protopie.io/p/dcbcf768b65e7d8c17de1416',
     teamName: '스물다섯 스물셋',
     thumbnail: '/projects/ux/8/thumbnail.webp',
     banner: '/projects/ux/8/banner.webp',
@@ -381,6 +394,7 @@ export const projects: Project[] = [
     description: `로컬링크는 현지인의 데이터와 시간을 바탕으로 한 소외 지역의 정보를
     여행 코스로 제공하고, 방문객이 스스로에게 알맞은 코스를 소비함으로써 
     소외된 지역의 활성화에 기여하는 서비스입니다.`,
+    prototypeUrl: '',
     teamName: '은포',
     thumbnail: '/projects/ux/9/thumbnail.webp',
     banner: '/projects/ux/9/banner.webp',
@@ -421,6 +435,8 @@ export const projects: Project[] = [
     description: `Your Perspective, Your Path to Fulfillment!
 
     Perful은 사용자가 자기 자신을 더 깊이 이해하고, 이를 통해 자연스러운 성장을 경험하도록 돕는 서비스입니다. 계획을 세우고 목표를 달성하는 과정을 함께 반복하며, 사용자와 지속적인 성장 여정을 함께 해보세요.`,
+    prototypeUrl:
+      'https://www.figma.com/proto/V1TW355iinAahwSrTf29e1/%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85-%EB%A7%81%ED%81%AC%EC%9A%A9?page-id=0%3A1&node-id=43-6024&node-type=canvas&viewport=606%2C646%2C0.74&t=JNE9kddPUf5k95cS-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=8%3A2',
     teamName: '이인삼각',
     thumbnail: '/projects/ux/10/thumbnail.webp',
     banner: '/projects/ux/10/banner.webp',
@@ -1219,7 +1235,7 @@ MagSafe nutritional reminder that helps you take nutritional supplements on time
       { name: '박인애', classNumber: '2020111436' },
       { name: '정다은', classNumber: '2021111449' },
     ],
-    name: '넷필리온',
+    name: 'NETPILION',
     description: `NETPILION은 콘텐츠를 통해 사람들을 연결하고, 영감을 불어넣는 넷플릭스만의 독창적인 공간입니다.
     우리는 좋은 콘텐츠가 사람들에게 깊은 영향을 미친다고 믿으며, 다양한 문화적 경험을 제공하는 
     넷플릭스 파빌리온을 구축했습니다.

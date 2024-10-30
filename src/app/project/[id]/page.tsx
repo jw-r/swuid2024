@@ -57,17 +57,17 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
           <p className="text-body-space-01 lg:text-web-body-space-02 mt-[40px] whitespace-pre-line max-lg:!font-[300]">
             {project.description}
           </p>
-          {project.type === 'UX' && (
+          {project.type === 'UX' && project.prototypeUrl && (
             <div className="mt-[40px] flex justify-end">
-              <a
-                href=""
+              <Link
+                href={project.prototypeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex w-fit cursor-pointer items-center gap-[8px] border border-primary-02/50 bg-primary-02/20 px-mobile py-[12px] transition-all hover:border-primary-02 hover:shadow-hovering_btn lg:py-[14.5px] lg:pl-[36px] lg:pr-[32px]"
               >
                 <span className="lg:text-web-body-03 text-body-03">서비스 사용해보기</span>
                 <Icon name="arrow-right" className="lg:size-[20px]" />
-              </a>
+              </Link>
             </div>
           )}
         </div>
