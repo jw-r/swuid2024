@@ -1,6 +1,6 @@
 'use client'
 
-import ImageWithFallback from '@/components/image-with-fallback'
+import FallbackImage from '@/components/fallback-image'
 import { useMediaQuery } from '@/hooks/use-media-query'
 
 const Background = () => {
@@ -10,22 +10,25 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/designer/mobile_bg_02.webp"
+          fallbackSrc="/assets/designer/mobile_bg_02.png"
           width={375}
           height={590}
           alt=""
           className="top-0 w-full"
         />
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/designer/mobile_bg_03.webp"
+          fallbackSrc="/assets/designer/mobile_bg_03.png"
           width={375}
           height={590}
           alt=""
           className="bottom-0 w-full"
         />
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/designer/bgObj_02.webp"
+          fallbackSrc="/assets/designer/bgObj_02.png"
           width={237.7}
           height={310}
           alt=""
@@ -38,22 +41,25 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/designer/tablet_bg_02.webp"
+          fallbackSrc="/assets/designer/tablet_bg_02.png"
           width={830}
           height={1306}
           alt=""
           className="top-0 w-full"
         />
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/designer/tablet_bg_03.webp"
+          fallbackSrc="/assets/designer/tablet_bg_03.png"
           width={830}
           height={1306}
           alt=""
           className="bottom-0 w-full"
         />
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/designer/bgObj_02.webp"
+          fallbackSrc="/assets/designer/bgObj_02.png"
           width={389}
           height={509}
           alt=""
@@ -65,15 +71,17 @@ const Background = () => {
 
   return (
     <div className="absolute inset-0 z-[-1]">
-      <ImageWithFallback
+      <FallbackImage
         src="/assets/designer/bg_03.webp"
+        fallbackSrc="/assets/designer/bg_03.png"
         width={1920}
         height={5813}
         alt=""
         className="bottom-0 w-full"
       />
-      <ImageWithFallback
+      <FallbackImage
         src="/assets/designer/bgObj_03.webp"
+        fallbackSrc="/assets/designer/bgObj_03.png"
         width={1186}
         height={1618}
         alt=""

@@ -1,6 +1,6 @@
 'use client'
 
-import ImageWithFallback from '@/components/image-with-fallback'
+import FallbackImage from '@/components/fallback-image'
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { useEffect, useState } from 'react'
 
@@ -37,14 +37,16 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]" style={backgroundStyle}>
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/guest/mobile_bg_04.webp"
+          fallbackSrc="/assets/guest/mobile_bg_04.png"
           fill
           alt=""
           className="top-0 object-cover"
         />
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/guest/mobile_Obj_04.webp"
+          fallbackSrc="/assets/guest/mobile_Obj_04.png"
           fill
           alt=""
           className="top-0 object-cover"
@@ -56,14 +58,16 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]" style={backgroundStyle}>
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/guest/tablet_bg_04.webp"
+          fallbackSrc="/assets/guest/tablet_bg_04.png"
           fill
           alt=""
           className="top-0 object-cover"
         />
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/guest/tablet_obj_04.webp"
+          fallbackSrc="/assets/guest/tablet_obj_04.png"
           fill
           alt=""
           className="bottom-0 left-0 object-cover"
@@ -74,9 +78,16 @@ const Background = () => {
 
   return (
     <div className="absolute inset-0 z-[-1]" style={backgroundStyle}>
-      <ImageWithFallback src="/assets/guest/bg_04.webp" fill alt="" className="object-cover" />
-      <ImageWithFallback
+      <FallbackImage
+        src="/assets/guest/bg_04.webp"
+        fallbackSrc="/assets/guest/bg_04.png"
+        fill
+        alt=""
+        className="object-cover"
+      />
+      <FallbackImage
         src="/assets/guest/bgObj_gestbook_01.webp"
+        fallbackSrc="/assets/guest/bgObj_gestbook_01.png"
         width={1922}
         height={2280}
         alt=""

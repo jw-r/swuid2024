@@ -1,6 +1,6 @@
 'use client'
 
-import ImageWithFallback from '@/components/image-with-fallback'
+import FallbackImage from '@/components/fallback-image'
 import { useMediaQuery } from '@/hooks/use-media-query'
 
 const Background = () => {
@@ -10,8 +10,9 @@ const Background = () => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/detail/mobile_bg_01.webp"
+          fallbackSrc="/assets/detail/mobile_bg_01.png"
           width={375}
           height={1135}
           alt=""
@@ -24,8 +25,9 @@ const Background = () => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <ImageWithFallback
+        <FallbackImage
           src="/assets/detail/tablet_bg_01.webp"
+          fallbackSrc="/assets/detail/tablet_bg_01.png"
           width={830}
           height={1306}
           alt=""
@@ -37,8 +39,9 @@ const Background = () => {
 
   return (
     <div className="absolute inset-0 z-[-1]">
-      <ImageWithFallback
+      <FallbackImage
         src="/assets/detail/bgObj_04.webp"
+        fallbackSrc="/assets/detail/bgObj_04.png"
         width={1920}
         height={3022}
         alt=""

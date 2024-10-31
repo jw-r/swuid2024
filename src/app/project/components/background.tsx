@@ -1,6 +1,6 @@
 'use client'
 
-import ImageWithFallback from '@/components/image-with-fallback'
+import FallbackImage from '@/components/fallback-image'
 import { useMediaQuery } from '@/hooks/use-media-query'
 
 interface Props {
@@ -21,7 +21,12 @@ const Background = ({ type }: Props) => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <ImageWithFallback src="/assets/project/mobile_bg_01.webp" fill alt="" />
+        <FallbackImage
+          src="/assets/project/mobile_bg_01.webp"
+          fallbackSrc="/assets/project/mobile_bg_01.png"
+          fill
+          alt=""
+        />
         {array.map((_, index) => (
           <div
             key={index}
@@ -31,15 +36,17 @@ const Background = ({ type }: Props) => {
               height: '437px',
             }}
           >
-            <ImageWithFallback
+            <FallbackImage
               src="/assets/project/mobile_bgObj_01_right.webp"
+              fallbackSrc="/assets/project/mobile_bgObj_01_right.png"
               width={152}
               height={156}
               alt=""
               className="absolute right-0 top-0"
             />
-            <ImageWithFallback
+            <FallbackImage
               src="/assets/project/mobile_bgObj_01_bottom.webp"
+              fallbackSrc="/assets/project/mobile_bgObj_01_bottom.png"
               width={140.8}
               height={180}
               alt=""
@@ -54,17 +61,24 @@ const Background = ({ type }: Props) => {
   if (isTablet) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <ImageWithFallback src="/assets/project/tablet_bg_01.webp" fill alt="" />
+        <FallbackImage
+          src="/assets/project/tablet_bg_01.webp"
+          fallbackSrc="/assets/project/tablet_bg_01.png"
+          fill
+          alt=""
+        />
         <div className="absolute top-0 h-[850px] w-full">
-          <ImageWithFallback
+          <FallbackImage
             src="/assets/project/mobile_bgObj_01_right.webp"
+            fallbackSrc="/assets/project/mobile_bgObj_01_right.png"
             width={151.3}
             height={155.1}
             alt=""
             className="absolute right-0 top-[175px]"
           />
-          <ImageWithFallback
+          <FallbackImage
             src="/assets/project/tablet_bgObj_01_bottom.webp"
+            fallbackSrc="/assets/project/tablet_bgObj_01_bottom.png"
             width={189.3}
             height={242}
             alt=""
@@ -77,23 +91,32 @@ const Background = ({ type }: Props) => {
 
   return (
     <div className="absolute inset-0 z-[-1] overflow-hidden">
-      <ImageWithFallback src="/assets/project/bg_02.webp" width={1920} height={3250} alt="" />
-      <ImageWithFallback
+      <FallbackImage
+        src="/assets/project/bg_02.webp"
+        fallbackSrc="/assets/project/bg_02.png"
+        width={1920}
+        height={3250}
+        alt=""
+      />
+      <FallbackImage
         src="/assets/project/desktop-top-right.webp"
+        fallbackSrc="/assets/project/desktop-top-right.png"
         width={350}
         height={359}
         alt=""
         className="absolute right-0 top-[405px]"
       />
-      <ImageWithFallback
+      <FallbackImage
         src="/assets/project/desktop-middle-left.webp"
+        fallbackSrc="/assets/project/desktop-middle-left.png"
         width={438}
         height={560}
         alt=""
         className="absolute bottom-1/2 left-0 translate-y-1/2"
       />
-      <ImageWithFallback
+      <FallbackImage
         src="/assets/project/desktop-bottom-right.webp"
+        fallbackSrc="/assets/project/desktop-bottom-right.png"
         width={672}
         height={805}
         alt=""

@@ -1,12 +1,12 @@
 import Icon from '@/components/icon'
 import Background from './components/background'
 import Link from 'next/link'
-import Image from 'next/image'
 import GuestBook from '@/components/guest-book'
 import { projects } from '@/constants/projects'
 import { getProjectMembers } from '@/utils'
 import { notFound } from 'next/navigation'
 import VimeoPlayer from '@/components/vimeo-player'
+import FallbackImage from '@/components/fallback-image'
 
 export const generateMetadata = ({ params }: Props) => {
   const project = projects.slice(1).find((project) => project.id === Number(params.id))
@@ -35,7 +35,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
         <div>
           {!!project.banner ? (
             <div className="relative aspect-[192/60]">
-              <Image src={project.banner} alt="" fill />
+              <FallbackImage src={project.banner} alt="" fill />
             </div>
           ) : (
             <div className="aspect-[375/200] w-full bg-gray-50 md:aspect-[830/300] lg:aspect-[192/60]" />
@@ -77,7 +77,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
             {project.assets.map((asset) => {
               if (asset.type === 'image') {
                 return (
-                  <Image
+                  <FallbackImage
                     key={asset.src}
                     src={asset.src}
                     alt=""
@@ -120,7 +120,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
               >
                 <div className="relative aspect-[168/224] overflow-hidden border border-primary-02/70">
                   <div className="absolute size-full">
-                    <Image
+                    <FallbackImage
                       src={designer.avatar}
                       alt=""
                       fill

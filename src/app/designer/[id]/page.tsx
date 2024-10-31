@@ -1,10 +1,10 @@
-import Image from 'next/image'
 import Background from './components/background'
 import Link from 'next/link'
 import GuestBook from '@/components/guest-book'
 import { designers } from '@/constants/designers'
 import { getDesignerProjects, getProjectMembers } from '@/utils'
 import { notFound } from 'next/navigation'
+import FallbackImage from '@/components/fallback-image'
 
 export const generateMetadata = ({ params }: Props) => {
   const designer = designers[Number(params.id)]
@@ -41,7 +41,12 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
 
         <div className="flex gap-[42px] max-lg:justify-between max-md:flex-col md:items-end lg:gap-[118px]">
           <div className="relative h-[224px] w-[168px] shrink-0 overflow-hidden max-lg:mt-[15px] max-md:mt-[24px] md:h-[340px] md:w-[255px] lg:h-[600px] lg:w-[450px]">
-            <Image src={designer.avatar} alt={designer.name} fill className="object-cover" />
+            <FallbackImage
+              src={designer.avatar}
+              alt={designer.name}
+              fill
+              className="object-cover"
+            />
           </div>
 
           <div>
@@ -96,7 +101,7 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
                 <Link key={project.id} href={`/project/${project.id}`}>
                   <div className="group relative flex-1 overflow-hidden border border-primary-02/70 max-md:aspect-square md:size-[255px] lg:size-[450px]">
                     {hasThumbnail ? (
-                      <Image
+                      <FallbackImage
                         src={project.thumbnail}
                         alt=""
                         fill
@@ -105,7 +110,12 @@ export default async function DesignerDetailPage({ params: { id } }: Props) {
                     ) : (
                       <div className="flex size-full items-center justify-center bg-primary-01">
                         <div className="relative size-[72px] md:size-[96px] lg:size-[230px]">
-                          <Image src="/no-content.png" alt="" fill className="object-cover" />
+                          <FallbackImage
+                            src="/no-content.png"
+                            alt=""
+                            fill
+                            className="object-cover"
+                          />
                         </div>
                         <div className="text-body-02 !md:font-[400] lg:text-web-body-01 absolute bottom-[14px] right-1/2 translate-x-1/2 opacity-70 md:bottom-[16px] lg:bottom-[56px]">
                           준비 중⋯

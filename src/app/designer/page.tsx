@@ -1,9 +1,9 @@
 import ExhibitionHeader from '@/components/exhibition-header'
 import Link from 'next/link'
-import Image from 'next/image'
 import Icon from '@/components/icon'
 import Background from './components/background'
 import { designers } from '@/constants/designers'
+import FallbackImage from '@/components/fallback-image'
 
 export default async function DesignerPage() {
   return (
@@ -21,7 +21,7 @@ export default async function DesignerPage() {
             <Link key={designer.id} href={`/designer/${designer.id}`} className="group">
               <div className="relative aspect-[168/224] overflow-hidden border border-primary-02/70">
                 <div className="absolute size-full">
-                  <Image
+                  <FallbackImage
                     src={designer.avatar}
                     alt=""
                     fill

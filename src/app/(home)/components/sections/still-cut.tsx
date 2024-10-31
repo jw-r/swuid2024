@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Section from '../section'
 import Link from 'next/link'
+import FallbackImage from '@/components/fallback-image'
 
 const Interview = () => {
   const stillCuts = ['/steal/cut01.webp', '/steal/cut02.webp', '/steal/cut03.webp']
@@ -15,7 +15,7 @@ const Interview = () => {
             href="https://www.instagram.com/swu_id/"
             className="relative h-[154.5px] min-w-[230px] cursor-pointer border border-primary-02/70 md:h-[201.2px] md:min-w-[300px] lg:h-[360px] lg:min-w-0 lg:flex-1"
           >
-            <Image src={src} alt="" fill className="object-cover" />
+            <FallbackImage src={src} alt="" fill className="object-cover" />
           </Link>
         ))}
       </div>

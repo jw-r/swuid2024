@@ -68,7 +68,7 @@ const TRACKS = [
         감각적 특성부터 구조 및 기능적 관점을 고려하는 제품 디자인 통합 교육을 지향합니다.
       </span>
     ),
-    href: '/project?type=df',
+    href: '/project?type=DF',
   },
   {
     title: 'BX SPACE DESIGN',
@@ -87,6 +87,6 @@ const TRACKS = [
         창조를 목표로 합니다.
       </span>
     ),
-    href: '/project?type=bx',
+    href: '/project?type=BX',
   },
 ]
