@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 interface FallbackImageProps extends ComponentPropsWithoutRef<typeof Image> {
   fallbackSrc?: string
+  hideOnError?: boolean
 }
 
 const FallbackImage = ({
@@ -13,9 +14,17 @@ const FallbackImage = ({
   alt,
   width,
   height,
+  hideOnError = false,
+  className,
   ...props
 }: FallbackImageProps) => {
   const [imgSrc, setImgSrc] = useState(src)
+  const [hasError, setHasError] = useState(false)
+  const [triedFallback, setTriedFallback] = useState(false)
+
+  if (hasError && hideOnError && triedFallback) {
+    return null
+  }
 
   return (
     <Image
@@ -24,8 +33,14 @@ const FallbackImage = ({
       alt={alt}
       width={width}
       height={height}
+      className={className}
       onError={() => {
-        setImgSrc(fallbackSrc)
+        if (fallbackSrc && !triedFallback) {
+          setImgSrc(fallbackSrc)
+          setTriedFallback(true)
+        } else {
+          setHasError(true)
+        }
       }}
     />
   )
