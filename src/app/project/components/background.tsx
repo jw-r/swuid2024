@@ -21,12 +21,24 @@ const Background = ({ type }: Props) => {
   if (isMobile) {
     return (
       <div className="absolute inset-0 z-[-1]">
-        <FallbackImage
-          src="/assets/project/mobile_bg_01.webp"
-          fallbackSrc="/assets/project/mobile_bg_01.png"
-          fill
-          alt=""
-        />
+        {array.map((_, index) => (
+          <div
+            key={index}
+            className="absolute w-full"
+            style={{
+              top: `${index * 1135}px`,
+              height: '1135px',
+            }}
+          >
+            <FallbackImage
+              src="/assets/project/mobile_bg_01.webp"
+              fallbackSrc="/assets/project/mobile_bg_01.png"
+              alt=""
+              fill
+              className="absolute h-[1135px] w-[375px]"
+            />
+          </div>
+        ))}
         {array.map((_, index) => (
           <div
             key={index}
