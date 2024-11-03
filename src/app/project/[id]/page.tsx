@@ -77,12 +77,12 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
             {project.assets.map((asset) => {
               if (asset.type === 'image') {
                 return (
-                  <FallbackImage
+                  <img
                     key={asset.src}
                     src={asset.src}
                     alt=""
-                    width={1920}
-                    height={0}
+                    // width={1920}
+                    // height={0}
                     className="w-full"
                   />
                 )
