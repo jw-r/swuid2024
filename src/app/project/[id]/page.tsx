@@ -35,7 +35,7 @@ export default async function ProjectDetailPage({ params: { id } }: Props) {
         <div>
           {!!project.banner ? (
             <div className="relative aspect-[192/60]">
-              <FallbackImage src={project.banner} alt="" fill />
+              <img src={project.banner} alt="" className="absolute inset-0" />
             </div>
           ) : (
             <div className="aspect-[375/200] w-full bg-gray-50 md:aspect-[830/300] lg:aspect-[192/60]" />
