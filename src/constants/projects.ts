@@ -401,6 +401,7 @@ export const projects: Project[] = [
     banner: '/projects/ux/9/banner.webp',
     assets: [
       { type: 'image', src: '/projects/ux/9/main/1.webp' },
+      { type: 'vimeo', link: 'https://vimeo.com/1023657249?share=copy#t=0' },
       { type: 'image', src: '/projects/ux/9/main/2.webp' },
       { type: 'image', src: '/projects/ux/9/main/3.webp' },
       { type: 'image', src: '/projects/ux/9/main/4.webp' },
