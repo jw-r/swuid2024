@@ -16,6 +16,7 @@ const FallbackImage = ({
   height,
   hideOnError = false,
   className,
+  unoptimized = false,
   ...props
 }: FallbackImageProps) => {
   const [imgSrc, setImgSrc] = useState(src)
@@ -34,6 +35,7 @@ const FallbackImage = ({
       width={width}
       height={height}
       className={className}
+      unoptimized={unoptimized}
       onError={() => {
         if (fallbackSrc && !triedFallback) {
           setImgSrc(fallbackSrc)

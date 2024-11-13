@@ -43,6 +43,7 @@ const Background = () => {
           fill
           alt=""
           className="top-0 object-cover"
+          unoptimized
         />
         <FallbackImage
           src="/assets/guest/mobile_Obj_04.webp"
@@ -50,6 +51,7 @@ const Background = () => {
           fill
           alt=""
           className="top-0 object-cover"
+          unoptimized
         />
       </div>
     )
@@ -64,6 +66,7 @@ const Background = () => {
           fill
           alt=""
           className="top-0 object-cover"
+          unoptimized
         />
         <FallbackImage
           src="/assets/guest/tablet_obj_04.webp"
@@ -71,6 +74,7 @@ const Background = () => {
           fill
           alt=""
           className="bottom-0 left-0 object-cover"
+          unoptimized
         />
       </div>
     )
@@ -84,6 +88,7 @@ const Background = () => {
         fill
         alt=""
         className="object-cover"
+        unoptimized
       />
       <FallbackImage
         src="/assets/guest/bgObj_gestbook_01.webp"
@@ -92,6 +97,7 @@ const Background = () => {
         height={2280}
         alt=""
         className="absolute right-0 top-2/3 object-cover"
+        unoptimized
       />
     </div>
   )
